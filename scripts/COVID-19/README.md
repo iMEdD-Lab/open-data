@@ -28,7 +28,7 @@ chmod a+x scripts/COVID-19/auto-update.sh
 crontab -e
 # input the following command at the end of your crontab job list
 # the conjob will run once every hour
-0 * * * * /absolute/path/to/your/repository/scipts/COVID-19/auto-update.sh
+0 * * * * /absolute/path/to/your/repository/scripts/COVID-19/auto-update.sh
 # save and exit
 
 # list the active cronjobs
@@ -39,5 +39,5 @@ crontab -l
 
 ```bash
 cd open-data
-bash scripts/COVDI-19/auto-update.sh # of ./scripts//COVDI-19/auto-update.sh
+bash scripts/COVDI-19/auto-update.sh # or ./scripts/COVDI-19/auto-update.sh
 ```
