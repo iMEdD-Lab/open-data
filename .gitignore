@@ -3,3 +3,9 @@
 COVID-19/.DS_Store
 COVID-19/.DS_Store
 COVID-19/.DS_Store
+
+logs/
+notebooks/
+
+*.pyc
+.ipynub_checkpoints/
