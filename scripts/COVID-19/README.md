@@ -39,5 +39,5 @@ crontab -l
 
 ```bash
 cd open-data
-bash scripts/COVDI-19/auto-update.sh # of ./COVDI-19/auto-update.sh
+bash scripts/COVDI-19/auto-update.sh # of ./scripts//COVDI-19/auto-update.sh
 ```
