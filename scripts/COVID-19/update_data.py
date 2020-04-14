@@ -15,7 +15,7 @@ import graphs
 
 def normalize_keyword(s):
     """
-    Remove accents from input string
+    Normalize String
     """
     if s is None or len(s) == 0:
         return ''
