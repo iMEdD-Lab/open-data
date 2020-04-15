@@ -522,7 +522,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                   color='ADMIN_GR',
                   hover_data=['ADMIN_GR'],
                   labels={'Date': 'Ημερομηνία',
-                          columnName: 'Αριθμός Κρουσμάτων',
+                          columnName: keyWordHover,
                           'ADMIN_GR': 'Χώρα'},
                   title=titleGraphic,
 
