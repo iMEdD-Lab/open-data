@@ -323,6 +323,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
     df = df.T
     df = df.reset_index()
     df = df.rename(columns={'index': 'date'})
+    df = df[15:]
     df['date'] = pd.to_datetime(df['date'])
     df['date'] = pd.to_datetime(
         df['date'], format='%b-%d-%y').dt.strftime('%d-%b')
@@ -436,7 +437,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                 color='#114B5F'
             ),
         ),
-        showlegend=True,
+        showlegend=False,
         legend=dict(
             font=dict(
                 family='Roboto',
