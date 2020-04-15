@@ -650,15 +650,25 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                              ))
 
     # μέγεθος γραμμής σε κάθε χώρα στο legend, trace/constant
-    fig.update_layout(legend={'itemsizing': 'constant'},
-                      annotations=[dict(
-                          x=-.02,
-                          y=1.2,
-                          xref='paper',
-                          yref='paper',
-                          text='<i>Λογαριθμική κλίμακα</i>',
-                          showarrow=False
-                      )])
+    fig.update_layout(legend= {'itemsizing': 'constant'},
+                      
+        annotations = [dict(
+            x=0,
+            y=1,
+            xref='paper',
+            yref='paper',
+            text='Στη λίστα των χωρών δεν περιλαμβάνεται η Κίνα.<br><i>Λογαριθμική κλίμακα</i>',
+            showarrow = False,
+            align='left'
+        )])
+    fig.update_layout(height=380, 
+                 margin=dict(
+                    l=10,
+                    r=10,
+                    b=10,
+                    t=35,
+                    pad=1
+    ))
 
     if show:
         config = dict(
