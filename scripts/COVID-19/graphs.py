@@ -107,7 +107,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         log_x=True,
         text=texts,
         labels={
-            'Deaths/1M pop': 'Θάνατοι/ 1M πληθυσμού',
+            'Deaths/1M pop': 'Θάνατοι/<br>1M',
             'Tests/ 1M pop': 'Τεστ/ 1M πληθυσμού',
             'Tot Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
             'size': '',
@@ -323,6 +323,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
     df = df.T
     df = df.reset_index()
     df = df.rename(columns={'index': 'date'})
+    df = df[15:]
     df['date'] = pd.to_datetime(df['date'])
     df['date'] = pd.to_datetime(
         df['date'], format='%b-%d-%y').dt.strftime('%d-%b')
@@ -436,7 +437,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                 color='#114B5F'
             ),
         ),
-        showlegend=True,
+        showlegend=False,
         legend=dict(
             font=dict(
                 family='Roboto',
@@ -824,11 +825,11 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                                     zmin=wom.cases_rate_normalized.min(), zmax=wom.cases_rate_normalized.max(), 
                                     text=wom['ADMIN_GR'],marker_line_width=0.5,
 #                                     marker_line_color='grey',
-                                    colorbar_title = "% Κρουσμάτων<br>επί των Τεστ",colorbar=dict(tick0=0,dtick=5)
+                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=5)
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
-                      mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
+                      mapbox_zoom=-1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
                       paper_bgcolor="#E6ECEC",
@@ -908,11 +909,11 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                                     zmin=wom.recovered_rate.min(), zmax=wom.recovered_rate.max(), 
                                     text=wom['ADMIN_GR'],marker_line_width=0.5,
 #                                     marker_line_color='grey',
-                                    colorbar_title = "Ανάρρωσαν (%)",colorbar=dict(tick0=0,dtick=20)
+                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=20)
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
-                      mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
+                      mapbox_zoom=-1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
                       paper_bgcolor="#E6ECEC",
