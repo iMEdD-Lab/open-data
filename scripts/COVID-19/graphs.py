@@ -816,7 +816,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                                     colorbar_title = "% Κρουσμάτων<br>επί των Τεστ",colorbar=dict(tick0=0,dtick=5)
                                        ))
     
-    fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck808u6u50uqs1iodusadk0ua", mapbox_accesstoken=token,
+    fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
                       mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
@@ -899,7 +899,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                                     colorbar_title = "Ανάρρωσαν (%)",colorbar=dict(tick0=0,dtick=20)
                                        ))
     
-    fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck808u6u50uqs1iodusadk0ua", mapbox_accesstoken=token,
+    fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
                       mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
