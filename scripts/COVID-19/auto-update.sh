@@ -31,10 +31,10 @@ create_commit()
 
 run_updater()
 {
-    python "scripts/COVID-19/update_data.py" $PROJECT_ROOT
+    python "scripts/COVID-19/update_data.py" $PROJECT_ROOT --mapbox_token $MAPBOX_TOKEN
     if [[ $? = 0 ]]; then
         echo "create commit $NOW"
-        # create_commit
+        create_commit
     else
         echo "failure: $?"
         exit 1

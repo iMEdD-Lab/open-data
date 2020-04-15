@@ -39,11 +39,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='COVID-19 Data Builder')
     parser.add_argument('root_path', help='Project Root', default='./')
 
-    # parser.add_argument('--mapbox_token', default=os.environ.get('MAPBOX_TOKEN'))
-    # parser.add_argument('--mapbox_STYLE', default=os.environ.get('MAPBOX_STYLE'))
+    parser.add_argument('--mapbox_token', default=os.environ.get('MAPBOX_TOKEN'))
 
     args = parser.parse_args()
     root_path = args.root_path
+    mapbox_token = args.mapbox_token
 
     page = requests.get('https://www.worldometers.info/coronavirus/', headers={
         'User-Agent': 'Mozilla/5.0 (compatible; CVCIOBot/1.0; +https://mediawatch.io/)',
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     # append last row
     wom_data_df = wom_data_df.append(last_row_df, ignore_index=True)
     # save the new csv
-    wom_data_df.to_csv(root_path + '/COVID-19/wom_data-auto.csv', index=False)
+    wom_data_df.to_csv(root_path + '/COVID-19/wom_data.csv', index=False)
 
     greeceTimeline_df = pd.read_csv(root_path + '/COVID-19/greeceTimeline.csv')
 
@@ -109,12 +109,10 @@ if __name__ == '__main__':
         root_path + '/COVID-19/charts/create_scatterplot_casesVStests_logy', wom_data_df[:-1], countries_df)
     graphs.create_linechart_deaths_intubated_gr(
         root_path + '/COVID-19/charts/linechart_deaths_intubated_gr', greeceTimeline_df)
-    
     graphs.create_chrolopleth_casesrate(
-        root_path + '/COVID-19/charts/create_chrolopleth_casesrate', wom_data_df[:-1], countries_df)
+        root_path + '/COVID-19/charts/create_chrolopleth_casesrate', wom_data_df[:-1], countries_df, mapbox_token)
     graphs.create_chrolopleth_recoveredrate(
-        root_path + '/COVID-19/charts/create_chrolopleth_recoveredrate', wom_data_df[:-1], countries_df)
-
+        root_path + '/COVID-19/charts/create_chrolopleth_recoveredrate', wom_data_df[:-1], countries_df, mapbox_token)
     graphs.after100Cases(
         deaths_H_df,
         countries_df,
@@ -127,7 +125,6 @@ if __name__ == '__main__':
         'Ημέρες από τον 10ο θάνατο',
         'Αριθμός θανάτων',
     )
-
     graphs.after100Cases(
         confirmed_H_df,
         countries_df,
@@ -140,7 +137,6 @@ if __name__ == '__main__':
         'Ημέρες από το 100ο κρούσμα',
         'Αριθμός κρουσμάτων'
     )
-
     graphs.heatmap(
         deaths_H_df,
         countries_df,
@@ -150,7 +146,6 @@ if __name__ == '__main__':
         'Θάνατοι ανά 100 χιλ. πληθυσμού σε χώρες με παρόμοιο πληθυσμό με την Ελλάδα',
         'θάνατοι'
     )
-
     graphs.heatmap(
         confirmed_H_df,
         countries_df,
@@ -160,10 +155,9 @@ if __name__ == '__main__':
         'Κρούσματα ανά 100 χιλ. πληθυσμού σε χώρες με παρόμοιο πληθυσμό με την Ελλάδα',
         'κρούσματα'
     )
-
     alerts = pd.read_csv(root_path + '/COVID-19/alerts.csv')
     lastUpdatedAt = timezone('Europe/Athens').localize(datetime.now())
     alerts.value[0] = lastUpdatedAt.strftime('%d/%m/%Y %H:%M:%S')
-    alerts.to_csv(root_path + '/COVID-19/alerts-auto.csv', index=False)
+    alerts.to_csv(root_path + '/COVID-19/alerts.csv', index=False)
 
     sys.exit(0)
