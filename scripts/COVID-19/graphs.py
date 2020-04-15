@@ -836,7 +836,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
-                      mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
+                      mapbox_zoom=-1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
                       paper_bgcolor="#E6ECEC",
@@ -920,7 +920,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
-                      mapbox_zoom=1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
+                      mapbox_zoom=-1,mapbox_center = {"lat": 41.902782, "lon": 12.496366})
     
     fig.update_layout(
                       paper_bgcolor="#E6ECEC",
