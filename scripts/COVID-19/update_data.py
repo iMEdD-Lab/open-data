@@ -143,7 +143,7 @@ if __name__ == '__main__':
         population_df,
         'deaths',
         root_path + '/COVID-19/charts/death_heat.json',
-        'Θάνατοι ανά 100 χιλ. πληθυσμού σε χώρες με παρόμοιο πληθυσμό με την Ελλάδα',
+        '<b>Θάνατοι</b> ανά 100 χιλ. πληθυσμού',
         'θάνατοι'
     )
     graphs.heatmap(
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         population_df,
         'cases',
         root_path + '/COVID-19/charts/cases_heat.json',
-        'Κρούσματα ανά 100 χιλ. πληθυσμού σε χώρες με παρόμοιο πληθυσμό με την Ελλάδα',
+        'Κρούσματα ανά 100 χιλ. <b>πληθυσμού</b>',
         'κρούσματα'
     )
     alerts = pd.read_csv(root_path + '/COVID-19/alerts.csv')
