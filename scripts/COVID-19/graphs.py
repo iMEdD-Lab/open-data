@@ -674,7 +674,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                     r=10,
                     b=10,
                     t=65,
-                    pad=1
+                    pad=10
     ))
 
     if show:
@@ -789,7 +789,7 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
                           r=10,
                           b=20,
                           t=75,
-                          pad=1
+                          pad=10
                       ))
     
 
