@@ -369,8 +369,8 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                 type='buttons',
                 direction='right',
                 active=0,
-                x=0.6,
-                y=1,
+                # x=0.6,
+                # y=1,
                 buttons=list(
                     [
                         dict(
@@ -398,7 +398,14 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                             ]
                         )
                     ]
-                )
+                ),
+
+                pad={"r": 10, "t": 15},
+                showactive=True,
+                x=0.5,
+                xanchor="center",
+                y=1.1,
+                yanchor="top"
             )
         ]
     )
