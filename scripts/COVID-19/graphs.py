@@ -417,7 +417,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                 size=12,
                 color='#114B5F',
             ),
-            dtick=5
+            dtick=7
         ),
         yaxis=dict(
             showgrid=True,
