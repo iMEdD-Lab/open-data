@@ -59,14 +59,13 @@ def parseFloat(x):
 
 def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=False):
     wom = wom_data
-    wom = wom.rename(columns={wom.columns[8]: 'Total Cases/1M pop'})
 
     countries_names = countries_data
     countries_names = countries_names.rename(
         columns={'ADMIN': 'Country,Other'})
     wom = pd.merge(wom, countries_names, on='Country,Other', how='left')
 
-    wom['Total Cases/1M pop'] = (wom['Total Cases/1M pop']
+    wom['Tot Cases/1M pop'] = (wom['Tot Cases/1M pop']
                                  ).apply(lambda x: parseFloat(x))
     wom['Deaths/1M pop'] = (wom['Deaths/1M pop']
                             ).apply(lambda x: parseFloat(x))
@@ -76,7 +75,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
     wom['testing_median_diff_pct'] = (
         (wom['Tests/ 1M pop']-wom['Tests/ 1M pop'].median())/wom['Tests/ 1M pop'].median())*100
     wom['cases_rate_normalized'] = (
-        wom['Total Cases/1M pop']*100)/wom['Tests/ 1M pop']
+        wom['Tot Cases/1M pop']*100)/wom['Tests/ 1M pop']
     wom['cases_rate_normalized'] =  wom['cases_rate_normalized'].round(2)
     wom['cases_rate_median_diff_pct'] = (
         (wom['cases_rate_normalized']-wom['cases_rate_normalized'].median())/wom['cases_rate_normalized'].median())*100
@@ -94,7 +93,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
     fig = px.scatter(
         wom,
         x=wom['Tests/ 1M pop'],
-        y=wom['Total Cases/1M pop'],
+        y=wom['Tot Cases/1M pop'],
         size=wom['Deaths/1M pop']+150,
         hover_name='ADMIN_GR',
         color=(wom['Deaths/1M pop']),
@@ -110,7 +109,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         labels={
             'Deaths/1M pop': 'Θάνατοι/ 1M πληθυσμού',
             'Tests/ 1M pop': 'Τεστ/ 1M πληθυσμού',
-            'Total Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
+            'Tot Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
             'size': '',
             'text': ''
         }
@@ -187,14 +186,13 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
 
 def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=False):
     wom = wom_data
-    wom = wom.rename(columns={wom.columns[8]: 'Total Cases/1M pop'})
 
     countries_names = countries_data
     countries_names = countries_names.rename(
         columns={'ADMIN': 'Country,Other'})
     wom = pd.merge(wom, countries_names, on='Country,Other', how='left')
 
-    wom['Total Cases/1M pop'] = (wom['Total Cases/1M pop']
+    wom['Tot Cases/1M pop'] = (wom['Tot Cases/1M pop']
                                  ).apply(lambda x: parseFloat(x))
     wom['Deaths/1M pop'] = (wom['Deaths/1M pop']
                             ).apply(lambda x: parseFloat(x))
@@ -204,7 +202,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
     wom['testing_median_diff_pct'] = (
         (wom['Tests/ 1M pop']-wom['Tests/ 1M pop'].median())/wom['Tests/ 1M pop'].median())*100
     wom['cases_rate_normalized'] = (
-        wom['Total Cases/1M pop']*100)/wom['Tests/ 1M pop']
+        wom['Tot Cases/1M pop']*100)/wom['Tests/ 1M pop']
     wom['cases_rate_median_diff_pct'] = (
         (wom['cases_rate_normalized']-wom['cases_rate_normalized'].median())/wom['cases_rate_normalized'].median())*100
 
@@ -225,7 +223,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
     fig = px.scatter(
         wom,
         x=wom['Tests/ 1M pop'],
-        y=wom['Total Cases/1M pop'],
+        y=wom['Tot Cases/1M pop'],
         size=wom['Deaths/1M pop']+150,
         hover_name='ADMIN_GR',
         color=(wom['Deaths/1M pop']),
@@ -239,7 +237,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
         labels={
             'Deaths/1M pop': 'Θάνατοι/1M πληθυσμού',
             'Tests/ 1M pop': 'Τεστ/1M πληθυσμού',
-            'Total Cases/1M pop': 'Κρούσματα/1M πληθυσμού',
+            'Tot Cases/1M pop': 'Κρούσματα/1M πληθυσμού',
             'size': '',
             'text': ''
         }
@@ -791,24 +789,21 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
     fig.write_json(outputName)
 
 
-def create_chrolopleth_casesrate(name, wom_data, countries_data, show=False):
+def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=False):
     wom = wom_data
-    wom = wom.rename(columns={wom.columns[8]:'Total Cases/1M pop'})
     
     countries_names = countries_data
     countries_names = countries_names.rename(columns={'ADMIN':'Country,Other'})
     wom = pd.merge(wom,countries_names,on='Country,Other',how='left')
     
-    wom['Total Cases/1M pop'] = (wom['Total Cases/1M pop']).apply(lambda x: parseFloat(x))
+    wom['Tot Cases/1M pop'] = (wom['Tot Cases/1M pop']).apply(lambda x: parseFloat(x))
     wom['Deaths/1M pop'] = (wom['Deaths/1M pop']).apply(lambda x: parseFloat(x))
     wom['Tests/ 1M pop'] = (wom['Tests/ 1M pop']).apply(lambda x: parseFloat(x))
     
     wom['testing_median_diff_pct'] = ((wom['Tests/ 1M pop']-wom['Tests/ 1M pop'].median())/wom['Tests/ 1M pop'].median())*100
-    wom['cases_rate_normalized'] = (wom['Total Cases/1M pop']*100)/wom['Tests/ 1M pop']
+    wom['cases_rate_normalized'] = (wom['Tot Cases/1M pop']*100)/wom['Tests/ 1M pop']
     wom['cases_rate_normalized'] =  wom['cases_rate_normalized'].round(2)
     wom['cases_rate_median_diff_pct'] = ((wom['cases_rate_normalized']-wom['cases_rate_normalized'].median())/wom['cases_rate_normalized'].median())*100
-    
-    token = 'pk.eyJ1IjoidHJpbGlraXMiLCJhIjoiY2s4MDhlcHd1MDBtMDNkbXRmdmt4ajNhYyJ9.LPyYBmCUf_eSEDQeyhEl_Q'
     
     res = requests.get('https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json')
     countries = res.json()
@@ -870,15 +865,14 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, show=False):
     fig.write_json(name + '.json')
 
 
-def create_chrolopleth_recoveredrate(name, wom_data, countries_data, show=False):
+def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show=False):
     wom = wom_data
-    wom = wom.rename(columns={wom.columns[8]:'Total Cases/1M pop'})
     
     countries_names = countries_data
     countries_names = countries_names.rename(columns={'ADMIN':'Country,Other'})
     wom = pd.merge(wom,countries_names,on='Country,Other',how='left')
     
-    wom['Total Cases/1M pop'] = (wom['Total Cases/1M pop']).apply(lambda x: parseFloat(x))
+    wom['Tot Cases/1M pop'] = (wom['Tot Cases/1M pop']).apply(lambda x: parseFloat(x))
     wom['Deaths/1M pop'] = (wom['Deaths/1M pop']).apply(lambda x: parseFloat(x))
     wom['Tests/ 1M pop'] = (wom['Tests/ 1M pop']).apply(lambda x: parseFloat(x))
     
@@ -888,14 +882,12 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, show=False)
     
     
     wom['testing_median_diff_pct'] = ((wom['Tests/ 1M pop']-wom['Tests/ 1M pop'].median())/wom['Tests/ 1M pop'].median())*100
-    wom['cases_rate_normalized'] = (wom['Total Cases/1M pop']*100)/wom['Tests/ 1M pop']
+    wom['cases_rate_normalized'] = (wom['Tot Cases/1M pop']*100)/wom['Tests/ 1M pop']
     wom['cases_rate_normalized'] =  wom['cases_rate_normalized'].round(2)
     wom['cases_rate_median_diff_pct'] = ((wom['cases_rate_normalized']-wom['cases_rate_normalized'].median())/wom['cases_rate_normalized'].median())*100
     wom['recovered_rate'] = (wom['TotalRecovered']*100)/wom['TotalCases']
     wom['recovered_rate'] =  wom['recovered_rate'].round(2)
-    
-    token = 'pk.eyJ1IjoidHJpbGlraXMiLCJhIjoiY2s4MDhlcHd1MDBtMDNkbXRmdmt4ajNhYyJ9.LPyYBmCUf_eSEDQeyhEl_Q'
-    
+        
     res = requests.get('https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json')
     countries = res.json()
     
