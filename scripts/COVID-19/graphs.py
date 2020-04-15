@@ -108,9 +108,9 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         log_x=True,
         text=texts,
         labels={
-            'Deaths/1M pop': 'Θάνατοι/1M πληθυσμού',
-            'Tests/ 1M pop': 'Τεστ/1M πληθυσμού',
-            'Total Cases/1M pop': 'Κρούσματα/1M πληθυσμού',
+            'Deaths/1M pop': 'Θάνατοι/ 1M πληθυσμού',
+            'Tests/ 1M pop': 'Τεστ/ 1M πληθυσμού',
+            'Total Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
             'size': '',
             'text': ''
         }
