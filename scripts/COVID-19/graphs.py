@@ -107,7 +107,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         log_x=True,
         text=texts,
         labels={
-            'Deaths/1M pop': 'Θάνατοι/<br>1M',
+            'Deaths/1M pop': '<b>Θάνατοι</b>/<br>1M',
             'Tests/ 1M pop': 'Τεστ/ 1M πληθυσμού',
             'Tot Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
             'size': '',
@@ -124,15 +124,15 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         paper_bgcolor='#E6ECEC',
         plot_bgcolor='#E6ECEC',
         title=dict(
-            text='<br>Κρούσματα, Τεστ και Θάνατοι ανά 1 εκατ. πληθυσμού, ανά χώρα<br>',
+            text='<br><b>Κρούσματα</b>, <b>Τεστ</b> και <b>Θάνατοι</b> ανά χώρα<br>',
             font=TEXTFONT
         ),
         xaxis_title=dict(
-            text='Τεστ/1 εκατ. πληθυσμού',
+            text='<b>Τεστ</b>/1 εκατ. πληθυσμού',
             font=TICKFONT
         ),
         yaxis_title=dict(
-            text='Κρούσματα/1 εκατ. πληθυσμού',
+            text='<b>Κρούσματα</b>/1 εκατ. πληθυσμού',
             font=TICKFONT
         ),
         hoverlabel=dict(
@@ -378,7 +378,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                             method='update',
                             args=[
                                 {'visible': [True, True]},
-                                {'title': 'Θάνατοι και διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα'}
+                                {'title': 'Θάνατοι και διασωληνωμένοι ασθενείς<br>ανά ημέρα στην Ελλάδα'}
                             ]
                         ),
                         dict(
@@ -859,7 +859,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                     y=-.1,
                     xref='paper',
                     yref='paper',
-                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a> | Σημείωση: Οι διαφορετικές πολιτικές των χωρών <br>ως προς τα τεστ μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.Δείτε περισσότερα στο <a href="https://ourworldindata.org/covid-testing">Our world in data</a>.',
+                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a><br>Σημείωση: Οι διαφορετικές πολιτικές των χωρών ως προς τα τεστ <br>μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.Δείτε περισσότερα στο <a href="https://ourworldindata.org/covid-testing">Our world in data</a>.',
                     showarrow = False,
                     visible=True,
                     align='left',
@@ -916,7 +916,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                                     zmin=wom.recovered_rate.min(), zmax=wom.recovered_rate.max(), 
                                     text=wom['ADMIN_GR'],marker_line_width=0.5,
 #                                     marker_line_color='grey',
-                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=20)
+                                    colorbar_title = "%<br>επί των κρουσμάτων",colorbar=dict(tick0=0,dtick=20)
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
@@ -927,7 +927,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                       plot_bgcolor='#E6ECEC',
                       margin=dict(l=20, r=0, t=50, b=50),
                       title=dict(
-                            text='<br>Ποσοστό όσων <b>ανάρρωσαν</b> επί των κρουσμάτων ανά χώρα<br>',
+                            text='<br>Όσοι<b>ανάρρωσαν</b> ανά χώρα<br>',
                             y=.98,
                             x=0.02,
                             xanchor='left',
