@@ -664,7 +664,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
             y=1,
             xref='paper',
             yref='paper',
-            text='Στη λίστα των χωρών δεν περιλαμβάνεται η Κίνα.<br><i>Λογαριθμική κλίμακα</i>',
+            text='Δεν περιλαμβάνεται η Κίνα.<br><i>Λογαριθμική κλίμακα</i>',
             showarrow = False,
             align='left'
         )])
@@ -673,7 +673,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                     l=10,
                     r=10,
                     b=10,
-                    t=35,
+                    t=65,
                     pad=1
     ))
 
@@ -788,7 +788,7 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
                           l=10,
                           r=10,
                           b=20,
-                          t=60,
+                          t=75,
                           pad=1
                       ))
     
