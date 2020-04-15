@@ -142,7 +142,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         hovermode='closest',
         annotations=[dict(
             x=0,
-            y=-.2,
+            y=-.21,
             xref='paper',
             yref='paper',
             text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
@@ -252,7 +252,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
         paper_bgcolor='#E6ECEC',
         plot_bgcolor='#E6ECEC',
         title=dict(
-            text='<br>Κρούσματα και Τεστ ανά 1 εκατ. πληθυσμού<br>',
+            text='<br><b>Κρούσματα</b> και Τεστ ανά 1 εκατ. πληθυσμού<br>',
             font=TEXTFONT
         ),
         xaxis_title=dict(
@@ -276,6 +276,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
             text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
             showarrow=False,
             visible=True,
+            align='left',
             font=dict(
                 family='Roboto',
                 color='#114B5F',
@@ -831,7 +832,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                       plot_bgcolor='#E6ECEC',
                       margin=dict(l=20, r=0, t=50, b=50),
                       title=dict(
-                            text='<br>Κρούσματα αναλογικά με τα τεστ ανά χώρα<br>',
+                            text='<br><b>Κρούσματα</b> αναλογικά με τα τεστ ανά χώρα<br>',
                             y=.98,
                             x=0.02,
                             xanchor='left',
@@ -850,6 +851,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                     text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a> | Σημείωση: Οι διαφορετικές πολιτικές των χωρών <br> ως προς τα τεστ μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.Δείτε περισσότερα στο <a href="https://ourworldindata.org/covid-testing">Our world in data</a>.',
                     showarrow = False,
                     visible=True,
+                    align='left',
                     font=dict(
                     family='Roboto',
                     color="#114B5F",
@@ -914,7 +916,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                       plot_bgcolor='#E6ECEC',
                       margin=dict(l=20, r=0, t=50, b=50),
                       title=dict(
-                            text='<br>Ποσοστό όσων ανάρρωσαν επί των κρουσμάτων ανά χώρα<br>',
+                            text='<br>Ποσοστό όσων <b>ανάρρωσαν</b> επί των κρουσμάτων ανά χώρα<br>',
                             y=.98,
                             x=0.02,
                             xanchor='left',
@@ -933,6 +935,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                     text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a> | Σημείωση: Οι διαφορετικές πολιτικές των χωρών ως προς την καταγραφή <br> όσων ανάρρωσαν και την ανανέωση των στοιχείων μπορεί να επηρεάζουν τα αποτελέσματα.',
                     showarrow = False,
                     visible=True,
+                    align='left',
                     font=dict(
                     family='Roboto',
                     color="#114B5F",
