@@ -107,7 +107,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         log_x=True,
         text=texts,
         labels={
-            'Deaths/1M pop': '<b>Θάνατοι</b>/<br>1M',
+            'Deaths/1M pop': '<b>Θάνατοι</b>/<br>1Μ',
             'Tests/ 1M pop': 'Τεστ/ 1M πληθυσμού',
             'Tot Cases/1M pop': 'Κρούσματα/ 1M πληθυσμού',
             'size': '',
@@ -139,21 +139,21 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
             font_size=10,
             font_family='Roboto'
         ),
-        hovermode='closest',
-        annotations=[dict(
-            x=0,
-            y=-.21,
-            xref='paper',
-            yref='paper',
-            text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
-            showarrow=False,
-            visible=True,
-            font=dict(
-                family='Roboto',
-                color='#114B5F',
-                size=10
-            )
-        )]
+        hovermode='closest'
+        # annotations=[dict(
+        #     x=0,
+        #     y=-.21,
+        #     xref='paper',
+        #     yref='paper',
+        #     text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
+        #     showarrow=False,
+        #     visible=True,
+        #     font=dict(
+        #         family='Roboto',
+        #         color='#114B5F',
+        #         size=10
+        #     )
+        # )]
     )
 
     fig.update_layout(coloraxis_colorbar=dict(
@@ -378,7 +378,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                             method='update',
                             args=[
                                 {'visible': [True, True]},
-                                {'title': 'Θάνατοι και διασωληνωμένοι ασθενείς<br>ανά ημέρα στην Ελλάδα'}
+                                {'title': 'Θάνατοι και διασωληνωμένοι ασθενείς στην Ελλάδα'}
                             ]
                         ),
                         dict(
@@ -386,7 +386,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                             method='update',
                             args=[
                                 {'visible': [True, False]},
-                                {'title': 'Θάνατοι ανά ημέρα στην Ελλάδα'}
+                                {'title': 'Θάνατοι στην Ελλάδα'}
                             ]
                         ),
                         dict(
@@ -394,7 +394,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                             method='update',
                             args=[
                                 {'visible': [False, True]},
-                                {'title': 'Διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα'}
+                                {'title': 'Διασωληνωμένοι ασθενείς στην Ελλάδα'}
                             ]
                         )
                     ]
@@ -455,7 +455,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
         paper_bgcolor='#E6ECEC',
         plot_bgcolor='#E6ECEC',
         title=dict(
-            text='Θάνατοι και διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα',
+            text='<br>Θάνατοι</br> και <br>διασωληνωμένοι</br> ασθενείς στην Ελλάδα',
             font=dict(
                 family='Roboto',
                 size=16,
@@ -859,7 +859,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                     y=-.1,
                     xref='paper',
                     yref='paper',
-                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a><br>Σημείωση: Οι διαφορετικές πολιτικές των χωρών ως προς τα τεστ <br>μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.Δείτε περισσότερα στο <a href="https://ourworldindata.org/covid-testing">Our world in data</a>.',
+                    text='Οι διαφορετικές πολιτικές των χωρών ως προς τα τεστ <br>μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.',
                     showarrow = False,
                     visible=True,
                     align='left',
@@ -916,7 +916,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                                     zmin=wom.recovered_rate.min(), zmax=wom.recovered_rate.max(), 
                                     text=wom['ADMIN_GR'],marker_line_width=0.5,
 #                                     marker_line_color='grey',
-                                    colorbar_title = "%<br>επί των κρουσμάτων",colorbar=dict(tick0=0,dtick=20)
+                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=20)
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
@@ -927,7 +927,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                       plot_bgcolor='#E6ECEC',
                       margin=dict(l=20, r=0, t=50, b=50),
                       title=dict(
-                            text='<br>Όσοι<b>ανάρρωσαν</b> ανά χώρα<br>',
+                            text='<br>Όσοι <b>ανάρρωσαν</b> ανά χώρα<br>',
                             y=.98,
                             x=0.02,
                             xanchor='left',
@@ -943,7 +943,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                     y=-.1,
                     xref='paper',
                     yref='paper',
-                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a><br>Σημείωση: Οι διαφορετικές πολιτικές των χωρών<br>ως προς την καταγραφή των στοιχείων<br>μπορεί να επηρεάζουν τα αποτελέσματα.',
+                    text='ανάρρωσαν/κρούσματα (%)<br>Οι διαφορετικές πολιτικές των χωρών ως προς την<br>καταγραφή των στοιχείων μπορεί να επηρεάζουν τα αποτελέσματα.',
                     showarrow = False,
                     visible=True,
                     align='left',
