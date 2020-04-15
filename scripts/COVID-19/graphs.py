@@ -273,7 +273,7 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
             y=-.2,
             xref='paper',
             yref='paper',
-            text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
+            text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
             showarrow=False,
             visible=True,
             font=dict(
