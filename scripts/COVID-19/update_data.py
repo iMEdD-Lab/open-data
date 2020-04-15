@@ -91,7 +91,7 @@ if __name__ == '__main__':
     # append last row
     wom_data_df = wom_data_df.append(last_row_df, ignore_index=True)
     # save the new csv
-    wom_data_df.to_csv(root_path + '/COVID-19/wom_data-auto.csv', index=False)
+    wom_data_df.to_csv(root_path + '/COVID-19/wom_data.csv', index=False)
 
     greeceTimeline_df = pd.read_csv(root_path + '/COVID-19/greeceTimeline.csv')
 
@@ -164,6 +164,6 @@ if __name__ == '__main__':
     alerts = pd.read_csv(root_path + '/COVID-19/alerts.csv')
     lastUpdatedAt = timezone('Europe/Athens').localize(datetime.now())
     alerts.value[0] = lastUpdatedAt.strftime('%d/%m/%Y %H:%M:%S')
-    alerts.to_csv(root_path + '/COVID-19/alerts-auto.csv', index=False)
+    alerts.to_csv(root_path + '/COVID-19/alerts.csv', index=False)
 
     sys.exit(0)
