@@ -781,10 +781,10 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
                           l=10,
                           r=10,
                           b=20,
-                          t=100,
+                          t=60,
                           pad=1
                       ))
-    fig.update_xaxes(side="top")
+    
 
     if show:
         config = dict(
@@ -796,14 +796,7 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
                 'staticPlot': False
             }
         )
-    fig.update_layout(annotations = [dict(
-            x=-.09,
-            y=1.18,
-            xref='paper',
-            yref='paper',
-            text='<i>Χώρες με παρόμοιο πληθυσμό με την Ελλάδα (9-12 εκ. πληθυσμό) </i>',
-            showarrow = False
-        )])
+    
 
     fig.write_json(outputName)
 
