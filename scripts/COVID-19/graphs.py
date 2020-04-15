@@ -943,7 +943,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                     y=-.1,
                     xref='paper',
                     yref='paper',
-                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a> | Σημείωση: Οι διαφορετικές πολιτικές των χωρών ως προς την καταγραφή <br>όσων ανάρρωσαν και την ανανέωση των στοιχείων μπορεί να επηρεάζουν τα αποτελέσματα.',
+                    text='Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a><br>Σημείωση: Οι διαφορετικές πολιτικές των χωρών<br>ως προς την καταγραφή των στοιχείων<br>μπορεί να επηρεάζουν τα αποτελέσματα.',
                     showarrow = False,
                     visible=True,
                     align='left',
