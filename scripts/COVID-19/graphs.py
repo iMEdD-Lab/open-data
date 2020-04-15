@@ -125,7 +125,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         paper_bgcolor='#E6ECEC',
         plot_bgcolor='#E6ECEC',
         title=dict(
-            text='<br>Κρούσματα και Τεστ ανά 1 εκατ. πληθυσμού<br>',
+            text='<br>Κρούσματα, Τεστ και Θάνατοι ανά 1 εκατ. πληθυσμού<br>',
             font=TEXTFONT
         ),
         xaxis_title=dict(
