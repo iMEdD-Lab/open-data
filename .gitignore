@@ -9,3 +9,4 @@ notebooks/
 
 *.pyc
 .ipynub_checkpoints/
+tmp/
