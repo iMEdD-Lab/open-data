@@ -547,7 +547,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                       hoverlabel_align='left',)
 
     fig.update_layout(showlegend=True)
-    fig.update_layout(legend_title='',
+    fig.update_layout(legend_title='Διπλό κλικ σε κάθε<br>χώρα για να την <br>απομονώσετε<br>',
 
                       legend=dict(
                           traceorder="reversed",
