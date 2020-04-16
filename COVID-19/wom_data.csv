@@ -81,7 +81,7 @@ Afghanistan,784,,25,,43,716,,20,0.6,,,Asia
 Tunisia,780,,35,,43,702,89,66,3,"13,137","1,112",Africa
 Bulgaria,747,,36,,105,606,31,108,5,"18,502","2,663",Europe
 Cyprus,715,,12,,65,638,8,592,10,"17,923","14,845",Asia
-Diamond Princess,712,,12,,639,61,7,,,,,
+Diamond Princess,712,,12,,644,56,7,,,,,
 Andorra,673,,33,,169,471,17,"8,710",427,"1,673","21,653",Europe
 Latvia,666,,5,,44,617,3,353,3,"29,896","15,850",Europe
 Lebanon,658,,21,,85,552,30,96,3,"17,260","2,529",Asia
@@ -94,13 +94,13 @@ Albania,494,,25,,251,218,5,172,9,"4,558","1,584",Europe
 Uruguay,493,,9,,272,212,13,142,3,"10,448","3,008",South America
 Kyrgyzstan,449,,5,,78,366,5,69,0.8,"26,147","4,008",Asia
 Channel Islands,447,,15,,69,363,,"2,571",86,"3,320","19,095",Europe
+Bolivia,441,44,29,1,14,398,3,38,2,"2,185",187,South America
 Djibouti,435,,2,,71,362,,440,2,"5,936","6,008",Africa
-Honduras,419,,31,,9,379,10,42,3,"1,600",162,North America
+Honduras,426,7,35,4,9,382,10,43,4,"1,600",162,North America
 Nigeria,407,,12,,128,267,2,2,0.06,"5,000",24,Africa
 Guinea,404,,1,,31,372,,31,0.08,,,Africa
 Jordan,401,,7,,250,144,5,39,0.7,"20,500","2,009",Asia
 Malta,399,,3,,44,352,4,904,7,"20,139","45,611",Europe
-Bolivia,397,,28,,7,362,3,34,2,"2,185",187,South America
 Taiwan,395,,6,,137,252,,17,0.3,"49,748","2,089",Asia
 San Marino,393,,36,,53,304,15,"11,582","1,061",846,"24,933",Europe
 Réunion,391,,,,237,154,3,437,,,,Africa
@@ -116,8 +116,8 @@ Sri Lanka,238,,7,,63,168,1,11,0.3,"4,768",223,Asia
 Kenya,225,,10,,53,162,2,4,0.2,"9,630",179,Africa
 Mayotte,217,,3,,69,145,3,795,11,"1,500","5,498",Africa
 Venezuela,197,,9,,111,77,6,7,0.3,"225,009","7,913",South America
+Guatemala,196,16,5,,19,172,3,11,0.3,"1,134",63,North America
 Faeroe Islands,184,,,,166,18,,"3,766",,"5,677","116,182",Europe
-Guatemala,180,,5,,19,156,3,10,0.3,"1,134",63,North America
 Paraguay,174,13,8,,30,136,1,24,1,"3,888",545,South America
 El Salvador,159,,6,,30,123,2,25,0.9,"7,785","1,200",North America
 Martinique,158,,8,,73,77,17,421,21,,,North America
@@ -164,8 +164,8 @@ Syria,33,,2,,5,26,,2,0.1,,,Asia
 Sudan,32,,5,,4,23,,0.7,0.1,,,Africa
 Mongolia,30,,,,5,25,,9,,"1,000",305,Asia
 Mozambique,29,,,,2,27,,0.9,,793,25,Africa
+Antigua and Barbuda,23,,3,1,3,17,1,235,31,73,745,North America
 Zimbabwe,23,,3,,1,19,,2,0.2,716,48,Africa
-Antigua and Barbuda,23,,2,,3,18,1,235,20,73,745,North America
 Chad,23,,,,2,21,,1,,,,Africa
 Maldives,23,1,,,16,7,,43,,"2,899","5,363",Asia
 Angola,19,,2,,5,12,,0.6,0.06,,,Africa
@@ -173,7 +173,7 @@ Laos,19,,,,1,18,,3,,"1,235",170,Asia
 Belize,18,,2,,,16,1,45,5,567,"1,426",North America
 New Caledonia,18,,,,1,17,1,63,,"3,002","10,515",Australia/Oceania
 Malawi,16,,2,,,14,1,0.8,0.1,343,18,Africa
-Nepal,16,,,,1,15,,0.5,,"6,299",216,Asia
+Nepal,16,,,,1,15,,0.5,,"15,800",542,Asia
 Dominica,16,,,,8,8,,222,,345,"4,793",North America
 Fiji,16,,,,,16,,18,,,,Australia/Oceania
 Namibia,16,,,,3,13,,6,,362,142,Africa
@@ -207,8 +207,8 @@ South Sudan,4,,,,,4,,0.4,,,,Africa
 Anguilla,3,,,,1,2,,200,,,,North America
 British Virgin Islands,3,,,,2,1,,99,,,,North America
 Caribbean Netherlands,3,,,,,3,,114,,10,381,North America
-Papua New Guinea,2,,,,,2,,0.2,,72,8,Australia/Oceania
+Papua New Guinea,2,,,,,2,,0.2,,167,19,Australia/Oceania
 Saint Pierre Miquelon,1,,,,,1,,173,,,,North America
 Yemen,1,,,,,1,,0.03,,,,Asia
 China,"82,341",46,"3,342",,"77,892","1,107",95,57,2,,,Asia
-Total:,"2,083,237",865,"134,610",50,"510,329","1,438,298","51,142",267.3,17.3,,,All
+Total:,"2,083,304",932,"134,616",56,"510,341","1,438,347","51,142",267.3,17.3,,,All
