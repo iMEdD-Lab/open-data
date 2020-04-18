@@ -145,6 +145,7 @@ Liechtenstein,79,,1,,55,23,,"2,072",26,900,"23,605",Europe
 Equatorial Guinea,79,,,,4,75,,56,,854,609,Africa
 Liberia,76,,7,,7,62,,15,1,,,Africa
 Barbados,75,,5,,15,55,4,261,17,965,"3,358",North America
+Sudan,66,33,10,4,6,50,,2,0.2,,,Africa
 Guyana,63,,6,,9,48,4,80,8,283,360,South America
 Cayman Islands,61,,1,,7,53,3,928,15,702,"10,681",North America
 Sint Maarten,57,,9,,12,36,6,"1,329",210,163,"3,802",North America
@@ -162,7 +163,6 @@ Saint Martin,35,,2,,13,20,5,905,52,,,North America
 Benin,35,,1,,18,16,,3,0.08,,,Africa
 Eritrea,35,,,,,35,,10,,,,Africa
 Mozambique,34,,,,2,32,,1,,898,29,Africa
-Sudan,33,,6,,4,23,,0.8,0.1,,,Africa
 Mongolia,31,,,,5,26,,9,,"1,450",442,Asia
 Nepal,30,,,,2,28,,1,,"15,800",542,Asia
 Maldives,29,,,,16,13,,54,,"3,497","6,469",Asia
@@ -195,7 +195,7 @@ Seychelles,11,,,,5,6,,112,,,,Africa
 Suriname,10,,1,,6,3,,17,2,,,South America
 MS Zaandam,9,,2,,,7,,,,,,
 Gambia,9,,1,,2,6,,4,0.4,316,131,Africa
-Nicaragua,9,,1,,4,4,,1,0.2,,,North America
+Nicaragua,9,,1,,6,2,,1,0.2,,,North America
 Vatican City,8,,,,2,6,,"9,988",,,,Europe
 Mauritania,7,,1,,2,4,,2,0.2,713,153,Africa
 Papua New Guinea,7,,,,,7,,0.8,,167,19,Australia/Oceania
@@ -211,4 +211,4 @@ Caribbean Netherlands,3,,,,,3,,114,,10,381,North America
 Saint Pierre Miquelon,1,,,,,1,,173,,,,North America
 Yemen,1,,,,,1,,0.03,,,,Asia
 China,"82,719",27,"4,632",,"77,029","1,058",85,57,3,,,Asia
-Total:,"2,250,757","1,894","154,262",117,"571,145","1,525,350","57,136",288.8,19.8,,,All
+Total:,"2,250,790","1,927","154,266",121,"571,149","1,525,375","57,136",288.8,19.8,,,All
