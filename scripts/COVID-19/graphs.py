@@ -832,7 +832,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                                     zmin=wom.cases_rate_normalized.min(), zmax=wom.cases_rate_normalized.max(), 
                                     text=wom['ADMIN_GR'],marker_line_width=0.5,
 #                                     marker_line_color='grey',
-                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=5)
+                                    colorbar_title = "%",colorbar=dict(tick0=0,dtick=20)
                                        ))
     
     fig.update_layout(mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6", mapbox_accesstoken=token,
