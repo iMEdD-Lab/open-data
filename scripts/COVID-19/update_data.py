@@ -90,6 +90,7 @@ if __name__ == '__main__':
     
     # append last row
     wom_data_df = wom_data_df.append(last_row_df, ignore_index=True)
+    wom_data_df['TotalCases'] = wom_data_df['TotalCases'].str.replace(',', '')
     # save the new csv
     wom_data_df.to_csv(root_path + '/COVID-19/wom_data.csv', index=False)
 
