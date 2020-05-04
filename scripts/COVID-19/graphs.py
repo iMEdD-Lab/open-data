@@ -583,8 +583,7 @@ def after100Cases(data, countries_data, population, numberCompare, columnName, o
                      title_font={"size": 11,
                                  'color': '#114B5F'},)
 
-    fig.update_xaxes(tickvals=[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
-                     ticks=None,
+    fig.update_xaxes(ticks=None,
                      showticklabels=True,
                      showline=False,
                      linewidth=.1,
@@ -731,7 +730,8 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
 
     df = df[(df['Population (2020)'] > 9000000)
             & (df['Population (2020)'] < 12000000)
-            & (df['Date'] > '2020-03-06')]
+            & (df['Date'] > '2020-03-06')
+            & (df['Country/Region'] != 'Portugal')]
 
     ''' ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------'''
 
