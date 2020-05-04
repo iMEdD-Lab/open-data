@@ -783,7 +783,7 @@ def heatmap(data, countries_df, population, columnName, outputName, titleGraphic
                           color="#114B5F")
                       )
 
-    fig.update_layout(height=380,
+    fig.update_layout(height=400,
                       margin=dict(
                           l=10,
                           r=10,
