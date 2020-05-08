@@ -1100,11 +1100,11 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         showlegend=False,
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
-        title=dict(text="<br>Εξέλιξη θανάτων ανά Περιφέρεια<br>", font=TEXTFONT),
-        margin=dict(r=50, b=70, t=100, pad=0),
+        title=dict(text="<br>Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
+        margin=dict(r=50, b=70, t=70, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
         yaxis3_title=dict(
-            text="<i>θάνατοι συνολικά</i>",
+            text="",
             font=dict(family="Roboto", size=8, color="#114B5F"),
         ),
         xaxis_title=dict(
