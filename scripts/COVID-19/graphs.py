@@ -1086,6 +1086,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
     fig["layout"]["xaxis1"]["title"]["text"] = ""
 
     fig.update_layout(
+        height=380,
         xaxis=XAXIS_STYLE,
         xaxis2=XAXIS_STYLE,
         yaxis=YAXIS_STYLE,
