@@ -323,6 +323,8 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
         )
     )
 
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=80, pad=0))
+
     if show:
         config = dict(
             {
