@@ -391,49 +391,35 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
         updatemenus=[
             dict(
                 type="buttons",
-                direction="right",
+                direction="left",
                 active=0,
-                # x=0.6,
-                # y=1,
-                buttons=list(
-                    [
-                        dict(
-                            label="ΟΛΑ",
-                            method="update",
-                            args=[
-                                {"visible": [True, True]},
-                                {
-                                    "title": "Θάνατοι και διασωληνωμένοι ασθενείς στην Ελλάδα"
-                                },
-                            ],
-                        ),
-                        dict(
-                            label="Θάνατοι",
-                            method="update",
-                            args=[
-                                {"visible": [True, False]},
-                                {"title": "Θάνατοι στην Ελλάδα"},
-                            ],
-                        ),
-                        dict(
-                            label="Διασωληνωμένοι",
-                            method="update",
-                            args=[
-                                {"visible": [False, True]},
-                                {"title": "Διασωληνωμένοι ασθενείς στην Ελλάδα"},
-                            ],
-                        ),
-                    ]
-                ),
-                pad={"r": 10, "t": 15},
-                showactive=True,
-                x=0.5,
-                xanchor="center",
-                y=1.2,
-                yanchor="top",
-            )
-        ]
-    )
+                buttons=list([
+                    dict(label="ΟΛΑ",
+                         method="update",
+                         args=[{"visible": [True, True]},
+                               {"title": "Θάνατοι και διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα"}
+                                ]),
+                    dict(label="Θάνατοι",
+                         method="update",
+                         args=[{"visible": [True, False]},
+                               {"title": "Θάνατοι ανά ημέρα στην Ελλάδα"}]
+                                ),
+                    dict(label="Διασ/μένοι",
+                         method="update",
+                         args=[{"visible": [False, True]},
+                               {"title": "Διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα"}]
+                                ),
+                    
+                    ]),
+                    pad={'t':0, 'l':0, 'b':0, 'r':0},
+                    showactive=True,
+                    x=0.05,
+                    xanchor="left",
+                    y=1,
+                    yanchor="top"
+                )
+            ]
+        )
 
     fig.update_layout(
         xaxis=dict(
