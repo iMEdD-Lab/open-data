@@ -442,7 +442,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
             tickcolor="#BBBBBB",
             gridcolor="#F8FAFA",
             tickfont=dict(family="Roboto", size=12, color="#114B5F",),
-            dtick=7,
+            dtick=10,
         ),
         yaxis=dict(
             showgrid=True,
@@ -467,6 +467,8 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
         hoverlabel=dict(font_size=10, font_family="Roboto"),
         hovermode="closest",
     )
+
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=90, pad=0))
 
     if show:
         config = dict(
@@ -838,6 +840,7 @@ def heatmap(
 
     fig.update_layout(height=400, margin=dict(l=10, r=10, b=20, t=75, pad=10))
 
+
     if show:
         config = dict(
             {
@@ -1101,7 +1104,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
         title=dict(text="<br>Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
-        margin=dict(r=50, b=70, t=70, pad=0),
+        margin=dict(l=10, r=10, b=10, t=80, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
         yaxis3_title=dict(
             text="",
@@ -1114,7 +1117,6 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         hovermode="closest",
     )
 
-    fig.update_layout()
 
     for annot in fig.layout.annotations:
         annot.update(font=dict(family="Roboto", size=8, color="#114B5F"))
@@ -1374,7 +1376,7 @@ def growth_rate(
             )
         ],
     )
-    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=65, pad=0))
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=80, pad=0))
 
     if show:
         config = dict(
