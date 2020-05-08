@@ -415,7 +415,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                     showactive=True,
                     x=0.05,
                     xanchor="left",
-                    y=1,
+                    y=1.05,
                     yanchor="top"
                 )
             ]
