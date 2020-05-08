@@ -156,7 +156,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
         title=dict(
-            text="<br><b>Κρούσματα</b>, <b>Τεστ</b> και <b>Θάνατοι</b> ανά χώρα<br>",
+            text="<b>Κρούσματα</b>, <b>Τεστ</b> και <b>Θάνατοι</b> ανά χώρα<br>",
             font=TEXTFONT,
         ),
         xaxis_title=dict(text="<b>Τεστ</b>/1 εκατ. πληθυσμού", font=TICKFONT),
@@ -1094,7 +1094,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         showlegend=False,
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
-        title=dict(text="<br>Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
+        title=dict(text="Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
         # margin=dict(l=10, r=10, b=10, t=90, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
         yaxis3_title=dict(
