@@ -11,3 +11,4 @@ notebooks/
 .ipynub_checkpoints/
 tmp/
 .vscode/
+*.pyc
