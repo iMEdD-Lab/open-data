@@ -1374,7 +1374,7 @@ def growth_rate(
             )
         ],
     )
-    fig.update_layout(height=380, margin=dict(l=10, r=10, b=10, t=65, pad=0))
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=65, pad=0))
 
     if show:
         config = dict(
