@@ -196,6 +196,9 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
             ],
         )
     )
+
+    fig.update_layout(height=450, margin=dict(l=30, r=10, b=10, t=80, pad=0))
+
     if show:
         config = dict(
             {
@@ -1104,7 +1107,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
         title=dict(text="<br>Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
-        margin=dict(l=10, r=10, b=10, t=80, pad=0),
+        margin=dict(l=10, r=10, b=10, t=90, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
         yaxis3_title=dict(
             text="",
