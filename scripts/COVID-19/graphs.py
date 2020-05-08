@@ -473,7 +473,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
         hovermode="closest",
     )
 
-    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=90, pad=0))
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, pad=0))
 
     if show:
         config = dict(
