@@ -1176,7 +1176,6 @@ def growth_rate(
         .sum()
         .reset_index()
     )
-    df.to_csv("test.csv", index=False)
 
     df["7_day_avg_growth"] = (
         df.groupby(["Country/Region"])[columnName].pct_change().rolling(window=7).mean()
