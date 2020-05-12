@@ -8,6 +8,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+import labels
+
 baseHopkinsURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
 
 TICKFONT = dict(family="Roboto", size=12, color="#114B5F")
@@ -91,7 +93,9 @@ def parseFloat(x):
         return None
 
 
-def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=False):
+def create_scatterplot_casesVStests_logx(
+    name, wom_data, countries_data, show=False, lang="EL"
+):
     wom = wom_data
 
     countries_names = countries_data
@@ -118,10 +122,16 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
     wom = wom[wom["Deaths/1M pop"] > 0]
 
     def text(row):
-        if row["Country,Other"] == "Greece":
-            return row["ADMIN_GR"]
+        if lang == "EL":
+            if row["Country,Other"] == "Greece":
+                return row["ADMIN_GR"]
+            else:
+                return ""
         else:
-            return ""
+            if row["Country,Other"] == "Greece":
+                return row["Country,Other"]
+            else:
+                return ""
 
     texts = [text(row) for index, row in wom.iterrows()]
 
@@ -130,7 +140,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         x=wom["Tests/ 1M pop"],
         y=wom["Tot Cases/1M pop"],
         size=wom["Deaths/1M pop"] + 150,
-        hover_name="ADMIN_GR",
+        hover_name=labels.scatter_country(lang),
         color=(wom["Deaths/1M pop"]),
         color_continuous_scale=[("#3f6678"), ("#BA3A0A")],
         range_color=[wom["Deaths/1M pop"].min(), wom["Deaths/1M pop"].max()],
@@ -138,13 +148,7 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         log_y=True,
         log_x=True,
         text=texts,
-        labels={
-            "Deaths/1M pop": "<b>Θάνατοι</b>/<br>1Μ",
-            "Tests/ 1M pop": "Τεστ/ 1M πληθυσμού",
-            "Tot Cases/1M pop": "Κρούσματα/ 1M πληθυσμού",
-            "size": "",
-            "text": "",
-        },
+        labels=labels.scatter_labels(lang),
     )
 
     fig.update_traces(textposition="middle right", textfont=TEXTFONT)
@@ -155,28 +159,11 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
         showlegend=True,
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
-        title=dict(
-            text="<b>Κρούσματα</b>, <b>Τεστ</b> και <b>Θάνατοι</b> ανά χώρα<br>",
-            font=TEXTFONT,
-        ),
-        xaxis_title=dict(text="<b>Τεστ</b>/1 εκατ. πληθυσμού", font=TICKFONT),
-        yaxis_title=dict(text="<b>Κρούσματα</b>/1 εκατ. πληθυσμού", font=TICKFONT),
+        title=dict(text=labels.scatter_title(lang), font=TEXTFONT,),
+        xaxis_title=dict(text=labels.scatter_xaxis_title(lang), font=TICKFONT),
+        yaxis_title=dict(text=labels.scatter_yaxis_title(lang), font=TICKFONT),
         hoverlabel=dict(font_size=10, font_family="Roboto"),
-        hovermode="closest"
-        # annotations=[dict(
-        #     x=0,
-        #     y=-.21,
-        #     xref='paper',
-        #     yref='paper',
-        #     text='<br> Πηγή δεδομένων: <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>',
-        #     showarrow=False,
-        #     visible=True,
-        #     font=dict(
-        #         family='Roboto',
-        #         color='#114B5F',
-        #         size=10
-        #     )
-        # )]
+        hovermode="closest",
     )
 
     fig.update_layout(
@@ -210,10 +197,15 @@ def create_scatterplot_casesVStests_logx(name, wom_data, countries_data, show=Fa
             }
         )
         fig.show(config=config)
-    fig.write_json(name + ".json")
+    
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
 
-def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=False):
+def create_scatterplot_casesVStests_logy(
+    name, wom_data, countries_data, show=False, lang="EL"
+):
     wom = wom_data
 
     countries_names = countries_data
@@ -336,11 +328,14 @@ def create_scatterplot_casesVStests_logy(name, wom_data, countries_data, show=Fa
             }
         )
         fig.show(config=config)
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
-    fig.write_json(name + ".json")
 
-
-def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
+def create_linechart_deaths_intubated_gr(
+    name, greeceTimeline_data, show=False, lang="EL"
+):
     df = greeceTimeline_data
     df = df.drop("Province/State", axis=1)
     df = df.drop("Country/Region", axis=1)
@@ -358,30 +353,36 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
     df["date_gr"] = df["date_gr"].str.replace("Apr", "Απρ")
     df["date_gr"] = df["date_gr"].str.replace("May", "Μάι")
 
+    def line_x():
+        if lang == "EL":
+            return df.date_gr
+        else:
+            return df.date
+
     # Initialize figure
     fig = go.Figure()
 
     # Add Traces
     fig.add_trace(
         go.Scatter(
-            x=df.date_gr,
+            x=line_x(),
             y=df.deaths,
             mode="lines+markers",
             connectgaps=True,
             marker_color="#BA3A0A",
-            name="θάνατοι",
+            name=labels.line_trace_deaths(lang),
             line_shape="spline",
         )
     )
 
     fig.add_trace(
         go.Scatter(
-            x=df.date_gr,
+            x=line_x(),
             y=df.intubated,
             mode="lines+markers",
             connectgaps=True,
             marker_color="#3f6678",
-            name="διασωληνωμένοι",
+            name=labels.line_trace_intub(lang),
             line_shape="spline",
         )
     )
@@ -393,33 +394,43 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
                 type="buttons",
                 direction="left",
                 active=0,
-                buttons=list([
-                    dict(label="ΟΛΑ",
-                         method="update",
-                         args=[{"visible": [True, True]},
-                               {"title": "Θάνατοι και διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα"}
-                                ]),
-                    dict(label="Θάνατοι",
-                         method="update",
-                         args=[{"visible": [True, False]},
-                               {"title": "Θάνατοι ανά ημέρα στην Ελλάδα"}]
-                                ),
-                    dict(label="Διασ/μένοι",
-                         method="update",
-                         args=[{"visible": [False, True]},
-                               {"title": "Διασωληνωμένοι ασθενείς ανά ημέρα στην Ελλάδα"}]
-                                ),
-                    
-                    ]),
-                    pad={'t':0, 'l':0, 'b':0, 'r':0},
-                    showactive=True,
-                    x=0.05,
-                    xanchor="left",
-                    y=1.05,
-                    yanchor="top"
-                )
-            ]
-        )
+                buttons=list(
+                    [
+                        dict(
+                            label=labels.line_button_all(lang),
+                            method="update",
+                            args=[
+                                {"visible": [True, True]},
+                                {"title": labels.line_button_all_title(lang)},
+                            ],
+                        ),
+                        dict(
+                            label=labels.line_button_deaths(lang),
+                            method="update",
+                            args=[
+                                {"visible": [True, False]},
+                                {"title": labels.line_button_deaths_title(lang)},
+                            ],
+                        ),
+                        dict(
+                            label=labels.line_button_intub(lang),
+                            method="update",
+                            args=[
+                                {"visible": [False, True]},
+                                {"title": labels.line_button_intub_title(lang)},
+                            ],
+                        ),
+                    ]
+                ),
+                pad={"t": 0, "l": 0, "b": 0, "r": 0},
+                showactive=True,
+                x=0.05,
+                xanchor="left",
+                y=1.05,
+                yanchor="top",
+            )
+        ]
+    )
 
     fig.update_layout(
         xaxis=dict(
@@ -452,7 +463,7 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
         title=dict(
-            text="<b>Θάνατοι</b> και <b>διασωληνωμένοι</b> ασθενείς στην Ελλάδα",
+            text=labels.line_button_all_title(lang),
             font=dict(family="Roboto", size=16, color="#114B5F"),
         ),
         hoverlabel=dict(font_size=10, font_family="Roboto"),
@@ -472,7 +483,9 @@ def create_linechart_deaths_intubated_gr(name, greeceTimeline_data, show=False):
             }
         )
         fig.show(config=config)
-    fig.write_json(name + ".json")
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
 
 """φορτώνουμε το αρχείο που επιθυμούμε, τον αριθμό σημείο έναρξης της οπτικοποίησης,
@@ -492,6 +505,7 @@ def after100Cases(
     xAxis,
     yAxis,
     show=False,
+    lang="EL",
 ):
     """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
     df = (
@@ -539,20 +553,36 @@ def after100Cases(
         & (df["Country/Region"] != "China")
     ]
 
-    fig = px.line(
-        cnt[
-            (cnt["Country/Region"] != "Diamond Princess")
-            & (cnt[columnName] >= numberCompare)
-        ],
-        y=columnName,
-        color="ADMIN_GR",
-        hover_data=["ADMIN_GR"],
-        labels={"Date": "Ημερομηνία", columnName: keyWordHover, "ADMIN_GR": "Χώρα"},
-        title=titleGraphic,
-        line_shape="spline",
-        render_mode="svg",
-        color_discrete_sequence=["rgb(189,189,189)"],
-    )
+    if lang == 'EL':
+        fig = px.line(
+            cnt[
+                (cnt["Country/Region"] != "Diamond Princess")
+                & (cnt[columnName] >= numberCompare)
+            ],
+            y=columnName,
+            color="ADMIN_GR",
+            hover_data=["ADMIN_GR"],
+            labels={"Date": "Ημερομηνία", columnName: keyWordHover, "ADMIN_GR": "Χώρα"},
+            title=titleGraphic,
+            line_shape="spline",
+            render_mode="svg",
+            color_discrete_sequence=["rgb(189,189,189)"],
+        )
+    else:
+        fig = px.line(
+            cnt[
+                (cnt["Country/Region"] != "Diamond Princess")
+                & (cnt[columnName] >= numberCompare)
+            ],
+            y=columnName,
+            color="Country/Region",
+            hover_data=["Country/Region"],
+            labels={"Date": "Date", columnName: keyWordHover, "Country/Region": "Country"},
+            title=titleGraphic,
+            line_shape="spline",
+            render_mode="svg",
+            color_discrete_sequence=["rgb(189,189,189)"]
+        )
 
     fig.update_layout(
         paper_bgcolor="#E6ECEC",
@@ -568,7 +598,8 @@ def after100Cases(
 
     fig.update_layout(showlegend=True)
     fig.update_layout(
-        legend_title="Διπλό κλικ σε κάθε<br>χώρα για να την <br>απομονώσετε<br>",
+        legend_title="Διπλό κλικ σε κάθε<br>χώρα για να την <br>απομονώσετε<br>" if lang == 'EL'
+        else 'Double click<br>to select each<br>country',
         legend=dict(
             traceorder="reversed",
             font=dict(family="roboto", size=10, color="black"),
@@ -611,83 +642,163 @@ def after100Cases(
     fig.update_layout(height=380)
 
     # Γερμανία
-    fig.add_trace(
+    if lang == 'EL':
+        fig.add_trace(
+            go.Scatter(
+                y=df[
+                    (df["Country/Region"] == "Germany") & (df[columnName] > numberCompare)
+                ][columnName],
+                name="Γερμανία",
+                line=dict(color="black", width=2),
+                hovertemplate="<b>{}</b> στην Γερμανία<extra></extra>".format(
+                    "%{y:.f} " + keyWordHover 
+                ),
+            )
+        )
+    
+    else:
+        fig.add_trace(
         go.Scatter(
             y=df[
                 (df["Country/Region"] == "Germany") & (df[columnName] > numberCompare)
             ][columnName],
-            name="Γερμανία",
+            name="Germany",
             line=dict(color="black", width=2),
-            hovertemplate="<b>{}</b> στην Γερμανία<extra></extra>".format(
-                "%{y:.f} " + keyWordHover
+            hovertemplate="<b>{}</b> in Germany <extra></extra>".format(
+                "%{y:.f} " + keyWordHover 
             ),
         )
     )
 
     # Ιταλία
-    fig.add_trace(
+    if lang == 'EL':
+        fig.add_trace(
+            go.Scatter(
+                y=df[(df["Country/Region"] == "Italy") & (df[columnName] > numberCompare)][
+                    columnName
+                ],
+                name="Ιταλία",
+                line=dict(color="#3E82B3", width=2),
+                hovertemplate="<b>{}</b> στην Ιταλία<extra></extra>".format(
+                    "%{y:.f} " + keyWordHover
+                ),
+            )
+        )
+    
+    else:
+        fig.add_trace(
         go.Scatter(
             y=df[(df["Country/Region"] == "Italy") & (df[columnName] > numberCompare)][
                 columnName
             ],
-            name="Ιταλία",
+            name="Italy",
             line=dict(color="#3E82B3", width=2),
-            hovertemplate="<b>{}</b> στην Ιταλία<extra></extra>".format(
+            hovertemplate="<b>{}</b> in Italy <extra></extra>".format(
                 "%{y:.f} " + keyWordHover
             ),
         )
     )
 
     # UK
-    fig.add_trace(
+    if lang == 'EL':
+        fig.add_trace(
+            go.Scatter(
+                y=df[
+                    (df["Country/Region"] == "United Kingdom")
+                    & (df[columnName] > numberCompare)
+                ][columnName],
+                name="Ηνωμένο Βασίλειο",
+                line=dict(color="#FFD400", width=2),
+                hovertemplate="<b>{}</b> στο Ηνωμένο Βασίλειο<extra></extra>".format(
+                    "%{y:.f} " + keyWordHover
+                ),
+            )
+        )
+    else:
+        fig.add_trace(
         go.Scatter(
             y=df[
                 (df["Country/Region"] == "United Kingdom")
                 & (df[columnName] > numberCompare)
             ][columnName],
-            name="Ηνωμένο Βασίλειο",
+            name="United Kingdom",
             line=dict(color="#FFD400", width=2),
-            hovertemplate="<b>{}</b> στο Ηνωμένο Βασίλειο<extra></extra>".format(
+            hovertemplate="<b>{}</b> in United Kingdom <extra></extra>".format(
                 "%{y:.f} " + keyWordHover
             ),
         )
     )
 
     # USA
-    fig.add_trace(
+    if lang == 'EL':
+        fig.add_trace(
+            go.Scatter(
+                y=df[(df["Country/Region"] == "US") & (df[columnName] > numberCompare)][
+                    columnName
+                ],
+                name="ΗΠΑ",
+                line=dict(color="lightgreen", width=2),
+                hovertemplate="<b>{}</b> στις ΗΠΑ<extra></extra>".format(
+                    "%{y:.f} " + keyWordHover
+                ),
+            )
+        )
+    else:
+        fig.add_trace(
         go.Scatter(
             y=df[(df["Country/Region"] == "US") & (df[columnName] > numberCompare)][
                 columnName
             ],
-            name="ΗΠΑ",
+            name="USA",
             line=dict(color="lightgreen", width=2),
-            hovertemplate="<b>{}</b> στις ΗΠΑ<extra></extra>".format(
+            hovertemplate="<b>{}</b> in USA <extra></extra>".format(
                 "%{y:.f} " + keyWordHover
             ),
         )
     )
+        
     # Spain
-    fig.add_trace(
+    if lang == 'EL':
+        fig.add_trace(
+            go.Scatter(
+                y=df[(df["Country/Region"] == "Spain") & (df[columnName] > numberCompare)][
+                    columnName
+                ],
+                name="Ισπανία",
+                line=dict(color="purple", width=2),
+                hovertemplate="<b>{}</b> στην Ισπανία<extra></extra>".format(
+                    "%{y:.f} " + keyWordHover
+                ),
+            )
+        )
+        
+    else:
+        fig.add_trace(
         go.Scatter(
             y=df[(df["Country/Region"] == "Spain") & (df[columnName] > numberCompare)][
                 columnName
             ],
-            name="Ισπανία",
+            name="Spain",
             line=dict(color="purple", width=2),
-            hovertemplate="<b>{}</b> στην Ισπανία<extra></extra>".format(
+            hovertemplate="<b>{}</b> in Spain <extra></extra>".format(
                 "%{y:.f} " + keyWordHover
             ),
         )
     )
+    
     # Greece
+    
+    temp = "<b>{}</b> στην Ελλάδα<extra></extra>"
+    temp_en="<b>{}</b> in Greece<extra></extra>"
+    
     fig.add_trace(
         go.Scatter(
             y=df[(df["Country/Region"] == "Greece") & (df[columnName] > numberCompare)][
                 columnName
             ],
-            name="Ελλάδα",
+            name="Ελλάδα" if lang == 'EL' else 'Greece',
             line=dict(color="#BA3A0A", width=3),
-            hovertemplate="<b>{}</b> στην Ελλάδα<extra></extra>".format(
+            hovertemplate=(temp if lang == 'EL' else temp_en).format(
                 "%{y:.f} " + keyWordHover
             ),
         )
@@ -702,7 +813,8 @@ def after100Cases(
                 y=1,
                 xref="paper",
                 yref="paper",
-                text="Δεν περιλαμβάνεται η Κίνα.<br><i>Λογαριθμική κλίμακα</i>",
+                text="Δεν περιλαμβάνεται η Κίνα.<br><i>Λογαριθμική κλίμακα</i>" if lang == 'EL'
+                else 'China is not included<br><i>Logarithmic scale',
                 showarrow=False,
                 align="left",
             )
@@ -721,7 +833,9 @@ def after100Cases(
             }
         )
         fig.show(config=config)
-    fig.write_json(outputName)
+    if lang == 'EL':
+        fig.write_json(outputName + ".json")
+    fig.write_json(outputName + "_" + lang + ".json")
 
 
 def heatmap(
@@ -733,6 +847,7 @@ def heatmap(
     titleGraphic,
     keyWord,
     show=False,
+    lang="EL",
 ):
     """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
     df = data.drop(["Lat", "Long"], axis=1)
@@ -776,12 +891,13 @@ def heatmap(
         (df["Population (2020)"] > 9000000)
         & (df["Population (2020)"] < 12000000)
         & (df["Date"] > "2020-03-06")
-        & (df['Country/Region'] != 'Portugal')
+        & (df["Country/Region"] != "Portugal")
     ]
 
     """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
 
-    countries = df["ADMIN_GR"]
+    countries_el = df["ADMIN_GR"]
+    countries_en = df["Country/Region"]
     item = df[columnName + "_per_hundr"]
     base = datetime.datetime.today()
     dates = df["Date"]
@@ -790,7 +906,7 @@ def heatmap(
         data=go.Heatmap(
             z=item,
             x=dates,
-            y=countries,
+            y=countries_el if lang == 'EL' else countries_en,
             customdata=df[columnName],
             showscale=True,
             hovertemplate="<b>%{y}</b><br>"
@@ -807,7 +923,7 @@ def heatmap(
                 [1.0, "#BA3A0A"],
             ],
             colorbar=dict(
-                title=keyWord + "/<br>100 χιλ ",
+                title=keyWord + "/<br>100 χιλ " if lang == 'EL' else keyWord + "/<br>100k ",
                 tick0=0,
                 tickmode="auto",  # όταν το tickmode είναι array, τότε παίρνει τα values του tickvals
                 tickvals=[0, 1000, 1800],
@@ -831,7 +947,6 @@ def heatmap(
 
     fig.update_layout(height=400, margin=dict(l=10, r=10, b=20, t=75, pad=10))
 
-
     if show:
         config = dict(
             {
@@ -842,11 +957,14 @@ def heatmap(
                 "staticPlot": False,
             }
         )
+    if lang == 'EL':
+        fig.write_json(outputName + ".json")
+    fig.write_json(outputName + "_" + lang + ".json")
 
-    fig.write_json(outputName)
 
-
-def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=False):
+def create_chrolopleth_casesrate(
+    name, wom_data, countries_data, token, show=False, lang="EL"
+):
     wom = wom_data
 
     countries_names = countries_data
@@ -875,6 +993,12 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
     )
     countries = res.json()
 
+    def choropleth_casesrate_text():
+        if lang == "EL":
+            return wom.ADMIN_GR
+        else:
+            return wom["Country,Other"]
+
     fig = go.Figure(
         go.Choroplethmapbox(
             geojson=countries,
@@ -883,9 +1007,8 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
             colorscale=[("#3f6678"), ("#BA3A0A")],
             zmin=wom.cases_rate_normalized.min(),
             zmax=wom.cases_rate_normalized.max(),
-            text=wom["ADMIN_GR"],
+            text=choropleth_casesrate_text(),
             marker_line_width=0.5,
-            #                                     marker_line_color='grey',
             colorbar_title="%",
             colorbar=dict(tick0=0, dtick=20),
         )
@@ -903,7 +1026,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
         plot_bgcolor="#E6ECEC",
         margin=dict(l=20, r=0, t=50, b=50),
         title=dict(
-            text="<br><b>Κρούσματα</b> αναλογικά με τα τεστ ανά χώρα<br>",
+            text=labels.choropleth_casesrate_title(lang),
             y=0.98,
             x=0.02,
             xanchor="left",
@@ -916,7 +1039,7 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
                 y=-0.1,
                 xref="paper",
                 yref="paper",
-                text="Οι διαφορετικές πολιτικές των χωρών ως προς τα τεστ <br>μπορεί να οδηγούν σε υποεκτιμήσεις ή υπερεκτιμήσεις.",
+                text=labels.choropleth_casesrate_annot(lang),
                 showarrow=False,
                 visible=True,
                 align="left",
@@ -936,10 +1059,14 @@ def create_chrolopleth_casesrate(name, wom_data, countries_data, token, show=Fal
             }
         )
         fig.show(config=config)
-    fig.write_json(name + ".json")
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
 
-def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show=False):
+def create_chrolopleth_recoveredrate(
+    name, wom_data, countries_data, token, show=False, lang="EL"
+):
     wom = wom_data
 
     countries_names = countries_data
@@ -973,6 +1100,12 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
     )
     countries = res.json()
 
+    def choropleth_recoveredrate_text():
+        if lang == "EL":
+            return wom.ADMIN_GR
+        else:
+            return wom["Country,Other"]
+
     fig = go.Figure(
         go.Choroplethmapbox(
             geojson=countries,
@@ -981,9 +1114,8 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
             colorscale=["#3f6678", "#FFC100"],
             zmin=wom.recovered_rate.min(),
             zmax=wom.recovered_rate.max(),
-            text=wom["ADMIN_GR"],
+            text=choropleth_recoveredrate_text(),
             marker_line_width=0.5,
-            #                                     marker_line_color='grey',
             colorbar_title="%",
             colorbar=dict(tick0=0, dtick=20),
         )
@@ -1001,7 +1133,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
         plot_bgcolor="#E6ECEC",
         margin=dict(l=20, r=0, t=50, b=50),
         title=dict(
-            text="<br>Όσοι <b>ανάρρωσαν</b> ανά χώρα<br>",
+            text=labels.choropleth_recoveredrate_title(lang),
             y=0.98,
             x=0.02,
             xanchor="left",
@@ -1014,7 +1146,7 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
                 y=-0.1,
                 xref="paper",
                 yref="paper",
-                text="ανάρρωσαν/κρούσματα (%)<br>Οι διαφορετικές πολιτικές των χωρών ως προς την<br>καταγραφή των στοιχείων μπορεί να επηρεάζουν τα αποτελέσματα.",
+                text=labels.choropleth_recoveredrate_annot(lang),
                 showarrow=False,
                 visible=True,
                 align="left",
@@ -1034,10 +1166,12 @@ def create_chrolopleth_recoveredrate(name, wom_data, countries_data, token, show
             }
         )
         fig.show(config=config)
-    fig.write_json(name + ".json")
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
 
-def create_regions_facets(name, regions_greece_deaths_data, show=False):
+def create_regions_facets(name, regions_greece_deaths_data, show=False, lang="EL"):
     deaths = regions_greece_deaths_data
     deaths = deaths.drop(["pop_11"], axis=1)
     deaths["district"] = deaths.district.str.replace("Περιφέρεια", "")
@@ -1056,17 +1190,47 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
     )
     deaths = deaths[deaths.deaths > 0]
 
+    if lang == "EL":
+        deaths["district"] = deaths.district
+    else:
+        deaths["district"] = deaths.district.str.replace("Αττικής", "Attica")
+        deaths["district"] = deaths.district.str.replace("Άγιον Όρος", "Mount Athos")
+        deaths["district"] = deaths.district.str.replace(
+            "Ανατολικής Μακεδονίας & Θράκης", "East Macedonia-Thrace"
+        )
+        deaths["district"] = deaths.district.str.replace(
+            "Βορείου Αιγαίου", "North Aegean"
+        )
+        deaths["district"] = deaths.district.str.replace(
+            "Δυτικής Ελλάδας", "Western Greece"
+        )
+        deaths["district"] = deaths.district.str.replace(
+            "Δυτικής Μακεδονίας", "Western Macedonia"
+        )
+        deaths["district"] = deaths.district.str.replace("Ηπείρου", "Epirus")
+        deaths["district"] = deaths.district.str.replace("Θεσσαλίας", "Thessaly")
+        deaths["district"] = deaths.district.str.replace(
+            "Ιονίων Νήσων", "Ionian Islands"
+        )
+        deaths["district"] = deaths.district.str.replace(
+            "Κεντρικής Μακεδονίας", "Central Macedonia"
+        )
+        deaths["district"] = deaths.district.str.replace("Κρήτης", "Crete")
+        deaths["district"] = deaths.district.str.replace(
+            "Νοτίου Αιγαίου", "South Aegean"
+        )
+        deaths["district"] = deaths.district.str.replace("Πελοποννήσου", "Peloponnese")
+        deaths["district"] = deaths.district.str.replace(
+            "Στερεάς Ελλάδας και Εύβοιας", "Cenral Greece"
+        )
+
     fig = px.area(
         deaths,
         y="deaths",
         x="Date",
         facet_col="district",
         facet_col_wrap=2,
-        labels={
-            "district": "Περιφέρεια",
-            "Date": "Ημ/νία",
-            "deaths": "Θάνατοι συνολικά",
-        },
+        labels=labels.regions_facets_labels(lang),
     )
 
     fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
@@ -1094,20 +1258,18 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         showlegend=False,
         paper_bgcolor="#E6ECEC",
         plot_bgcolor="#E6ECEC",
-        title=dict(text="Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>", font=TEXTFONT),
+        title=dict(text=labels.regions_facets_title(lang), font=TEXTFONT),
         # margin=dict(l=10, r=10, b=10, t=90, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
         yaxis3_title=dict(
-            text="",
-            font=dict(family="Roboto", size=8, color="#114B5F"),
+            text="", font=dict(family="Roboto", size=8, color="#114B5F"),
         ),
         xaxis_title=dict(
-            text="<i>Δεν περιλαμβάνονται θάνατοι με άγνωστο γεωγραφικό προσδιορισμό.</i>",
+            text=labels.regions_facets_xaxis_note(lang),
             font=dict(family="Roboto", size=8, color="#114B5F"),
         ),
         hovermode="closest",
     )
-
 
     for annot in fig.layout.annotations:
         annot.update(font=dict(family="Roboto", size=8, color="#114B5F"))
@@ -1128,7 +1290,9 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False):
         )
 
         fig.show(config=config)
-    fig.write_json(name + ".json")
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
 
 
 def growth_rate(
@@ -1143,6 +1307,7 @@ def growth_rate(
     xAxis,
     yAxis,
     show=False,
+    lang="EL",
 ):
     """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
     df = (
@@ -1211,7 +1376,9 @@ def growth_rate(
 
     fig.update_layout(showlegend=True)
     fig.update_layout(
-        legend_title="Διπλό κλικ σε κάθε<br>χώρα για να την <br>απομονώσετε<br>",
+        legend_title="Διπλό κλικ σε κάθε<br>χώρα για να την <br>απομονώσετε<br>"
+        if lang == "EL"
+        else "Double click<br>to select each<br>country",
         legend=dict(
             traceorder="reversed",
             font=dict(family="roboto", size=10, color="black"),
@@ -1263,95 +1430,173 @@ def growth_rate(
     # DataFrame με τις χώρες που έχουν ρυθμό αύξησης άνω του numberCompare
     world_df = world[world["Country/Region"].isin(countries_with_increased)]
 
-    fig.add_trace(
-        go.Scatter(
-            y=world_df["7_day_avg_growth"],
-            x=world_df["Date"],
-            name="<i>Χώρες με<br>>{}% αύξηση<br> {}<br>τις τελευταίες<br>7 ημέρες</i>".format(
-                numberCompare, keyWordHover
-            ),
-            line=dict(color="gray", width=0.2),
-            text=[i for i in world_df["ADMIN_GR"]],
-            hovertemplate="<b>{}</b><br><i>{}</i><br>{} αύξηση {} <extra></extra>".format(
-                "%{text}", "%{x}", "%{y:.f}% ", keyWordHover
-            ),
-            showlegend=True,
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world_df["7_day_avg_growth"],
+                x=world_df["Date"],
+                name="<i>Χώρες με<br>>{}% αύξηση<br> {}<br>τις τελευταίες<br>7 ημέρες</i>".format(
+                    numberCompare, keyWordHover
+                ),
+                text=[i for i in world_df["ADMIN_GR"]],
+                hovertemplate="<b>{}</b><br><i>{}</i><br>{} αύξηση {} <extra></extra>".format(
+                    "%{text}", "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+                line=dict(color="gray", width=0.2),
+                showlegend=True,
+            )
         )
-    )
+    else:
+        fig.add_trace(
+            go.Scatter(
+                y=world_df["7_day_avg_growth"],
+                x=world_df["Date"],
+                name="<i>Countries with<br>>{}% increase<br> {}<br>in the last<br>7 days</i>".format(
+                    numberCompare, keyWordHover
+                ),
+                text=[i for i in world_df["Country/Region"]],
+                hovertemplate="<b>{}</b><br><i>{}</i><br>{} increase {} <extra></extra>".format(
+                    "%{text}", "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+                line=dict(color="gray", width=0.2),
+                showlegend=True,
+            )
+        )
+
     # Γερμανία
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "Germany")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="Γερμανία",
-            line=dict(color="black", width=2),
-            hovertemplate="<b>{}</b><br>{}αύξηση {} στη Γερμανία<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Germany")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Γερμανία",
+                line=dict(color="black", width=2),
+                hovertemplate="<b>{}</b><br>{}αύξηση {} στην Γερμανία <extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
         )
-    )
+    else:
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Germany")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Germany",
+                line=dict(color="black", width=2),
+                hovertemplate="<b>{}</b><br>{}increase {} in Germany<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
+        )
+
     # Ιταλία
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "Italy")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="Ιταλία",
-            line=dict(color="#3E82B3", width=2),
-            hovertemplate="<b>{}</b><br>{}αύξηση {} στην Ιταλία<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Italy")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Ιταλία" if lang == "el" else "Italy",
+                line=dict(color="#3E82B3", width=2),
+                hovertemplate="<b>{}</b><br>{}αύξηση {} στην Ιταλία<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
         )
-    )
-    # UK
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "United Kingdom")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="Ηνωμένο Βασίλειο",
-            line=dict(color="#FFD400", width=2),
-            hovertemplate="<b>{}</b><br>{}αύξηση {} στο Ηνωμένο Βασίλειο<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    else:
+        # UK
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "United Kingdom")][
+                    "7_day_avg_growth"
+                ],
+                x=world["Date"],
+                name="United Kingdom",
+                line=dict(color="#FFD400", width=2),
+                hovertemplate="<b>{}</b><br>{}increase {} in UK <extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
         )
-    )
 
     # USA
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "US")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="ΗΠΑ",
-            line=dict(color="lightgreen", width=2),
-            hovertemplate="<b>{}</b><br>{}αύξηση {} στις ΗΠΑ<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "US")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="ΗΠΑ",
+                line=dict(color="lightgreen", width=2),
+                hovertemplate="<b>{}</b><br>{}αύξηση {} στις ΗΠΑ<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
         )
-    )
+    else:
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "US")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="USA",
+                line=dict(color="lightgreen", width=2),
+                hovertemplate="<b>{}</b><br>{}increase {} in USA <extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
+        )
 
     # Spain
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "Spain")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="Ισπανία",
-            line=dict(color="purple", width=2),
-            hovertemplate="<b>{}</b><br>{} αύξηση {} στην Ισπανία<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Spain")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Ισπανία",
+                line=dict(color="purple", width=2),
+                hovertemplate="<b>{}</b><br>{} αύξηση {} στην Ισπανία<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
         )
-    )
+    else:
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Spain")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Spain",
+                line=dict(color="purple", width=2),
+                hovertemplate="<b>{}</b><br>{} increase {} in Spain<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+            )
+        )
+
     # Greece
-    fig.add_trace(
-        go.Scatter(
-            y=world[(world["Country/Region"] == "Greece")]["7_day_avg_growth"],
-            x=world["Date"],
-            name="Ελλάδα",
-            line=dict(color="#BA3A0A", width=3),
-            hovertemplate="<b>{}</b><br>{} αύξηση {} στην Ελλάδα<extra></extra>".format(
-                "%{x}", "%{y:.f}% ", keyWordHover
-            ),
+    if lang == "EL":
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Greece")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Ελλάδα",
+                line=dict(color="#BA3A0A", width=3),
+                hovertemplate="<b>{}</b><br>{} αύξηση {} στην Ελλάδα<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+                line_shape="spline",
+            )
         )
-    )
+    else:
+        fig.add_trace(
+            go.Scatter(
+                y=world[(world["Country/Region"] == "Greece")]["7_day_avg_growth"],
+                x=world["Date"],
+                name="Greece",
+                line=dict(color="#BA3A0A", width=3),
+                hovertemplate="<b>{}</b><br>{} increase {} in Greece<extra></extra>".format(
+                    "%{x}", "%{y:.f}% ", keyWordHover
+                ),
+                line_shape="spline",
+            )
+        )
 
     # μέγεθος γραμμής σε κάθε χώρα στο legend, trace/constant
     fig.update_layout(
@@ -1362,7 +1607,8 @@ def growth_rate(
                 y=1.1,
                 xref="paper",
                 yref="paper",
-                text="<i>Η τιμή κάθε ημέρας είναι ο μέσος όρος <br>των ρυθμών μεταβολής των τελευταίων επτά ημερών</i>",
+                text='<i>Η τιμή κάθε ημέρας είναι ο μέσος όρος <br>των ρυθμών μεταβολής των τελευταίων επτά ημερών</i>' if lang == 'EL'
+                          else 'Average daily change in deaths,<br>over the previous 7 days',
                 showarrow=False,
                 align="left",
             )
@@ -1380,5 +1626,6 @@ def growth_rate(
                 "staticPlot": False,
             }
         )
-
-    fig.write_json(outputName)
+    if lang == 'EL':
+        fig.write_json(outputName + ".json")
+    fig.write_json(outputName + "_" + lang + ".json")

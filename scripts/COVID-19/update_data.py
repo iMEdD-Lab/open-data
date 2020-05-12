@@ -140,8 +140,22 @@ if __name__ == "__main__":
         usecols=["Country,Other", "Population (2020)"],
     )
 
+    """"""
     graphs.create_scatterplot_casesVStests_logx(
         root_path + "/COVID-19/charts/create_scatterplot_casesVStests_logx",
+        wom_data_df[:-1],
+        countries_df,
+    )
+    graphs.create_scatterplot_casesVStests_logx(
+        root_path + "/COVID-19/charts/create_scatterplot_casesVStests_logx",
+        wom_data_df[:-1],
+        countries_df,
+        lang="EN",
+    )
+
+    """"""
+    graphs.create_scatterplot_casesVStests_logy(
+        root_path + "/COVID-19/charts/create_scatterplot_casesVStests_logy",
         wom_data_df[:-1],
         countries_df,
     )
@@ -149,12 +163,37 @@ if __name__ == "__main__":
         root_path + "/COVID-19/charts/create_scatterplot_casesVStests_logy",
         wom_data_df[:-1],
         countries_df,
+        lang="EN",
     )
+
+    """"""
     graphs.create_linechart_deaths_intubated_gr(
         root_path + "/COVID-19/charts/linechart_deaths_intubated_gr", greeceTimeline_df
     )
+    graphs.create_linechart_deaths_intubated_gr(
+        root_path + "/COVID-19/charts/linechart_deaths_intubated_gr",
+        greeceTimeline_df,
+        lang="EN",
+    )
+
+    """"""
     graphs.create_chrolopleth_casesrate(
         root_path + "/COVID-19/charts/create_chrolopleth_casesrate",
+        wom_data_df[:-1],
+        countries_df,
+        mapbox_token,
+    )
+    graphs.create_chrolopleth_casesrate(
+        root_path + "/COVID-19/charts/create_chrolopleth_casesrate",
+        wom_data_df[:-1],
+        countries_df,
+        mapbox_token,
+        lang="EN",
+    )
+
+    """"""
+    graphs.create_chrolopleth_recoveredrate(
+        root_path + "/COVID-19/charts/create_chrolopleth_recoveredrate",
         wom_data_df[:-1],
         countries_df,
         mapbox_token,
@@ -164,6 +203,21 @@ if __name__ == "__main__":
         wom_data_df[:-1],
         countries_df,
         mapbox_token,
+        lang="EN",
+    )
+
+    """"""
+    graphs.after100Cases(
+        deaths_H_df,
+        countries_df,
+        population_df,
+        10,
+        "deaths",
+        root_path + "/COVID-19/charts/10_deaths",
+        "Εξέλιξη <b>θανάτων</b> μετά τους πρώτους 10",
+        "θάνατοι",
+        "Ημέρες από τον 10ο θάνατο",
+        "Αριθμός θανάτων",
     )
     graphs.after100Cases(
         deaths_H_df,
@@ -171,11 +225,26 @@ if __name__ == "__main__":
         population_df,
         10,
         "deaths",
-        root_path + "/COVID-19/charts/10_deaths.json",
-        "Εξέλιξη <b>θανάτων</b> μετά τους πρώτους 10",
-        "θάνατοι",
-        "Ημέρες από τον 10ο θάνατο",
-        "Αριθμός θανάτων",
+        "10_deaths.json",
+        "Cumulative number of <b>deaths</b><br>by number of days since 10 deaths",
+        "deaths",
+        "Days from 10th recorded death",
+        "Number of deaths",
+        lang="EN"
+    )
+
+    """"""
+    graphs.after100Cases(
+        confirmed_H_df,
+        countries_df,
+        population_df,
+        100,
+        "cases",
+        root_path + "/COVID-19/charts/100_cases",
+        "Εξέλιξη <b>κρουσμάτων</b> μετά τα πρώτα 100",
+        "κρούσματα",
+        "Ημέρες από το 100ο κρούσμα",
+        "Αριθμός κρουσμάτων",
     )
     graphs.after100Cases(
         confirmed_H_df,
@@ -183,50 +252,96 @@ if __name__ == "__main__":
         population_df,
         100,
         "cases",
-        root_path + "/COVID-19/charts/100_cases.json",
-        "Εξέλιξη <b>κρουσμάτων</b> μετά τα πρώτα 100",
-        "κρούσματα",
-        "Ημέρες από το 100ο κρούσμα",
-        "Αριθμός κρουσμάτων",
+        root_path + "/COVID-19/charts/100_cases",
+        "Cumulative number of <b>cases</b><br>by number of days since 100 cases",
+        "cases",
+        "Days from 100th recorded case",
+        "Number of cases",
+        lang="EN"
+    )
+
+
+    """"""
+    graphs.heatmap(
+        deaths_H_df,
+        countries_df,
+        population_df,
+        "deaths",
+        root_path + "/COVID-19/charts/death_heat",
+        "<b>Θάνατοι</b> ανά 100 χιλ. πληθυσμού σε χώρες<br>με παρόμοιο πληθυσμό με την Ελλάδα",
+        "θάνατοι",
     )
     graphs.heatmap(
         deaths_H_df,
         countries_df,
         population_df,
         "deaths",
-        root_path + "/COVID-19/charts/death_heat.json",
-        "<b>Θάνατοι</b> ανά 100 χιλ. πληθυσμού σε χώρες<br>με παρόμοιο πληθυσμό με την Ελλάδα",
-        "θάνατοι",
+        root_path + "/COVID-19/charts/death_heat",
+        "<b>Deaths</b> per 100k in countries<br>with similar population to Greece",
+        "deaths",
+        lang="EN"
+    )
+
+    """"""
+    graphs.heatmap(
+        confirmed_H_df,
+        countries_df,
+        population_df,
+        "cases",
+        root_path + "/COVID-19/charts/cases_heat",
+        "<b>Κρούσματα</b> ανά 100 χιλ. πληθυσμού σε χώρες<br>με παρόμοιο πληθυσμό με την Ελλάδα",
+        "κρούσματα",
     )
     graphs.heatmap(
         confirmed_H_df,
         countries_df,
         population_df,
         "cases",
-        root_path + "/COVID-19/charts/cases_heat.json",
-        "<b>Κρούσματα</b> ανά 100 χιλ. πληθυσμού σε χώρες<br>με παρόμοιο πληθυσμό με την Ελλάδα",
-        "κρούσματα",
+        root_path + "/COVID-19/charts/cases_heat",
+        "<b>Cases</b> per 100k in countries<br>with similar population to Greece",
+        "cases",
+        lang="EN"
     )
 
     regions_facets_data = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpR8AOJaRsB5by7H3R_GijtaY06J8srELipebO5B0jYEg9pKugT3C6Rk2RSQ5eyerQl7LolshamK27/pub?gid=895893639&single=true&output=csv"
     )
 
+    """"""
     graphs.create_regions_facets(
         root_path + "/COVID-19/charts/create_regions_facets", regions_facets_data
     )
+    graphs.create_regions_facets(
+        root_path + "/COVID-19/charts/create_regions_facets",
+        regions_facets_data,
+        lang="EN",
+    )
 
+    """"""
     graphs.growth_rate(
         deaths_H_df,
         countries_df,
         population_df,
         10,
         "deaths",
-        root_path + "/COVID-19/charts/deaths_growth.json",
+        root_path + "/COVID-19/charts/deaths_growth",
         "Μέσος ρυθμός μεταβολής <b>θανάτων</b>",
         "θανάτων",
         "",
         "Ποσοστιαία διαφορά από μέρα σε μέρα<br>Λογαριθμική κλίμακα",
+    ),
+    graphs.growth_rate(
+        deaths_H_df,
+        countries_df,
+        population_df,
+        10,
+        "deaths",
+        "deaths_growth.json",
+        "Growth Rate of <b>deaths</b> over Time",
+        "of deaths",
+        "",
+        "Percentage change <br>Logarithmic scale ",
+        lang="EN",
     )
 
     alerts = pd.read_csv(root_path + "/COVID-19/alerts.csv")
