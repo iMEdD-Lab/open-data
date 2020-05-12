@@ -225,7 +225,7 @@ if __name__ == "__main__":
         population_df,
         10,
         "deaths",
-        "10_deaths.json",
+        root_path + "/COVID-19/charts/10_deaths",
         "Cumulative number of <b>deaths</b><br>by number of days since 10 deaths",
         "deaths",
         "Days from 10th recorded death",
@@ -259,7 +259,6 @@ if __name__ == "__main__":
         "Number of cases",
         lang="EN"
     )
-
 
     """"""
     graphs.heatmap(
@@ -336,7 +335,7 @@ if __name__ == "__main__":
         population_df,
         10,
         "deaths",
-        "deaths_growth.json",
+        root_path + "/COVID-19/charts/deaths_growth",
         "Growth Rate of <b>deaths</b> over Time",
         "of deaths",
         "",
