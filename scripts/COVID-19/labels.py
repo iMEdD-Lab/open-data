@@ -70,23 +70,23 @@ def line_button_intub(lang):
 
 def line_button_all_title(lang):
     if lang == "EL":
-        return "Θάνατοι και διασωληνωμένοι ασθενείς στην Ελλάδα"
+        return "<b>Θάνατοι</b> και <b>διασωληνωμένοι</b> ασθενείς στην Ελλάδα"
     else:
-        return "Deaths and intubated patients in Greece"
+        return "<b>Deaths</b> and <b>intubated</b> patients in Greece"
 
 
 def line_button_deaths_title(lang):
     if lang == "EL":
-        return "Θάνατοι/ημέρα στην Ελλάδα"
+        return "<b>Θάνατοι</b>/ημέρα στην Ελλάδα"
     else:
-        return "Deaths/day in Greece"
+        return "<b>Deaths</b>/day in Greece"
 
 
 def line_button_intub_title(lang):
     if lang == "EL":
-        return "Διασωληνωμένοι ασθενείς/ ημέρα στην Ελλάδα"
+        return "<b>Διασωληνωμένοι</b> ασθενείς/ημέρα στην Ελλάδα"
     else:
-        return "Intubated patients/day in Greece"
+        return "<b>Intubated</b> patients/day in Greece"
 
 
 def line_trace_deaths(lang):
@@ -105,9 +105,9 @@ def line_trace_intub(lang):
 
 def regions_facets_title(lang):
     if lang == "EL":
-        return "Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b>"
+        return "Εξέλιξη <b>θανάτων</b> ανά <b>Περιφέρεια</b> στην Ελλάδα"
     else:
-        return "Evolution of <b>deaths</b> by <b>district</b>"
+        return "Evolution of <b>deaths</b> by <b>district</b> in Greece"
 
 
 def regions_facets_xaxis_note(lang):
