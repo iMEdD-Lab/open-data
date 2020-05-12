@@ -971,6 +971,9 @@ def create_chrolopleth_casesrate(
     countries_names = countries_names.rename(columns={"ADMIN": "Country,Other"})
     wom = pd.merge(wom, countries_names, on="Country,Other", how="left")
 
+    wom = wom[wom['Country,Other'] != 'Sao Tome and Principe']
+    wom = wom[wom['Country,Other'] != 'Algeria']
+
     wom["Tot Cases/1M pop"] = (wom["Tot Cases/1M pop"]).apply(lambda x: parseFloat(x))
     wom["Deaths/1M pop"] = (wom["Deaths/1M pop"]).apply(lambda x: parseFloat(x))
     wom["Tests/ 1M pop"] = (wom["Tests/ 1M pop"]).apply(lambda x: parseFloat(x))
