@@ -60,7 +60,7 @@ if __name__ == "__main__":
         for header in table.find_all("th")
     ]
 
-    t_headers = [i if i != "" else "Tot Cases/1M pop" for i in t_headers]
+    # t_headers = [i if i != "" else "Tot Cases/1M pop" for i in t_headers]
 
     t_rows = []
     for row in table.find_all("tr"):
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpR8AOJaRsB5by7H3R_GijtaY06J8srELipebO5B0jYEg9pKugT3C6Rk2RSQ5eyerQl7LolshamK27/pub?gid=906157277&single=true&output=csv"
     )
     wom_data_df = pd.DataFrame(t_rows, columns=t_headers)
-
+    
     # check if row exists
     # wom_data_df = wom_data_df[wom_data_df['Country,Other'].isin(
     #     countries_df.ADMIN).astype(int) > 0].reset_index(drop=True)

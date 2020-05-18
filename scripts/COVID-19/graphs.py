@@ -87,6 +87,7 @@ YAXIS_STYLE2 = dict(
 
 def parseFloat(x):
     try:
+        x = x if isinstance(x, str) else x.to_string()
         x = x.replace(",", "")
         return float(x)
     except ValueError:
@@ -101,11 +102,11 @@ def create_scatterplot_casesVStests_logx(
     countries_names = countries_data
     countries_names = countries_names.rename(columns={"ADMIN": "Country,Other"})
     wom = pd.merge(wom, countries_names, on="Country,Other", how="left")
-
-    wom["Tot Cases/1M pop"] = (wom["Tot Cases/1M pop"]).apply(lambda x: parseFloat(x))
+    
+    wom["Tot Cases/1M pop"] = (wom["Tot Cases/1M pop"]).apply(lambda x: parseFloat(x))    
     wom["Deaths/1M pop"] = (wom["Deaths/1M pop"]).apply(lambda x: parseFloat(x))
     wom["Tests/ 1M pop"] = (wom["Tests/ 1M pop"]).apply(lambda x: parseFloat(x))
-
+    
     wom["testing_median_diff_pct"] = (
         (wom["Tests/ 1M pop"] - wom["Tests/ 1M pop"].median())
         / wom["Tests/ 1M pop"].median()
