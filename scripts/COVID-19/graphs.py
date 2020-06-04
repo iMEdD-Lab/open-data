@@ -1012,7 +1012,7 @@ def create_chrolopleth_casesrate(
             z=wom.cases_rate_normalized.astype(float),
             colorscale=[("#3f6678"), ("#BA3A0A")],
             zmin=wom.cases_rate_normalized.min(),
-            zmax=50,
+            zmax=60,
             text=choropleth_casesrate_text(),
             marker_line_width=0.5,
             colorbar_title="%",
