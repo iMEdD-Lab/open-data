@@ -120,6 +120,7 @@ def create_scatterplot_casesVStests_logx(
         / wom["cases_rate_normalized"].median()
     ) * 100
 
+    wom = wom[(wom['Country,Other'] != 'Sudan') & (wom['Country,Other'] != 'Yemen') & (wom['Country,Other'] != 'Burundi')]
     wom = wom[wom["Deaths/1M pop"] > 0]
 
     def text(row):
@@ -972,6 +973,7 @@ def create_chrolopleth_casesrate(
     countries_names = countries_names.rename(columns={"ADMIN": "Country,Other"})
     wom = pd.merge(wom, countries_names, on="Country,Other", how="left")
 
+    wom = wom[(wom['Country,Other'] != 'Sudan') & (wom['Country,Other'] != 'Yemen') & (wom['Country,Other'] != 'Burundi')]
     wom = wom[wom['Country,Other'] != 'Sao Tome and Principe']
     wom = wom[wom['Country,Other'] != 'Algeria']
 
@@ -1010,7 +1012,7 @@ def create_chrolopleth_casesrate(
             z=wom.cases_rate_normalized.astype(float),
             colorscale=[("#3f6678"), ("#BA3A0A")],
             zmin=wom.cases_rate_normalized.min(),
-            zmax=wom.cases_rate_normalized.max(),
+            zmax=60,
             text=choropleth_casesrate_text(),
             marker_line_width=0.5,
             colorbar_title="%",
