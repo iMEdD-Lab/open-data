@@ -1179,7 +1179,7 @@ def create_chrolopleth_recoveredrate(
 
 def create_regions_facets(name, regions_greece_deaths_data, show=False, lang="EL"):
     deaths = regions_greece_deaths_data
-    deaths = deaths.drop(["pop_11"], axis=1)
+    deaths = deaths.drop(["pop_11", "district_EN"], axis=1)
     deaths["district"] = deaths.district.str.replace("Περιφέρεια", "")
     deaths["district"] = deaths.district.str.replace(
         "Μακεδονίας Θράκης", "Μακεδονίας & Θράκης"
