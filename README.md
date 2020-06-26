@@ -27,7 +27,7 @@ The charts “Deaths per 100K residents in countries with population similar to 
 
 You can share or/and embed this iMEdD Lab online application in your website, in accordance with the terms hereof. Please kindly cite the creator and comply with the terms and restrictions stated here.
 
-The code for embedding the map is:
+The code for embedding the [map](https://lab.imedd.org/covid19/) is:
 
 <iframe
 src="https://lab.imedd.org/covid19/?lang=en"
@@ -42,7 +42,7 @@ width="640px"
 allowfullscreen>
 </iframe>
 
-The code for embedding the “STATISTICS” page is:
+The code for embedding the "[STATISTICS](https://lab.imedd.org/covid19/stats/)" page is:
 
 <iframe
 src="https://lab.imedd.org/covid19/stats/?lang=en"
