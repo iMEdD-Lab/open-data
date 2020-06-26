@@ -69,6 +69,6 @@ This json file, which has been made available by [python-visualtization/folium](
 
 This website has been created solely for informational purposes and its use for any other purpose is expressly prohibited. Any commercial or medical use is strictly prohibited. This website does not provide any medical guidance. No information of the website replaces the official sources and announcements of the competent state authorities. For official announcements and useful information, you can visit the website of the [EODY](https://eody.gov.gr/).
 
-IMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
+iMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
 
 For any additional information or clarification, please contact lab@imedd.org or use the iMEdD [contact form](https://www.imedd.org/el/contact/).
