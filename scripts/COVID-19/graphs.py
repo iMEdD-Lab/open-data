@@ -1235,7 +1235,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False, lang="EL
         y="deaths",
         x="Date",
         facet_col="district",
-        facet_col_wrap=2,
+        facet_col_wrap=3,
         labels=labels.regions_facets_labels(lang),
     )
 
@@ -1248,17 +1248,20 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False, lang="EL
     fig["layout"]["yaxis7"]["title"]["text"] = ""
     fig["layout"]["xaxis2"]["title"]["text"] = ""
     fig["layout"]["xaxis1"]["title"]["text"] = ""
+    fig["layout"]["xaxis3"]["title"]["text"] = ""
 
     fig.update_layout(
         height=450,
         xaxis=XAXIS_STYLE,
         xaxis2=XAXIS_STYLE,
+        xaxis3=XAXIS_STYLE,
         yaxis=YAXIS_STYLE,
-        yaxis3=YAXIS_STYLE,
-        yaxis5=YAXIS_STYLE,
+        yaxis3=YAXIS_STYLE2,
+        yaxis5=YAXIS_STYLE2,
         yaxis7=YAXIS_STYLE,
+        yaxis9=YAXIS_STYLE2,
         yaxis2=YAXIS_STYLE2,
-        yaxis4=YAXIS_STYLE2,
+        yaxis4=YAXIS_STYLE,
         yaxis6=YAXIS_STYLE2,
         yaxis8=YAXIS_STYLE2,
         showlegend=False,
