@@ -354,6 +354,9 @@ def create_linechart_deaths_intubated_gr(
     df["date_gr"] = df["date_gr"].str.replace("Mar", "Μαρ")
     df["date_gr"] = df["date_gr"].str.replace("Apr", "Απρ")
     df["date_gr"] = df["date_gr"].str.replace("May", "Μάι")
+    df["date_gr"] = df["date_gr"].str.replace("Jun", "Ιούν")
+    df["date_gr"] = df["date_gr"].str.replace("Jul", "Ιούλ")
+    df["date_gr"] = df["date_gr"].str.replace("Aug", "Ιούλ")
 
     def line_x():
         if lang == "EL":
