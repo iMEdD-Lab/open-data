@@ -1273,7 +1273,7 @@ def create_regions_facets(name, regions_greece_deaths_data, show=False, lang="EL
         title=dict(text=labels.regions_facets_title(lang), font=TEXTFONT),
         # margin=dict(l=10, r=10, b=10, t=90, pad=0),
         hoverlabel=dict(font_size=8, font_family="Roboto"),
-        yaxis3_title=dict(
+        yaxis4_title=dict(
             text="", font=dict(family="Roboto", size=8, color="#114B5F"),
         ),
         xaxis_title=dict(
