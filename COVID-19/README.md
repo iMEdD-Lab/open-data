@@ -17,7 +17,7 @@ Alert messages go here.
 Mapping countries names deriving from different sources. ISO alpha-2 and ISO alpha-3 country codes are included.
 
 ### 3. greece.csv (archived)
-Cumulative data about COVID-19 cases, deaths, critically ill, and recovered patients by prefecture/regional unit in Greece. Data refer to figures known at the time this specific CSV file was published. Last publication date: June 25, 2020. 
+Cumulative data about COVID-19 cases, deaths, critically ill, and recovered patients by prefecture/regional unit in Greece. Data refer to figures known at the time this specific CSV file was published. Last publication date: June 30, 2020. 
 
 #### Data Sources
 - The [Hellenic National Public Health Organisation (EODY)](https://eody.gov.gr/) and the [Ministry of Health](https://www.moh.gov.gr/) are the main sources of data that have been released through:
