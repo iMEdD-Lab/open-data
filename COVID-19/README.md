@@ -90,7 +90,6 @@ Cumulative data on cases, deaths, critically ill patients (intubated), and recov
     
 #### Notes
 - <b>Data updates</b>: Usually, the dataset is updated at 18:00 (EEST), once EODY announcement is out. Then, the number of new cases announced is added to correspond to "No Location Provided". By 19:00 (EEST), as soon as covid19.gov.gr updates its dashboard, the dataset is updated again and new cases are added to their respective region. 
-- New cases announced on July 1 and July 2 are currently added to correspond to "No Location Provided". That happens because the sum of cases by region as published on [covid19.gov.gr](https://covid19.gov.gr/) is not equal to either the total cases announced in the respective reports published by EODY or the number of total cases referred on [covid19.gov.gr](https://covid19.gov.gr/) itself. Thus, geographical distribution has not been properly announced for the said dates of reference and it is subject to fact-checking.  
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
 ### 9. regions_greece_cases.csv
@@ -102,8 +101,7 @@ Cumulative data about cases by region in Greece and by date of announcement. The
     - Announcements published by [EODY](https://eody.gov.gr/category/anakoinoseis/) and the [Ministry of Health](https://www.moh.gov.gr/articles/ministry/grafeio-typoy/press-releases)(data by April 22, 2020)
     - [Reports](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/) published in PDF files by EODY (data by April 22, 2020)
     
-#### Notes
-- New cases announced on July 1 and July 2 are currently added to correspond to "No Location Provided". That happens because the sum of cases by region as published on [covid19.gov.gr](https://covid19.gov.gr/) is not equal to either the total cases announced in the respective reports published by EODY or the number of total cases referred on [covid19.gov.gr](https://covid19.gov.gr/) itself. Thus, geographical distribution has not been properly announced for the said dates of reference and it is subject to fact-checking.  
+#### Notes 
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
 ### 10. regions_greece_deaths.csv
