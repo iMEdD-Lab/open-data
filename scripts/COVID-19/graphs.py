@@ -1665,6 +1665,8 @@ name, regions_greece_cases, show=False, lang="EL"
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("May", "Μάι")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jun", "Ιούν")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jul", "Ιούλ")
+    
+    rgc1['mvavg_cases'] = rgc1.cases.apply(lambda x: parseFloat(x))    
     rgc1['mvavg_cases'] = round(rgc1.cases.rolling(window=7).mean())
 
     def line_xaxis():
