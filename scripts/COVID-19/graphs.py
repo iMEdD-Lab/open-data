@@ -1641,3 +1641,100 @@ def growth_rate(
     if lang == 'EL':
         fig.write_json(outputName + ".json")
     fig.write_json(outputName + "_" + lang + ".json")
+
+
+def create_non_residents_line(
+name, regions_greece_cases, show=False, lang="EL"
+):
+
+    rgc = regions_greece_cases
+    rgc = rgc[rgc.district=='Χωρίς Μόνιμη Κατοικία στην Ελλάδα']
+    rgc = rgc.drop(['district','district_EN','pop_11'],axis=1)
+    rgc = rgc.T
+    rgc = rgc.rename(columns={rgc.columns[0]:'cases'})
+    rgc = rgc.reset_index()[57:]
+    rgc1 = rgc.reset_index()
+    rgc1 = rgc1.rename(columns={'level_0':'index_previous','index':'date'})
+    rgc1["date"] = pd.to_datetime(rgc1["date"])
+    rgc1["date"] = pd.to_datetime(rgc1["date"], format="%b-%d-%y").dt.strftime("%d-%b")
+    rgc1["date_gr"] = rgc1["date"]
+    rgc1["date_gr"] = rgc1["date_gr"].astype(str)
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Feb", "Φεβ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Mar", "Μαρ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Apr", "Απρ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("May", "Μάι")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jun", "Ιούν")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jul", "Ιούλ")
+    rgc1['mvavg_cases'] = round(rgc1.cases.rolling(window=7).mean())
+
+    def line_xaxis():
+        if lang == "EL":
+            return rgc1[6:].date_gr
+        else:
+            return rgc1[6:].date
+
+    # Initialize figure
+    fig = go.Figure()
+
+    # Add Traces
+    fig.add_trace(
+        go.Scatter(
+            x=line_xaxis(),
+            y=rgc1[6:].mvavg_cases,
+            mode="lines",
+            connectgaps=True,
+            marker_color="#BA3A0A",
+    #             name= 'Title',
+            line_shape="spline",
+            line=dict(width=4)
+        )
+    )
+
+    fig.update_layout(
+        xaxis=dict(
+                showline=True,
+                zeroline=True,
+                showgrid=False,
+                showticklabels=True,
+                linecolor="#114B5F",
+                linewidth=0.1,
+                ticks="outside",
+                tickcolor="#BBBBBB",
+                gridcolor="#F8FAFA",
+                tickfont=TICKFONT,
+                dtick = 10
+            ),
+        yaxis=YAXIS,
+        showlegend=False,
+        legend=dict(font=dict(family="Roboto", size=12, color="#114B5F")),
+        paper_bgcolor="#E6ECEC",
+        plot_bgcolor="#E6ECEC",
+        title=dict(
+            text= labels.non_residents_line_title(lang),
+            font=dict(family="Roboto", size=16, color="#114B5F"),
+        ),
+        hoverlabel=dict(font_size=10, font_family="Roboto"),
+        hovermode="closest",
+        xaxis_title=dict(
+            text= labels.non_residents_line_xaxis_note(lang),
+            font=dict(family="Roboto", size=8, color="#114B5F"),
+            ),
+        yaxis_title=dict(text=labels.non_residents_line_yaxis_title(lang), font=TICKFONT),
+    )
+
+    fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=90, pad=0))
+
+    if show:
+        config = dict(
+            {
+                "displayModeBar": True,
+                "scrollZoom": False,
+                "displaylogo": False,
+                "responsive": True,
+                "staticPlot": False,
+            }
+        )
+    fig.show()
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")

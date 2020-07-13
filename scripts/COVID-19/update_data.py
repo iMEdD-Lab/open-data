@@ -343,6 +343,49 @@ if __name__ == "__main__":
         lang="EN",
     )
 
+    regions_greece_cases = pd.read_csv(
+    'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/regions_greece_cases.csv'
+    )
+
+    """"""
+    graphs.create_non_residents_line(
+        root_path + '/COVID-19/charts/create_non_residents_line', regions_greece_cases)
+
+
+    graphs.create_non_residents_line(
+        root_path + "/COVID-19/charts/create_non_residents_line",
+        regions_greece_cases,
+        lang="EN",
+    )
+
+    """"""
+    graphs.growth_rate(
+        confirmed_H_df,
+        countries_df,
+        population_df,
+        10,
+        "cases",
+        root_path + "/COVID-19/charts/deaths_growth",
+        "Μέσος ρυθμός μεταβολής <b>κρουσμάτων</b>",
+        "κρουσμάτων",
+        "",
+        "Ποσοστιαία διαφορά από μέρα σε μέρα<br>Λογαριθμική κλίμακα",
+    )
+
+    graphs.growth_rate(
+        confirmed_H_df,
+        countries_df,
+        population_df,
+        10,
+        "cases",
+        root_path + "/COVID-19/charts/deaths_growth",
+        "Growth Rate of <b>cases</b> over Time",
+        "of cases",
+        "",
+        "Percentage change <br>Logarithmic scale ",
+        lang="EN",
+    )
+
     alerts = pd.read_csv(root_path + "/COVID-19/alerts.csv")
     lastUpdatedAt = timezone("Europe/Athens").localize(datetime.now())
     alerts.value[0] = lastUpdatedAt.strftime("%d/%m/%Y %H:%M:%S")

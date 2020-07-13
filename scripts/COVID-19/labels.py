@@ -158,3 +158,22 @@ def choropleth_recoveredrate_annot(lang):
         return "ανάρρωσαν/κρούσματα (%)<br>Οι διαφορετικές πολιτικές των χωρών ως προς την<br>καταγραφή των στοιχείων μπορεί να επηρεάζουν τα αποτελέσματα."
     else:
         return "recovered/cases (%)<br>Different policies of various countries on<br>record keeping might influence results."
+
+def non_residents_line_title(lang):
+    if lang == "EL":
+        return "Εξέλιξη κρουσμάτων <b>χωρίς μόνιμη κατοικία</b> στην Ελλάδα"
+    else:
+        return "Evolution of <b>non-residents cases</b> in Greece"
+
+
+def non_residents_line_xaxis_note(lang):
+    if lang == "EL":
+        return "<i>Περιλαμβάνονται συνολικά 126 κρούσματα από το πλοίο «Ελευθέριος Βενιζέλος».</i>"
+    else:
+        return '<i>126 cases on the "Eleftherios Venizelos" ferryboat are included.</i>'
+    
+def non_residents_line_yaxis_title(lang):
+    if lang == 'EL':
+        return 'Κυλιόμενος μέσος όρος 7 ημερών'
+    else:
+        return '7-day moving average'
