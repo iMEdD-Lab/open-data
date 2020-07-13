@@ -346,6 +346,8 @@ if __name__ == "__main__":
     regions_greece_cases = pd.read_csv(
     'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/regions_greece_cases.csv'
     )
+    
+    print(regions_greece_cases)
 
     """"""
     graphs.create_non_residents_line(
