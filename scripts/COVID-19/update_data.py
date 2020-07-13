@@ -347,8 +347,6 @@ if __name__ == "__main__":
     'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/regions_greece_cases.csv'
     )
     
-    print(regions_greece_cases)
-
     """"""
     graphs.create_non_residents_line(
         root_path + '/COVID-19/charts/create_non_residents_line', regions_greece_cases)
