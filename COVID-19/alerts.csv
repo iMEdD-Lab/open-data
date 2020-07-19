@@ -1,5 +1,10 @@
 key,value,value_en
+<<<<<<< HEAD,19/07/2020 20:02:57,
 lastUpdatedAt,19/07/2020 18:02:55,
 alertText,19 νέα κρούσματα –κανένα εκ των οποίων σε πύλη εισόδου (18 Ιουλίου),19 new cases –none of them detected at the entry points of the country (July 18)
+=======,,
+lastUpdatedAt,19/07/2020 16:02:42,
+alertText,25 νέα κρούσματα –16 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (19 Ιουλίου),25 new cases with 16 of them detected at the entry points of the country (July 19)
+>>>>>>> f30d3f221b9c0f68918b24201646313cac34d5bc,,
 alertType,,
 alertLink,,
