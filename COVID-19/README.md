@@ -1,7 +1,8 @@
 # About
 
 Datasets and charts created by [iMEdD Lab](https://www.imedd.org/imedd-lab/) as part of the development of [iMEdD Lab's web application that tracks the spread of COVID-19 in Greece and around the world](https://lab.imedd.org/covid19/?lang=en). 
-
+## Folder named "ARCHIVED"
+Contains the datasets which we aren't updated any longer. 
 
 ## Folder named "charts"
 
