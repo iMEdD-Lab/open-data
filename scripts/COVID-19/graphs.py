@@ -897,6 +897,8 @@ def heatmap(
         & (df["Population (2020)"] < 12000000)
         & (df["Date"] > "2020-03-06")
         & (df["Country/Region"] != "Portugal")
+        & (df["Country/Region"] != "Jordan")
+        & (df["Country/Region"] != "Czechia")
     ]
 
     """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
