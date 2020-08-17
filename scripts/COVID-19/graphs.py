@@ -858,7 +858,7 @@ def heatmap(
     
     df = data.drop(["Lat", "Long"], axis=1)
     #CASES CORRECTIONS
-    if fileName==confirmedHopkinsFileName:
+    if data==confirmed_H_df:
 
         #Honduras from 2100 to 2006 on 5/11
         df.loc[df['Country/Region']=='Honduras','5/11/20']=2006
@@ -868,7 +868,7 @@ def heatmap(
         df.loc[df['Country/Region']=='Portugal','5/1/20']=25190
         df.loc[df['Country/Region']=='Portugal','5/2/20']=25190
         
-    if fileName==deathsHopkinsFileName:
+    if data==deaths_H_df:
         df.loc[df['Country/Region']=='Sweden','8/6/20']-=3
         df.loc[df['Country/Region']=='Cuba','8/13/20']-=1
         df.loc[df['Country/Region']=='Austria','7/21/20']+=1
@@ -913,10 +913,10 @@ def heatmap(
             & (df['Population (2020)']<12000000)
             & (df['Date']>'2020-03-06')]
     
-    if fileName==confirmedHopkinsFileName:
+    if data==confirmed_H_df:
         df=df[(df["Country/Region"] != "Jordan")]
     
-    if fileName==deathsHopkinsFileName:
+    if data==deaths_H_df:
         df=df[(df["Country/Region"] != "Czechia")]
 
     """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
