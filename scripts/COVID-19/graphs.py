@@ -855,24 +855,7 @@ def heatmap(
     lang="EL",
 ):
     """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
-    
     df = data.drop(["Lat", "Long"], axis=1)
-    #CASES CORRECTIONS
-    if data==confirmed_H_df:
-
-        #Honduras from 2100 to 2006 on 5/11
-        df.loc[df['Country/Region']=='Honduras','5/11/20']=2006
-    
-        #Portugal - correction of dublicates
-        df.loc[df['Country/Region']=='Portugal','4/30/20']=24884
-        df.loc[df['Country/Region']=='Portugal','5/1/20']=25190
-        df.loc[df['Country/Region']=='Portugal','5/2/20']=25190
-        
-    if data==deaths_H_df:
-        df.loc[df['Country/Region']=='Sweden','8/6/20']-=3
-        df.loc[df['Country/Region']=='Cuba','8/13/20']-=1
-        df.loc[df['Country/Region']=='Austria','7/21/20']+=1
-
     """ υπολογίζουμε το difference από ημέρα σε ημέρα, ώστε να βγάλουμε τα ΝΕΑ κρούσματα/θάνατοι ανά ημέρα"""
     cols = df.columns.to_list()
     df_dif = df[cols[4:]].diff(axis=1)
@@ -909,15 +892,12 @@ def heatmap(
 
     """ ------------------- ΕΠΙΛΕΓΟΥΜΕ ΤΙΣ ΧΩΡΕΣ ΜΕ ΠΑΡΟΜΟΙΟ ΠΛΗΘΥΣΜΟ ΜΕ ΤΗΝ ΕΛΛΑΔΑ -----------"""
 
-    df=df[(df['Population (2020)']>9000000)
-            & (df['Population (2020)']<12000000)
-            & (df['Date']>'2020-03-06')]
-    
-    if data==confirmed_H_df:
-        df=df[(df["Country/Region"] != "Jordan")]
-    
-    if data==deaths_H_df:
-        df=df[(df["Country/Region"] != "Czechia")]
+    df = df[
+        (df["Population (2020)"] > 9000000)
+        & (df["Population (2020)"] < 12000000)
+        & (df["Date"] > "2020-03-06")
+        & (df["Country/Region"] != "Portugal")
+    ]
 
     """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
 
