@@ -857,22 +857,7 @@ def after100Cases(
         """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
         
         df = data.drop(["Lat", "Long"], axis=1)
-        #CASES CORRECTIONS
-        if columnName=='cases':
-
-            #Honduras from 2100 to 2006 on 5/11
-            df.loc[df['Country/Region']=='Honduras','5/11/20']=2006
-        
-            #Portugal - correction of dublicates
-            df.loc[df['Country/Region']=='Portugal','4/30/20']=24884
-            df.loc[df['Country/Region']=='Portugal','5/1/20']=25190
-            df.loc[df['Country/Region']=='Portugal','5/2/20']=25190
-            
-        if columnName=='deaths':
-            df.loc[df['Country/Region']=='Sweden','8/6/20']-=3
-            df.loc[df['Country/Region']=='Cuba','8/13/20']-=1
-            df.loc[df['Country/Region']=='Austria','7/21/20']+=1
-
+ 
         """ υπολογίζουμε το difference από ημέρα σε ημέρα, ώστε να βγάλουμε τα ΝΕΑ κρούσματα/θάνατοι ανά ημέρα"""
         cols = df.columns.to_list()
         df_dif = df[cols[4:]].diff(axis=1)
@@ -905,7 +890,12 @@ def after100Cases(
         )
 
         """ ------------------- ΠΡΟΕΤΟΙΜΑΖΟΥΜΕ ΤΗ ΣΤΗΛΗ ΠΟΥ ΘΑ ΟΠΤΙΚΟΠΟΙΗΣΟΥΜΕ -----------------"""
+        def to_zero(row):
+            if row<0:
+                row=0
+            return row
         df[columnName + "_per_hundr"] = (df[columnName] / df["Population (2020)"]) * 100000
+        df[columnName + "_per_hundr"] = df[columnName + "_per_hundr"].apply(to_zero)
 
         """ ------------------- ΕΠΙΛΕΓΟΥΜΕ ΤΙΣ ΧΩΡΕΣ ΜΕ ΠΑΡΟΜΟΙΟ ΠΛΗΘΥΣΜΟ ΜΕ ΤΗΝ ΕΛΛΑΔΑ -----------"""
 
@@ -914,10 +904,13 @@ def after100Cases(
                 & (df['Date']>'2020-03-06')]
         
         if columnName=='cases':
-            df=df[(df["Country/Region"] != "Jordan")]
+            df=df[(df["Country/Region"] != "Jordan")
+                    & (df["Country/Region"] != "Burundi")]
+        
         
         if columnName=='deaths':
-            df=df[(df["Country/Region"] != "Czechia")]
+            df=df[(df["Country/Region"] != "Burundi")
+                    & (df["Country/Region"] != "Jordan")]
 
         """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
 
