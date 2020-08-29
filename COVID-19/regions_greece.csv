@@ -1,6 +1,6 @@
 district,district_EN,pop_11,cases,dead,critical,recovered
 Περιφέρεια Ανατολικής Μακεδονίας Θράκης,East Macedonia-Thrace,608182.0,760.0,29.0,,
-Περιφέρεια Κεντρικής Μακεδονίας,Central Macedonia,1882108.0,1922.0,49.0,,
+Περιφέρεια Κεντρικής Μακεδονίας,Central Macedonia,1882108.0,1922.0,50.0,,
 Περιφέρεια Ηπείρου,Epirus,336856.0,82.0,1.0,,
 Περιφέρεια Θεσσαλίας,Thessaly,732762.0,482.0,4.0,,
 Περιφέρεια Ιονίων Νήσων,Ionian Islands,207855.0,199.0,2.0,,
@@ -14,4 +14,4 @@ district,district_EN,pop_11,cases,dead,critical,recovered
 Περιφέρεια Δυτικής Μακεδονίας,Western Macedonia,283689.0,321.0,32.0,,
 Χωρίς Μόνιμη Κατοικία στην Ελλάδα,Non-Residents,,765.0,1.0,,
 Άγιον Όρος,Mount Athos,,4.0,0.0,,
-Χωρίς Γεωγραφικό Προσδιορισμό,No Location Provided,,273.0,33.0,35.0,4873.0
+Χωρίς Γεωγραφικό Προσδιορισμό,No Location Provided,,273.0,32.0,35.0,4873.0
