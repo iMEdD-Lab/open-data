@@ -903,7 +903,13 @@ def heatmap(
     df=df[(df['Population (2020)']>9000000)
             & (df['Population (2020)']<12000000)
             & (df['Date']>'2020-03-06')]
-    d
+    
+    if columnName=='cases':
+        df=df[(df["Country/Region"] != "Jordan")
+                & (df["Country/Region"] != "Burundi")]
+    
+    
+    if columnName=='deaths':
         df=df[(df["Country/Region"] != "Burundi")
                 & (df["Country/Region"] != "Jordan")]
 
