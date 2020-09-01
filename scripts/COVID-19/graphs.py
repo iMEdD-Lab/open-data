@@ -357,6 +357,7 @@ def create_linechart_deaths_intubated_gr(
     df["date_gr"] = df["date_gr"].str.replace("Jun", "Ιούν")
     df["date_gr"] = df["date_gr"].str.replace("Jul", "Ιούλ")
     df["date_gr"] = df["date_gr"].str.replace("Aug", "Αυγ")
+    df["date_gr"] = df["date_gr"].str.replace("Sep", "Σεπτ")
 
     def line_x():
         if lang == "EL":
@@ -1682,6 +1683,8 @@ name, regions_greece_cases, show=False, lang="EL"
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("May", "Μάι")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jun", "Ιούν")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jul", "Ιούλ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Aug", "Αύγ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Sep", "Σεπτ")
     rgc1["cases"] = rgc1["cases"].astype(float)
     rgc1['mvavg_cases'] = rgc1['cases'].rolling(window=7).mean().round()
 
