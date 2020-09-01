@@ -844,141 +844,135 @@ def after100Cases(
     fig.write_json(outputName + "_" + lang + ".json")
 
 
-    def heatmap(
-        data,
-        countries_df,
-        population,
-        columnName,
-        outputName,
-        titleGraphic,
-        keyWord,
-        show=False,
-        lang="EL",
-    ):
-        """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
-        
-        df = data.drop(["Lat", "Long"], axis=1)
- 
-        """ υπολογίζουμε το difference από ημέρα σε ημέρα, ώστε να βγάλουμε τα ΝΕΑ κρούσματα/θάνατοι ανά ημέρα"""
-        cols = df.columns.to_list()
-        df_dif = df[cols[4:]].diff(axis=1)
-        df = df_dif.join(df["Country/Region"])
-        """ αλλάζουμε τα data από wide σε long + μετρέπουμε τη στήλη Date σε datetime"""
-        df = pd.melt(
-            df, id_vars=["Country/Region"], var_name="Date", value_name=columnName
-        ).astype({"Date": "datetime64[ns]", columnName: "Int64"}, errors="ignore")
+def heatmap(
+    data,
+    countries_df,
+    population,
+    columnName,
+    outputName,
+    titleGraphic,
+    keyWord,
+    show=False,
+    lang="EL",
+):
+    """ φορτώνουμε το πρώτο αρχείο από το Hopkins"""
+    
+    df = data.drop(["Lat", "Long"], axis=1)
 
-        """ φορτώνουμε το αρχείο με την αντιστοίχιση ελληνικών - αγγλικών ονομάτων χωρών"""
-        gr = countries_df
-        """ το συνδέουμε με το dataframe από το Hopkins ώστε να προστεθεί το ADMIN_GR"""
-        df = pd.merge(df, gr, how="left", left_on="Country/Region", right_on="ADMIN")
+    """ υπολογίζουμε το difference από ημέρα σε ημέρα, ώστε να βγάλουμε τα ΝΕΑ κρούσματα/θάνατοι ανά ημέρα"""
+    cols = df.columns.to_list()
+    df_dif = df[cols[4:]].diff(axis=1)
+    df = df_dif.join(df["Country/Region"])
+    """ αλλάζουμε τα data από wide σε long + μετρέπουμε τη στήλη Date σε datetime"""
+    df = pd.melt(
+        df, id_vars=["Country/Region"], var_name="Date", value_name=columnName
+    ).astype({"Date": "datetime64[ns]", columnName: "Int64"}, errors="ignore")
 
-        """ φορτώνουμε το αρχείο με τους πληθυσμούς"""
-        pop = population
-        """συνδέουμε το dataframe με τα ελληνικά ονόματα """
-        gr = pd.merge(gr, pop, how="right", left_on="ADMIN", right_on="Country,Other")
+    """ φορτώνουμε το αρχείο με την αντιστοίχιση ελληνικών - αγγλικών ονομάτων χωρών"""
+    gr = countries_df
+    """ το συνδέουμε με το dataframe από το Hopkins ώστε να προστεθεί το ADMIN_GR"""
+    df = pd.merge(df, gr, how="left", left_on="Country/Region", right_on="ADMIN")
 
-        """Ενώνουμε το dataframe του Hopkins και εκείνο του population με βάση την στήλη με τα ελληνικά ονόματα"""
-        df = pd.merge(df, gr, how="left", on="ADMIN_GR")
+    """ φορτώνουμε το αρχείο με τους πληθυσμούς"""
+    pop = population
+    """συνδέουμε το dataframe με τα ελληνικά ονόματα """
+    gr = pd.merge(gr, pop, how="right", left_on="ADMIN", right_on="Country,Other")
 
-        """ υπολογίζουμε συγκεντρωτικά για κάθε χώρα τα κρούσματα και τους θανάτους ανά ημέρα"""
-        df = (
-            df.groupby(["Country/Region", "Date", "ADMIN_GR", "Population (2020)"])[
-                columnName
-            ]
-            .sum()
-            .reset_index()
+    """Ενώνουμε το dataframe του Hopkins και εκείνο του population με βάση την στήλη με τα ελληνικά ονόματα"""
+    df = pd.merge(df, gr, how="left", on="ADMIN_GR")
+
+    """ υπολογίζουμε συγκεντρωτικά για κάθε χώρα τα κρούσματα και τους θανάτους ανά ημέρα"""
+    df = (
+        df.groupby(["Country/Region", "Date", "ADMIN_GR", "Population (2020)"])[
+            columnName
+        ]
+        .sum()
+        .reset_index()
+    )
+
+    """ ------------------- ΠΡΟΕΤΟΙΜΑΖΟΥΜΕ ΤΗ ΣΤΗΛΗ ΠΟΥ ΘΑ ΟΠΤΙΚΟΠΟΙΗΣΟΥΜΕ -----------------"""
+    def to_zero(row):
+        if row<0:
+            row=0
+        return row
+    df[columnName + "_per_hundr"] = (df[columnName] / df["Population (2020)"]) * 100000
+    df[columnName + "_per_hundr"] = df[columnName + "_per_hundr"].apply(to_zero)
+
+    """ ------------------- ΕΠΙΛΕΓΟΥΜΕ ΤΙΣ ΧΩΡΕΣ ΜΕ ΠΑΡΟΜΟΙΟ ΠΛΗΘΥΣΜΟ ΜΕ ΤΗΝ ΕΛΛΑΔΑ -----------"""
+
+    df=df[(df['Population (2020)']>9000000)
+            & (df['Population (2020)']<12000000)
+            & (df['Date']>'2020-03-06')]
+    d
+        df=df[(df["Country/Region"] != "Burundi")
+                & (df["Country/Region"] != "Jordan")]
+
+    """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
+
+    countries_el = df["ADMIN_GR"]
+    countries_en = df["Country/Region"]
+    item = df[columnName + "_per_hundr"]
+    base = datetime.datetime.today()
+    dates = df["Date"]
+
+    fig = go.Figure(
+        data=go.Heatmap(
+            z=item,
+            x=dates,
+            y=countries_el if lang == 'EL' else countries_en,
+            customdata=df[columnName],
+            showscale=True,
+            hovertemplate="<b>%{y}</b><br>"
+            + "<i>%{x}</i><br><br>"
+            + "%{customdata} "
+            + keyWord
+            + "<extra></extra>",
+            colorscale=[
+                [0, "#E6ECEC"],  # 0
+                [1.0 / 10000, "#dadada"],  # 10
+                [1.0 / 1000, "#d7dfe3"],  # 100
+                [1.0 / 100, "#b0bfc7"],  # 1000
+                [1.0 / 10, "#3f6678"],  # 10000
+                [1.0, "#BA3A0A"],
+            ],
+            colorbar=dict(
+                title=keyWord + "/<br>100 χιλ " if lang == 'EL' else keyWord + "/<br>100k ",
+                tick0=0,
+                tickmode="auto",  # όταν το tickmode είναι array, τότε παίρνει τα values του tickvals
+                tickvals=[0, 1000, 1800],
+            ),
         )
+    )
 
-        """ ------------------- ΠΡΟΕΤΟΙΜΑΖΟΥΜΕ ΤΗ ΣΤΗΛΗ ΠΟΥ ΘΑ ΟΠΤΙΚΟΠΟΙΗΣΟΥΜΕ -----------------"""
-        def to_zero(row):
-            if row<0:
-                row=0
-            return row
-        df[columnName + "_per_hundr"] = (df[columnName] / df["Population (2020)"]) * 100000
-        df[columnName + "_per_hundr"] = df[columnName + "_per_hundr"].apply(to_zero)
+    fig.update_layout(title=titleGraphic)
 
-        """ ------------------- ΕΠΙΛΕΓΟΥΜΕ ΤΙΣ ΧΩΡΕΣ ΜΕ ΠΑΡΟΜΟΙΟ ΠΛΗΘΥΣΜΟ ΜΕ ΤΗΝ ΕΛΛΑΔΑ -----------"""
+    fig.update_layout(
+        hovermode="closest",
+        hoverlabel=dict(bgcolor="white", font_size=12, font_family="Roboto"),
+        hoverlabel_align="left",
+    )
 
-        df=df[(df['Population (2020)']>9000000)
-                & (df['Population (2020)']<12000000)
-                & (df['Date']>'2020-03-06')]
-        
-        if columnName=='cases':
-            df=df[(df["Country/Region"] != "Jordan")
-                    & (df["Country/Region"] != "Burundi")]
-        
-        
-        if columnName=='deaths':
-            df=df[(df["Country/Region"] != "Burundi")
-                    & (df["Country/Region"] != "Jordan")]
+    fig.update_layout(
+        paper_bgcolor="#E6ECEC",
+        plot_bgcolor="#E6ECEC",
+        font=dict(family="Roboto", size=11, color="#114B5F"),
+    )
 
-        """ ------------------- ΞΕΚΙΝΑ Η ΟΠΤΙΚΟΠΟΙΗΣΗ ------------------"""
+    fig.update_layout(height=400, margin=dict(l=10, r=10, b=20, t=75, pad=10))
 
-        countries_el = df["ADMIN_GR"]
-        countries_en = df["Country/Region"]
-        item = df[columnName + "_per_hundr"]
-        base = datetime.datetime.today()
-        dates = df["Date"]
-
-        fig = go.Figure(
-            data=go.Heatmap(
-                z=item,
-                x=dates,
-                y=countries_el if lang == 'EL' else countries_en,
-                customdata=df[columnName],
-                showscale=True,
-                hovertemplate="<b>%{y}</b><br>"
-                + "<i>%{x}</i><br><br>"
-                + "%{customdata} "
-                + keyWord
-                + "<extra></extra>",
-                colorscale=[
-                    [0, "#E6ECEC"],  # 0
-                    [1.0 / 10000, "#dadada"],  # 10
-                    [1.0 / 1000, "#d7dfe3"],  # 100
-                    [1.0 / 100, "#b0bfc7"],  # 1000
-                    [1.0 / 10, "#3f6678"],  # 10000
-                    [1.0, "#BA3A0A"],
-                ],
-                colorbar=dict(
-                    title=keyWord + "/<br>100 χιλ " if lang == 'EL' else keyWord + "/<br>100k ",
-                    tick0=0,
-                    tickmode="auto",  # όταν το tickmode είναι array, τότε παίρνει τα values του tickvals
-                    tickvals=[0, 1000, 1800],
-                ),
-            )
+    if show:
+        config = dict(
+            {
+                "displayModeBar": True,
+                "scrollZoom": False,
+                "displaylogo": False,
+                "responsive": True,
+                "staticPlot": False,
+            }
         )
-
-        fig.update_layout(title=titleGraphic)
-
-        fig.update_layout(
-            hovermode="closest",
-            hoverlabel=dict(bgcolor="white", font_size=12, font_family="Roboto"),
-            hoverlabel_align="left",
-        )
-
-        fig.update_layout(
-            paper_bgcolor="#E6ECEC",
-            plot_bgcolor="#E6ECEC",
-            font=dict(family="Roboto", size=11, color="#114B5F"),
-        )
-
-        fig.update_layout(height=400, margin=dict(l=10, r=10, b=20, t=75, pad=10))
-
-        if show:
-            config = dict(
-                {
-                    "displayModeBar": True,
-                    "scrollZoom": False,
-                    "displaylogo": False,
-                    "responsive": True,
-                    "staticPlot": False,
-                }
-            )
-        if lang == 'EL':
-            fig.write_json(outputName + ".json")
-        fig.write_json(outputName + "_" + lang + ".json")
+    if lang == 'EL':
+        fig.write_json(outputName + ".json")
+    fig.write_json(outputName + "_" + lang + ".json")
 
 
 def create_chrolopleth_casesrate(
