@@ -993,6 +993,7 @@ def create_chrolopleth_casesrate(
     wom = wom[(wom['Country,Other'] != 'Sudan') & (wom['Country,Other'] != 'Yemen') & (wom['Country,Other'] != 'Burundi')]
     wom = wom[wom['Country,Other'] != 'Sao Tome and Principe']
     wom = wom[wom['Country,Other'] != 'Algeria']
+    wom = wom[wom['Country,Other'] != 'Egypt']
 
     wom["Tot Cases/1M pop"] = (wom["Tot Cases/1M pop"]).apply(lambda x: parseFloat(x))
     wom["Deaths/1M pop"] = (wom["Deaths/1M pop"]).apply(lambda x: parseFloat(x))
@@ -1029,11 +1030,11 @@ def create_chrolopleth_casesrate(
             z=wom.cases_rate_normalized.astype(float),
             colorscale=[("#3f6678"), ("#BA3A0A")],
             zmin=wom.cases_rate_normalized.min(),
-            zmax=60,
+            zmax=50,
             text=choropleth_casesrate_text(),
             marker_line_width=0.5,
             colorbar_title="%",
-            colorbar=dict(tick0=0, dtick=20),
+            colorbar=dict(tick0=0, dtick=10),
         )
     )
 
