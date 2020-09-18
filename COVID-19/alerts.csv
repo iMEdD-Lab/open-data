@@ -1,5 +1,10 @@
 key,value,value_en
+<<<<<<< HEAD,18/09/2020 20:03:13,
 lastUpdatedAt,18/09/2020 18:03:03,
 alertText,359 νέα κρούσματα 36 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (17 Σεπτεμβρίου 2020),359 new cases with 36 of them detected at the entry points of the country (17 September 2020)
+=======,,
+lastUpdatedAt,18/09/2020 16:03:03,
+alertText,339 νέα κρούσματα 39 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (18 Σεπτεμβρίου 2020),339 new cases with 39 of them detected at the entry points of the country (18 September 2020)
+>>>>>>> d1473c1ac6b0a5fd5f6764e43f7e62e53d0e8ee4,,
 alertType,,
 alertLink,,
