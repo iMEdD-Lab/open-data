@@ -7,6 +7,7 @@ import pandas as pd
 
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 import labels
 
@@ -1746,6 +1747,157 @@ name, regions_greece_cases, show=False, lang="EL"
 
     fig.update_layout(height=450, margin=dict(l=10, r=10, b=10, t=90, pad=0))
 
+    if show:
+        config = dict(
+            {
+                "displayModeBar": True,
+                "scrollZoom": False,
+                "displaylogo": False,
+                "responsive": True,
+                "staticPlot": False,
+            }
+        )
+    fig.show()
+    if lang == 'EL':
+        fig.write_json(name + ".json")
+    fig.write_json(name + "_" + lang + ".json")
+    
+
+def create_linesubplots_tests_cases(
+    name, greeceTimeline_data, show=False, lang="EL"
+):
+    grt = greeceTimeline_data
+    grt = grt[(grt.Status == 'total_tests') | (grt.Status == 'total cases')].drop(['Province/State','Country/Region'],axis=1).T.reset_index()
+    grt = grt.drop(grt.index[0]).rename(columns={
+                        grt.columns[0]:'date',
+                        grt.columns[1]:'total_tests',
+                        grt.columns[2]:'total_cases'
+                    })
+    grt["date"] = pd.to_datetime(grt["date"])
+    grt["date"] = pd.to_datetime(grt["date"], format="%b-%d-%y").dt.strftime("%d-%b")
+    grt["date_gr"] = grt["date"]
+    grt["date_gr"] = grt["date_gr"].astype(str)
+    grt["date_gr"] = grt["date_gr"].str.replace("Feb", "Φεβ")
+    grt["date_gr"] = grt["date_gr"].str.replace("Mar", "Μαρ")
+    grt["date_gr"] = grt["date_gr"].str.replace("Apr", "Απρ")
+    grt["date_gr"] = grt["date_gr"].str.replace("May", "Μάι")
+    grt["date_gr"] = grt["date_gr"].str.replace("Jun", "Ιούν")
+    grt["date_gr"] = grt["date_gr"].str.replace("Jul", "Ιούλ")
+    grt["date_gr"] = grt["date_gr"].str.replace("Aug", "Αυγ")
+    grt["date_gr"] = grt["date_gr"].str.replace("Sep", "Σεπτ")
+    
+    def line_x():
+        if lang == "EL":
+            return grt.date_gr
+        else:
+            return grt.date
+
+    fig = make_subplots(rows=1, cols=2, start_cell="top-left", shared_xaxes=True,\
+                        horizontal_spacing = 0.07,\
+                        subplot_titles = (labels.linesubplots_tests_cases_subtitles(lang))
+                       )
+    
+    for i in fig['layout']['annotations']:
+    #     print(i)
+        if i['text'] == '<b>Συνολικά τεστ</b>' or i['text'] == '<b>Total tests</b>':
+            i['font'] = dict(family='Roboto',size=10,color='#338C83')
+        else:
+            i['font'] = dict(family='Roboto',size=10,color='#BA3A0A')
+
+
+    fig.add_trace(go.Scatter(
+        x=line_x(), y=grt.total_tests,
+        mode='lines',
+        line=dict(shape = 'spline', color='#338C83', width=2.5 ,smoothing=.3),
+        opacity = 1,
+        connectgaps=True,
+        marker_size=6,
+        showlegend=False,
+        name='',
+        text=[round(float(c)/1000000,2) for c in grt.total_tests],
+        hovertemplate = labels.linesubplots_tests_hovertemplate(lang),
+    ),1,1)
+
+
+    fig.add_trace(go.Scatter(
+        x=line_x(), y=grt.total_cases,
+        mode='lines',
+        line=dict(shape = 'spline', color='#BA3A0A', width=2.5 ,smoothing=.3),
+        connectgaps=True,
+        marker_size=6,
+        showlegend=False,
+        name= '',
+        text=[round(float(c)/1000,1) for c in grt.total_cases],
+        hovertemplate = labels.linesubplots_cases_hovertemplate(lang)
+    ),1,2)
+
+
+    fig.update_layout(
+        height=450,
+        xaxis=XAXIS_STYLE,
+        xaxis2=XAXIS_STYLE,
+        yaxis=YAXIS_STYLE,
+        yaxis2=YAXIS_STYLE,
+        showlegend=False,
+        paper_bgcolor="#E6ECEC",
+        plot_bgcolor="#E6ECEC",
+        hoverlabel=dict(font_size=8, font_family="Roboto"),
+        hovermode="closest",
+    )
+
+    # fig.update_traces(line=dict(color="#114B5F"))
+
+    fig.update_layout(title=dict(text=labels.linesubplots_tests_cases_title(lang), font=TEXTFONT),
+                      xaxis = dict(
+                                showline=True,
+                                zeroline=False,
+                                showgrid=False,
+                                showticklabels=True,
+                                linecolor="#114B5F",
+                                linewidth=0.1,
+                                ticks="outside",
+                                tickcolor="#BBBBBB",
+                                tickfont=TICKFONT_STYLE,
+                                dtick = 60
+                                ),
+                        xaxis2 = dict(
+                                showline=True,
+                                zeroline=False,
+                                showgrid=False,
+                                showticklabels=True,
+                                linecolor="#114B5F",
+                                linewidth=0.1,
+                                ticks="outside",
+                                tickcolor="#BBBBBB",
+                                tickfont=TICKFONT_STYLE,
+                                dtick = 60
+                                ),
+                         yaxis = dict(
+                                showline=False,
+                                zeroline=False,
+                                showgrid=False,
+                                showticklabels=False,
+                                linecolor="#114B5F",
+                                linewidth=0.1,
+                                ticks="outside",
+                                tickcolor="#E6ECEC",
+                                tickfont=TICKFONT_STYLE
+                                ),
+                         yaxis2 = dict(
+                                showline=False,
+                                zeroline=False,
+                                showgrid=False,
+                                showticklabels=False,
+                                linecolor="#114B5F",
+                                linewidth=0.1,
+                                ticks="outside",
+                                tickcolor="#E6ECEC",
+                                tickfont=TICKFONT_STYLE
+                                ),
+                      height=450,
+                      width=450,
+                      margin=dict(l=10,r=10,t=90,b=10,pad=0))
+    
     if show:
         config = dict(
             {

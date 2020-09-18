@@ -159,12 +159,12 @@ def choropleth_recoveredrate_annot(lang):
     else:
         return "recovered/cases (%)<br>Different policies of various countries on<br>record keeping might influence results."
 
+    
 def non_residents_line_title(lang):
     if lang == "EL":
         return "Εξέλιξη κρουσμάτων <b>χωρίς μόνιμη κατοικία</b> στην Ελλάδα"
     else:
         return "Evolution of <b>non-residents cases</b> in Greece"
-
 
 def non_residents_line_xaxis_note(lang):
     if lang == "EL":
@@ -177,3 +177,28 @@ def non_residents_line_yaxis_title(lang):
         return 'Κυλιόμενος μέσος όρος 7 ημερών'
     else:
         return '7-day moving average'
+    
+
+def linesubplots_tests_cases_title(lang):
+    if lang == "EL":
+        return "Εξέλιξη <b>τεστ</b> και <b>κρουσμάτων</b> στην Ελλάδα"
+    else:
+        return "Evolution of <b>tests</b> and <b>cases</b> in Greece"
+    
+def linesubplots_tests_cases_subtitles(lang):
+    if lang == 'EL':
+        return '<b>Συνολικά τεστ</b>', '<b>Συνολικά κρούσματα</b>'
+    else: 
+        return '<b>Total tests</b>', '<b>Total cases</b>'
+    
+def linesubplots_tests_hovertemplate(lang):
+    if lang == 'EL': 
+        return 'Έως %{x}:<br>%{text}M τεστ'
+    else:
+        return 'Until %{x}:<br>%{text}M tests'
+    
+def linesubplots_cases_hovertemplate(lang):
+    if lang == 'EL': 
+        return 'Έως %{x}:<br>%{text}K κρούσματα'
+    else:
+        return 'Until %{x}:<br>%{text}K cases'
