@@ -337,7 +337,7 @@ def create_scatterplot_casesVStests_logy(
 
 
 def create_linechart_deaths_intubated_gr(
-    name, greeceTimeline_data, show=False, lang="EL"
+    name, greeceTimeline_data, show=True, lang="EL"
 ):
     df = greeceTimeline_data
     df = df.drop("Province/State", axis=1)
@@ -374,7 +374,7 @@ def create_linechart_deaths_intubated_gr(
         go.Scatter(
             x=line_x(),
             y=df.deaths,
-            mode="lines+markers",
+            mode="lines",
             connectgaps=True,
             marker_color="#BA3A0A",
             name=labels.line_trace_deaths(lang),
@@ -386,7 +386,7 @@ def create_linechart_deaths_intubated_gr(
         go.Scatter(
             x=line_x(),
             y=df.intubated,
-            mode="lines+markers",
+            mode="lines",
             connectgaps=True,
             marker_color="#3f6678",
             name=labels.line_trace_intub(lang),
@@ -431,7 +431,7 @@ def create_linechart_deaths_intubated_gr(
                 ),
                 pad={"t": 0, "l": 0, "b": 0, "r": 0},
                 showactive=True,
-                x=0.05,
+                x=0.15,
                 xanchor="left",
                 y=1.05,
                 yanchor="top",
@@ -451,7 +451,7 @@ def create_linechart_deaths_intubated_gr(
             tickcolor="#BBBBBB",
             gridcolor="#F8FAFA",
             tickfont=dict(family="Roboto", size=12, color="#114B5F",),
-            dtick=10,
+            dtick=30,
         ),
         yaxis=dict(
             showgrid=True,
