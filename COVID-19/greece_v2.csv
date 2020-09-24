@@ -1,6 +1,4 @@
 Γεωγραφικό Διαμέρισμα,Περιφέρεια,county_normalized,county,county_en,pop_11,Πρωτεύουσα,cases,dead,critical,recovered
-Ελλάδα,Ελλάδα,ΕΛΛΑΔΑ,Sum of  Announced Daily Cases (BEFORE DATA CLEANING -INCLUDING DUPLICATES),,,,16527.0,,,
-Ελλάδα,Ελλάδα,ΕΛΛΑΔΑ,Official Total Cases Announced_EODY,,,,16286.0,,,
 Ελλάδα,Ελλάδα,ΕΛΛΑΔΑ,Χωρίς Γεωγραφικό Προσδιορισμό,No Location Provided,,,688.0,39.0,73.0,10441.0
 Αττική,Άγιον Όρος,ΑΓΙΟ ΟΡΟΣ,Άγιο Όρος,Mount Athos,1811.0,Καρυές,5.0,,,
 Στερεά Ελλάδα,Περιφέρεια Δυτικής Ελλάδας,ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ,Π.Ε. Αιτωλοακαρνανίας,Aetolia-Acarnania,210802.0,Μεσολόγγι,40.0,,,
