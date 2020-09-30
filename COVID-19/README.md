@@ -19,7 +19,7 @@ Alert messages go here.
 Mapping countries names deriving from different sources. ISO alpha-2 and ISO alpha-3 country codes are included.
 
 ### 3. greece.csv (archived)
-Cumulative data about COVID-19 cases, deaths, critically ill, and recovered patients by prefecture/regional unit in Greece. Data refer to figures known at the time this specific CSV file was published. Last publication date: June 30, 2020. 
+Cumulative data about COVID-19 cases, deaths, critically ill, and recovered patients by prefecture/regional unit in Greece. Data refer to figures known at the time this specific CSV file was published. Last publication date: June 30, 2020. Figures about cases and deaths by prefecture/regional unit in Greece have still been maintained in greece_v2.csv, greece_cases_v2.csv and greece_deaths_v2.csv respectively. Please find more information on these below.
 
 #### Data Sources
 - The [Hellenic National Public Health Organisation (EODY)](https://eody.gov.gr/) and the [Ministry of Health](https://www.moh.gov.gr/) are the main sources of data that have been released through:
@@ -29,7 +29,6 @@ Cumulative data about COVID-19 cases, deaths, critically ill, and recovered pati
 
 #### Notes
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
-- Figures about cases and deaths by prefecture/regional unit in Greece have still been maintained in greece_v2.csv, greece_cases_v2.csv and greece_deaths_v2.csv respectively. Please find more information on these below.
 
 ### 4. greece_v2.csv 
 Cumulative data about COVID-19 cases, deaths, critically ill, and recovered patients by prefecture/regional unit in Greece. Data refer to figures known at the time this specific CSV file was published. The value "<b><i>No Location Provided</b></i>" in the "county_en" column means that the prefecture/regional unit has not been known for the relevant estimated number of cases, of deaths, of critically ill patients, and of people who recovered. 
@@ -43,7 +42,7 @@ Cumulative data about COVID-19 cases, deaths, critically ill, and recovered pati
 
 #### Notes
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
-- Figures about cases and deaths by prefecture/regional unit in Greece have still been maintained in greece_cases.csv and greece_deaths.csv respectively. Please find more information on these below.
+- <b>Cases with no location provided</b>: Corresponds to the estimated number of cumulative cases with no location provided at the time this specific dataset was published. Explanation about the estimation of this number is provided in the "Notes" section for the greece_cases_v2.csv file. 
 
 ### 5. greeceTimeline.csv
 Data about COVID-19 in Greece by date, from February 26, 2020, when the first case was confirmed in the country, onwards.<br/>The dataset is updated automatically. Updates have been published at least once a day. The major update usually happens at 18:00 (EEST).
@@ -71,7 +70,7 @@ EODY and the Ministry of Health are the sources of data that have been released 
 - <b>Deaths</b>: As mentioned above, the value "<b><i>deaths</i></b>" in the "Status" column corresponds to new deaths occurred on the calendar date of reference. That means the number of deaths is sometimes different than the one announced by EODY, or the Ministry of Health. This happens because authorities announce the daily number of new deaths that occurred in their 24-hour reporting window, which is 15:00 - 15:00 (EEST) and 18:00 - 18:00 (EEST) for EODY and the Ministry of Health respectively.<br/>If you wish to use the exact number of new deaths announced each day, run through the pdfsDataFrame.csv for information extracted from the [official reports published in PDF files by EODY](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/).
 
 ### 6. greece_cases.csv (archived)
-Cumulative data about cases by prefecture/regional unit in Greece and by date of announcement. The value "<b><i>Απροσδιόριστος</b></i>" (<i>Unknown</i>) in the "county" column means that the perfecture/regional unit has not been announced by the authorities for the relevant number of cumulative cases on the date of reference. The dataset is archived. Relevant figures about cases have still been maintained in greece_cases_v2.csv. Please find more information on these below.
+Cumulative data about cases by prefecture/regional unit in Greece and by date of announcement. The value "<b><i>Απροσδιόριστος</b></i>" (<i>Unknown</i>) in the "county" column means that the perfecture/regional unit has not been announced by the authorities for the relevant number of cumulative cases on the date of reference. The dataset is archived. Relevant figures about cases have still been maintained in greece_cases_v2.csv. Please find more information on this below.
 
 #### Data Sources
 EODY and the Ministry of Health are the sources of data that have been released through:
@@ -81,8 +80,8 @@ EODY and the Ministry of Health are the sources of data that have been released 
 #### Notes
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
-### 7. greece_cases_v2.csv (archived)
-Cumulative data about cases by prefecture/regional unit in Greece and by date of announcement. The value "<b><i>Χωρίς Γεωγραφικό Προσδιορισμό</b></i>" in the "county" column means that the perfecture/regional unit has not been announced by the authorities for the relevant estimated number of cumulative cases on the date of reference. The dataset is being updated on a daily basis.
+### 7. greece_cases_v2.csv
+Cumulative data about cases by prefecture/regional unit in Greece and by date of announcement. The value "<b><i>Χωρίς Γεωγραφικό Προσδιορισμό</b></i>" in the "county" column means that the perfecture/regional unit has not been announced by the authorities for the relevant estimated number of cumulative cases on the date of reference. Please read more about this estimation in the "Notes" section below. The dataset is being updated on a daily basis.
 
 #### Data Sources
 EODY and the Ministry of Health are the sources of data that have been released through:
@@ -92,6 +91,7 @@ EODY and the Ministry of Health are the sources of data that have been released 
 
 #### Notes
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
+- <b>Estimated number of cumulative cases with no location provided</b>:<br>Authories were announcing cumulative numbers of cases by prefecture/regional unit from time to time. Those numbers are maintained in our dataset up to June 14 2020, when no location is provided for 647 cumulative cases in our dataset. Authorities haven't released information about cumulative cases broken down by prefecture/regional unit for couple of months.<br>However, new confirmed daily cases broken down by regional unit and in Attica region have been being released since June 15, 2020. We maintain those records and we add new reported cases in each prefecture/regional unit to those of the previous day each time in the same prefecture/regional unit. That way, this dataset, which provides data on cumulative cases by prefecture/regional unit and by date, has been being maintained.<br>The number of cases with no location provided is initially estimated by adding the number of daily cases for which location is under investigation, as given by EODY from June 15 2020 onwards, to the total number of cases with no location announced up to the previous date. Duplicates are substracted from that said sum.<br>What duplicates are: As mentioned above (see greeceTimeline.csv, "Notes" section), on specific dates, the total number of confirmed cases is smaller than the one expected, if someone adds the number of new cases announced by EODY on those dates to the total number of cases announced the previous day each time. This happens because EODY corrects duplicate positive results of previous days. However, EODY does not disclose which dates and which locations those duplicates refer to. Therefore, said duplicates are substracted from the sum of older and daily cases with no location provided in our greece_cases_v2.csv dataset.<br>To sum up, the daily number of cumulative cases with no location provided is estimated as follows: sum of previous total cases with no location provided and new daily cases for which location is under investigation by EODY, with duplicates substracted.
 
 ### 8. greece_deaths.csv (archived)
 Cumulative data about deaths by prefecture/regional unit in Greece and by date of the incident. The value "<b><i>Απροσδιόριστος</b></i>" (<i>Unknown</i>) in the "county" column means that the prefecture/regional unit has not been known for the relevant number of cumulative deaths on the date of reference. The dataset is archived. Relevant figures about deaths have still been maintained in greece_deaths_v2.csv. Please find more information on these below.
