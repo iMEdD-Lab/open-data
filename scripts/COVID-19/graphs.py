@@ -1964,7 +1964,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
 
     layout = go.Layout(title=dict(text= labels.schools_map_greece_title(lang), font=TEXTFONT), 
-                    title_x = 0.02, 
+                    title_x = 0.02,
                     height=450,
                     xaxis=XAXIS_STYLE,
                     xaxis2=XAXIS_STYLE,
@@ -1982,7 +1982,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
                     legend_title=dict(text="", font=dict(family="Roboto", size=12, color="#114B5F")),
                     mapbox = dict(center= dict(lat=37.983810, lon=23.727539),            
                                  accesstoken= mapbox_token,
-                                 zoom=5,
+                                 zoom=4.5,
                                 style="light"                                
                                )
                       )
