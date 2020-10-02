@@ -387,30 +387,30 @@ if __name__ == "__main__":
     )
     
     """"""
-#     schools_data = pd.read_csv(
-#     'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/schools.csv'
-#     )
+    schools_data = pd.read_csv(
+    'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/schools.csv'
+    )
     
-#     graphs.schools_map_greece(
-#         root_path + '/COVID-19/charts/schools_map_greece', schools_data,mapbox_token)
+    graphs.schools_map_greece(
+        root_path + '/COVID-19/charts/schools_map_greece', schools_data,mapbox_token)
 
-#     graphs.schools_map_greece(
-#         root_path + "/COVID-19/charts/schools_map_greece",
-#         schools_data,
-#         mapbox_token,
-#         lang="EN",
-#     )
+    graphs.schools_map_greece(
+        root_path + "/COVID-19/charts/schools_map_greece",
+        schools_data,
+        mapbox_token,
+        lang="EN",
+    )
     
-#     """"""
-#     graphs.schools_map_athens(
-#         root_path + '/COVID-19/charts/schools_map_athens', school_data, mapbox_token)
+    """"""
+    graphs.schools_map_athens(
+        root_path + '/COVID-19/charts/schools_map_athens', school_data, mapbox_token)
 
-#     graphs.schools_map_greece(
-#         root_path + "/COVID-19/charts/schools_map_athens",
-#         schools_data,
-#         mapbox_token,
-#         lang="EN",
-#     )
+    graphs.schools_map_greece(
+        root_path + "/COVID-19/charts/schools_map_athens",
+        schools_data,
+        mapbox_token,
+        lang="EN",
+    )
 
     alerts = pd.read_csv(root_path + "/COVID-19/alerts.csv")
     lastUpdatedAt = timezone("Europe/Athens").localize(datetime.now())
