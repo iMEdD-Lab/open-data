@@ -1787,6 +1787,7 @@ def create_linesubplots_tests_cases(
     grt["date_gr"] = grt["date_gr"].str.replace("Jul", "Ιούλ")
     grt["date_gr"] = grt["date_gr"].str.replace("Aug", "Αυγ")
     grt["date_gr"] = grt["date_gr"].str.replace("Sep", "Σεπτ")
+    grt["date_gr"] = grt["date_gr"].str.replace("Oct", "Οκτ"
     
     def line_x():
         if lang == "EL":
@@ -1916,181 +1917,179 @@ def create_linesubplots_tests_cases(
     fig.write_json(name + "_" + lang + ".json")
     
     
-def schools_map_greece(name, schools_data, show=False, lang="EL"):
+# def schools_map_greece(name, schools_data, mapbox_token, show=False, lang="EL"):
     
-    schools = schools_data
-    REPEATED = list(schools['school'].value_counts()[schools["school"].value_counts() > 1].index)
+#     schools = schools_data
+#     REPEATED = list(schools['school'].value_counts()[schools["school"].value_counts() > 1].index)
     
-    for i, item in schools.iterrows():
-        if item['school'] in REPEATED:
-            schools = schools.drop_duplicates(subset=['school'],keep = 'first')
+#     for i, item in schools.iterrows():
+#         if item['school'] in REPEATED:
+#             schools = schools.drop_duplicates(subset=['school'],keep = 'first')
             
-    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
-    meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
-    done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
+#     oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
+#     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
+#     done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
     
-    oliki_df = schools[schools.status=='Ολική αναστολή']
-    meriki_df = schools[schools.status=='Μερική αναστολή']
-    done_df = schools[schools.status=='Επαναλειτουργία']
+#     oliki_df = schools[schools.status=='Ολική αναστολή']
+#     meriki_df = schools[schools.status=='Μερική αναστολή']
+#     done_df = schools[schools.status=='Επαναλειτουργία']
 
 
-    oliki = go.Scattermapbox(lat=oliki_df['lat'],
-            lon=oliki_df['lng'],
-            mode='markers',
-            text=oliki_df['school'],
-            name = f"{labels.get_schools_oliki_name(lang)} ({oliki_val})",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict(size=10, color ='#BA3A0B',opacity=.7),
-            )
+#     oliki = go.Scattermapbox(lat=oliki_df['lat'],
+#             lon=oliki_df['lng'],
+#             mode='markers',
+#             text=oliki_df['school'],
+#             name = f"{labels.get_schools_oliki_name(lang)} ({oliki_val})",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict(size=10, color ='#BA3A0B',opacity=.7),
+#             )
 
-    meriki = go.Scattermapbox(lat=meriki_df['lat'],
-            lon=meriki_df['lng'],
-            mode='markers',
-            text=meriki_df['school'],
-            name = f"{labels.get_schools_meriki_name(lang)} ({meriki_val})",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict( size=10, color ='#338C83', opacity=.7)) 
+#     meriki = go.Scattermapbox(lat=meriki_df['lat'],
+#             lon=meriki_df['lng'],
+#             mode='markers',
+#             text=meriki_df['school'],
+#             name = f"{labels.get_schools_meriki_name(lang)} ({meriki_val})",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict( size=10, color ='#338C83', opacity=.7)) 
 
-    done_df = go.Scattermapbox(lat=done_df['lat'],
-            lon=done_df['lng'],
-            mode='markers',
-            text=done_df['school'],
-            name = f"{labels.get_schools_reoper_name(lang)} ({done_val})",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
+#     done_df = go.Scattermapbox(lat=done_df['lat'],
+#             lon=done_df['lng'],
+#             mode='markers',
+#             text=done_df['school'],
+#             name = f"{labels.get_schools_reoper_name(lang)} ({done_val})",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
 
-    layout = go.Layout(title=dict(text= labels.schools_map_greece_title(lang), font=TEXTFONT), 
-                    title_x = 0.02, 
-#                     width = 450,
-                    height=450,
-                    xaxis=XAXIS_STYLE,
-                    xaxis2=XAXIS_STYLE,
-                    yaxis=YAXIS_STYLE,
-                    yaxis2=YAXIS_STYLE,
-                    showlegend=True,
-                    legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
-                               orientation='h',yanchor='bottom'),
-                    legend_traceorder="reversed",
-                    paper_bgcolor="#E6ECEC",
-                    plot_bgcolor="#E6ECEC",
-                    hoverlabel=dict(font_size=10, font_family="Roboto"),
-                    hovermode="closest",
-                    margin=dict(l=10, r=10, t=50, b=10),
-                    legend_title=dict(text="", font=dict(family="Roboto", size=12, color="#114B5F")),
-                    mapbox = dict(center= dict(lat=37.983810, lon=23.727539),            
-                                 accesstoken= mapbox_token,
-                                 zoom=5,
-                                style="light"                                
-                               )
-                      )
+#     layout = go.Layout(title=dict(text= labels.schools_map_greece_title(lang), font=TEXTFONT), 
+#                     title_x = 0.02, 
+#                     height=450,
+#                     xaxis=XAXIS_STYLE,
+#                     xaxis2=XAXIS_STYLE,
+#                     yaxis=YAXIS_STYLE,
+#                     yaxis2=YAXIS_STYLE,
+#                     showlegend=True,
+#                     legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
+#                                orientation='h',yanchor='bottom'),
+#                     legend_traceorder="reversed",
+#                     paper_bgcolor="#E6ECEC",
+#                     plot_bgcolor="#E6ECEC",
+#                     hoverlabel=dict(font_size=10, font_family="Roboto"),
+#                     hovermode="closest",
+#                     margin=dict(l=10, r=10, t=50, b=10),
+#                     legend_title=dict(text="", font=dict(family="Roboto", size=12, color="#114B5F")),
+#                     mapbox = dict(center= dict(lat=37.983810, lon=23.727539),            
+#                                  accesstoken= mapbox_token,
+#                                  zoom=5,
+#                                 style="light"                                
+#                                )
+#                       )
 
-    fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
+#     fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
     
-    if show:
-        config = dict(
-            {
-                "displayModeBar": True,
-                "scrollZoom": True,
-                "displaylogo": False,
-                "responsive": True,
-                "staticPlot": False,
-            }
-        )
-        fig.show(config=config)
+#     if show:
+#         config = dict(
+#             {
+#                 "displayModeBar": True,
+#                 "scrollZoom": True,
+#                 "displaylogo": False,
+#                 "responsive": True,
+#                 "staticPlot": False,
+#             }
+#         )
+#         fig.show(config=config)
         
-    if lang == 'EL':
-        fig.write_json(name + ".json")
-    fig.write_json(name + "_" + lang + ".json")
+#     if lang == 'EL':
+#         fig.write_json(name + ".json")
+#     fig.write_json(name + "_" + lang + ".json")
     
     
-def schools_map_athens(name, schools_data, show=False, lang="EL"):
+# def schools_map_athens(name, schools_data, mapbox_token, show=False, lang="EL"):
     
-    schools = schools_data
-    REPEATED = list(schools['school'].value_counts()[schools["school"].value_counts() > 1].index)
+#     schools = schools_data
+#     REPEATED = list(schools['school'].value_counts()[schools["school"].value_counts() > 1].index)
     
-    for i, item in schools.iterrows():
-        if item['school'] in REPEATED:
-            schools = schools.drop_duplicates(subset=['school'],keep = 'first')
+#     for i, item in schools.iterrows():
+#         if item['school'] in REPEATED:
+#             schools = schools.drop_duplicates(subset=['school'],keep = 'first')
             
-    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
-    meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
-    done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
+#     oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
+#     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
+#     done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
     
-    oliki_df = schools[schools.status=='Ολική αναστολή']
-    meriki_df = schools[schools.status=='Μερική αναστολή']
-    done_df = schools[schools.status=='Επαναλειτουργία']
+#     oliki_df = schools[schools.status=='Ολική αναστολή']
+#     meriki_df = schools[schools.status=='Μερική αναστολή']
+#     done_df = schools[schools.status=='Επαναλειτουργία']
 
 
-    oliki = go.Scattermapbox(lat=oliki_df['lat'],
-            lon=oliki_df['lng'],
-            mode='markers',
-            text=oliki_df['school'],
-            name = f"{labels.get_schools_oliki_name(lang)}",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict(size=10, color ='#BA3A0B',opacity=.7),
-            )
+#     oliki = go.Scattermapbox(lat=oliki_df['lat'],
+#             lon=oliki_df['lng'],
+#             mode='markers',
+#             text=oliki_df['school'],
+#             name = f"{labels.get_schools_oliki_name(lang)}",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict(size=10, color ='#BA3A0B',opacity=.7),
+#             )
 
-    meriki = go.Scattermapbox(lat=meriki_df['lat'],
-            lon=meriki_df['lng'],
-            mode='markers',
-            text=meriki_df['school'],
-            name = f"{labels.get_schools_meriki_name(lang)}",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict( size=10, color ='#338C83', opacity=.7)) 
+#     meriki = go.Scattermapbox(lat=meriki_df['lat'],
+#             lon=meriki_df['lng'],
+#             mode='markers',
+#             text=meriki_df['school'],
+#             name = f"{labels.get_schools_meriki_name(lang)}",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict( size=10, color ='#338C83', opacity=.7)) 
 
-    done_df = go.Scattermapbox(lat=done_df['lat'],
-            lon=done_df['lng'],
-            mode='markers',
-            text=done_df['school'],
-            name = f"{labels.get_schools_reoper_name(lang)}",
-            hovertemplate= '%{text}',
-            below='', 
-            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
+#     done_df = go.Scattermapbox(lat=done_df['lat'],
+#             lon=done_df['lng'],
+#             mode='markers',
+#             text=done_df['school'],
+#             name = f"{labels.get_schools_reoper_name(lang)}",
+#             hovertemplate= '%{text}',
+#             below='', 
+#             marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
 
-    layout = go.Layout(title=dict(text= labels.schools_map_athens_title(lang), font=TEXTFONT), 
-                    title_x = 0.02, 
-#                     width = 450,
-                    height=450,
-                    xaxis=XAXIS_STYLE,
-                    xaxis2=XAXIS_STYLE,
-                    yaxis=YAXIS_STYLE,
-                    yaxis2=YAXIS_STYLE,
-                    showlegend=True,
-                    legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
-                               orientation='h',yanchor='bottom'),
-                    legend_traceorder="reversed",
-                    paper_bgcolor="#E6ECEC",
-                    plot_bgcolor="#E6ECEC",
-                    hoverlabel=dict(font_size=10, font_family="Roboto"),
-                    hovermode="closest",
-                    margin=dict(l=10, r=10, t=50, b=10),
-                    legend_title=dict(text="", font=dict(family="Roboto", size=12, color="#114B5F")),
-                    mapbox = dict(center= dict(lat=37.983810, lon=23.727539),            
-                                 accesstoken= mapbox_token,
-                                 zoom=9.5,
-                                style="light"                                
-                               )
-                      )
+#     layout = go.Layout(title=dict(text= labels.schools_map_athens_title(lang), font=TEXTFONT), 
+#                     title_x = 0.02, 
+#                     height=450,
+#                     xaxis=XAXIS_STYLE,
+#                     xaxis2=XAXIS_STYLE,
+#                     yaxis=YAXIS_STYLE,
+#                     yaxis2=YAXIS_STYLE,
+#                     showlegend=True,
+#                     legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
+#                                orientation='h',yanchor='bottom'),
+#                     legend_traceorder="reversed",
+#                     paper_bgcolor="#E6ECEC",
+#                     plot_bgcolor="#E6ECEC",
+#                     hoverlabel=dict(font_size=10, font_family="Roboto"),
+#                     hovermode="closest",
+#                     margin=dict(l=10, r=10, t=50, b=10),
+#                     legend_title=dict(text="", font=dict(family="Roboto", size=12, color="#114B5F")),
+#                     mapbox = dict(center= dict(lat=37.983810, lon=23.727539),            
+#                                  accesstoken= mapbox_token,
+#                                  zoom=9.5,
+#                                 style="light"                                
+#                                )
+#                       )
 
-    fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
+#     fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
     
-    if show:
-        config = dict(
-            {
-                "displayModeBar": True,
-                "scrollZoom": True,
-                "displaylogo": False,
-                "responsive": True,
-                "staticPlot": False,
-            }
-        )
-        fig.show(config=config)
+#     if show:
+#         config = dict(
+#             {
+#                 "displayModeBar": True,
+#                 "scrollZoom": True,
+#                 "displaylogo": False,
+#                 "responsive": True,
+#                 "staticPlot": False,
+#             }
+#         )
+#         fig.show(config=config)
         
-    if lang == 'EL':
-        fig.write_json(name + ".json")
-    fig.write_json(name + "_" + lang + ".json")
+#     if lang == 'EL':
+#         fig.write_json(name + ".json")
+#     fig.write_json(name + "_" + lang + ".json")
