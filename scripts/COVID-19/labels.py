@@ -202,3 +202,35 @@ def linesubplots_cases_hovertemplate(lang):
         return 'Έως %{x}:<br>%{text}K κρούσματα'
     else:
         return 'Until %{x}:<br>%{text}K cases'
+    
+    
+def schools_map_greece_title(lang):
+    if lang == 'EL':
+        return '<b>Σχολεία</b> σε <b>αναστολή</b> λειτουργίας στην Ελλάδα'
+    else:
+        return '<b>Schools suspended</b> in Greece'
+
+def get_schools_oliki_name(lang):
+    if lang == 'EL':
+        return 'Ολική αναστολή'
+    else:
+        return 'Schools closed'
+    
+def get_schools_meriki_name(lang):
+    if lang=='EL':
+        return 'Μερική αναστολή'
+    else:
+        return 'Partial suspension'
+    
+def get_schools_reoper_name(lang):
+    if lang == 'EL':
+        return 'Επαναλειτουργία'
+    else:
+        return 'Re-operation'
+    
+def schools_map_athens_title(lang):
+    if lang == 'EL':
+        return '<b>Σχολεία</b> σε <b>αναστολή</b> λειτουργίας στην Αθήνα'
+    else:
+        return '<b>Schools suspended</b> in Athens'
+        
