@@ -1939,7 +1939,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=oliki_df['lng'],
             mode='markers',
             text=oliki_df['school'],
-            name = f"{labels.get_schools_oliki_name(lang)} ({oliki_val})",
+            name = labels.get_schools_oliki_name(lang) + "(" + oliki_val + ")",
             hovertemplate= '%{text}',
             below='', 
             marker=dict(size=10, color ='#BA3A0B',opacity=.7),
@@ -1949,7 +1949,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=meriki_df['lng'],
             mode='markers',
             text=meriki_df['school'],
-            name = f"{labels.get_schools_meriki_name(lang)} ({meriki_val})",
+            name = labels.get_schools_meriki_name(lang)  + "(" +  meriki_val + ")",
             hovertemplate= '%{text}',
             below='', 
             marker=dict( size=10, color ='#338C83', opacity=.7)) 
@@ -1958,7 +1958,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=done_df['lng'],
             mode='markers',
             text=done_df['school'],
-            name = f"{labels.get_schools_reoper_name(lang)} ({done_val})",
+            name = labels.get_schools_reoper_name(lang)  + "(" +  done_val + ")",
             hovertemplate= '%{text}',
             below='', 
             marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
@@ -2028,7 +2028,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=oliki_df['lng'],
             mode='markers',
             text=oliki_df['school'],
-            name = f"{labels.get_schools_oliki_name(lang)}",
+            name = labels.get_schools_oliki_name(lang),
             hovertemplate= '%{text}',
             below='', 
             marker=dict(size=10, color ='#BA3A0B',opacity=.7),
@@ -2038,7 +2038,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=meriki_df['lng'],
             mode='markers',
             text=meriki_df['school'],
-            name = f"{labels.get_schools_meriki_name(lang)}",
+            name = labels.get_schools_meriki_name(lang),
             hovertemplate= '%{text}',
             below='', 
             marker=dict( size=10, color ='#338C83', opacity=.7)) 
@@ -2047,7 +2047,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=done_df['lng'],
             mode='markers',
             text=done_df['school'],
-            name = f"{labels.get_schools_reoper_name(lang)}",
+            name = labels.get_schools_reoper_name(lang),
             hovertemplate= '%{text}',
             below='', 
             marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
