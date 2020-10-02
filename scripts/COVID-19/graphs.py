@@ -359,6 +359,7 @@ def create_linechart_deaths_intubated_gr(
     df["date_gr"] = df["date_gr"].str.replace("Jul", "Ιούλ")
     df["date_gr"] = df["date_gr"].str.replace("Aug", "Αυγ")
     df["date_gr"] = df["date_gr"].str.replace("Sep", "Σεπτ")
+    df["date_gr"] = df["date_gr"].str.replace("Oct", "Οκτ")
 
     def line_x():
         if lang == "EL":
@@ -1042,7 +1043,7 @@ def create_chrolopleth_casesrate(
     fig.update_layout(
         mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6",
         mapbox_accesstoken=token,
-        mapbox_zoom=-1,
+        mapbox_zoom=0,
         mapbox_center={"lat": 41.902782, "lon": 12.496366},
     )
 
@@ -1149,7 +1150,7 @@ def create_chrolopleth_recoveredrate(
     fig.update_layout(
         mapbox_style="mapbox://styles/trilikis/ck916mr2y0wox1iozbu71xkw6",
         mapbox_accesstoken=token,
-        mapbox_zoom=-1,
+        mapbox_zoom=0,
         mapbox_center={"lat": 41.902782, "lon": 12.496366},
     )
 
@@ -1687,6 +1688,7 @@ name, regions_greece_cases, show=False, lang="EL"
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Jul", "Ιούλ")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Aug", "Αυγ")
     rgc1["date_gr"] = rgc1["date_gr"].str.replace("Sep", "Σεπτ")
+    rgc1["date_gr"] = rgc1["date_gr"].str.replace("Oct", "Οκτ")
     rgc1["cases"] = rgc1["cases"].astype(float)
     rgc1['mvavg_cases'] = rgc1['cases'].rolling(window=7).mean().round()
 
@@ -1725,7 +1727,7 @@ name, regions_greece_cases, show=False, lang="EL"
                 tickcolor="#BBBBBB",
                 gridcolor="#F8FAFA",
                 tickfont=TICKFONT,
-                dtick = 10
+                dtick = 30
             ),
         yaxis=YAXIS,
         showlegend=False,
