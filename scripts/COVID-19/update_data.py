@@ -405,7 +405,7 @@ if __name__ == "__main__":
     graphs.schools_map_athens(
         root_path + '/COVID-19/charts/schools_map_athens', schools_data, mapbox_token)
 
-    graphs.schools_map_greece(
+    graphs.schools_map_athens(
         root_path + "/COVID-19/charts/schools_map_athens",
         schools_data,
         mapbox_token,
