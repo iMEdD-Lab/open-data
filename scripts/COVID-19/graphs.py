@@ -1787,7 +1787,7 @@ def create_linesubplots_tests_cases(
     grt["date_gr"] = grt["date_gr"].str.replace("Jul", "Ιούλ")
     grt["date_gr"] = grt["date_gr"].str.replace("Aug", "Αυγ")
     grt["date_gr"] = grt["date_gr"].str.replace("Sep", "Σεπτ")
-    grt["date_gr"] = grt["date_gr"].str.replace("Oct", "Οκτ"
+    grt["date_gr"] = grt["date_gr"].str.replace("Oct", "Οκτ")
     
     def line_x():
         if lang == "EL":
