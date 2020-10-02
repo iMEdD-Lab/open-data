@@ -162,15 +162,15 @@ def choropleth_recoveredrate_annot(lang):
     
 def non_residents_line_title(lang):
     if lang == "EL":
-        return "Εξέλιξη κρουσμάτων <b>χωρίς μόνιμη κατοικία</b> στην Ελλάδα"
+        return "Εξέλιξη <b>εισαγόμενων</b> κρουσμάτων στην Ελλάδα"
     else:
-        return "Evolution of <b>non-residents cases</b> in Greece"
+        return "Evolution of <b>imported cases</b> in Greece"
 
 def non_residents_line_xaxis_note(lang):
     if lang == "EL":
-        return "<i>Περιλαμβάνονται συνολικά 126 κρούσματα από το πλοίο «Ελευθέριος Βενιζέλος».</i>"
+        return "<i>Περιλαμβάνονται εισαγόμενα κρούσματα από 15 Ιουνίου και εφεξής</i>"
     else:
-        return '<i>126 cases on the "Eleftherios Venizelos" ferryboat are included.</i>'
+        return '<i>Imported cases from June 15 onwards are included.</i>'
     
 def non_residents_line_yaxis_title(lang):
     if lang == 'EL':

@@ -344,7 +344,7 @@ if __name__ == "__main__":
     )
 
     regions_greece_cases = pd.read_csv(
-    'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/regions_greece_cases.csv'
+    'https://raw.githubusercontent.com/iMEdD-Lab/open-data/master/COVID-19/greece_cases_v2.csv'
     )
     
     """"""

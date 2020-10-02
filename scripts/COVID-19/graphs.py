@@ -1665,15 +1665,18 @@ def growth_rate(
 
 
 def create_non_residents_line(
-name, regions_greece_cases, show=False, lang="EL"
+name, regions_greece_cases, show=True, lang="EL"
 ):
 
     rgc = regions_greece_cases
-    rgc = rgc[rgc.district=='Χωρίς Μόνιμη Κατοικία στην Ελλάδα']
-    rgc = rgc.drop(['district','district_EN','pop_11'],axis=1)
+    rgc = rgc[rgc.county.str.contains('Εισαγόμενα',na=False,case=False)].reset_index()
+    rgc = rgc.drop(['Γεωγραφικό Διαμέρισμα','Περιφέρεια','county_normalized','county','pop_11','index'],axis=1)
     rgc = rgc.T
-    rgc = rgc.rename(columns={rgc.columns[0]:'cases'})
-    rgc = rgc.reset_index()[57:]
+    rgc = rgc.rename(columns={rgc.columns[0]:'εισαγόμενα1',
+                             rgc.columns[1]:'εισαγόμενα2'})
+    rgc['cases'] = rgc.sum(axis=1)
+    rgc = rgc.drop(['εισαγόμενα1','εισαγόμενα2'],axis=1)
+    rgc = rgc.reset_index()[110:]
     rgc1 = rgc.reset_index()
     rgc1 = rgc1.rename(columns={'level_0':'index_previous','index':'date'})
     rgc1["date"] = pd.to_datetime(rgc1["date"])
