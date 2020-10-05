@@ -162,9 +162,9 @@ def choropleth_recoveredrate_annot(lang):
     
 def non_residents_line_title(lang):
     if lang == "EL":
-        return "Εξέλιξη <b>εισαγόμενων</b> κρουσμάτων στην Ελλάδα"
+        return "<b>Eισαγόμενα</b> κρούσματα στην Ελλάδα"
     else:
-        return "Evolution of <b>imported cases</b> in Greece"
+        return "<b>Ιmported cases</b> in Greece"
 
 def non_residents_line_xaxis_note(lang):
     if lang == "EL":

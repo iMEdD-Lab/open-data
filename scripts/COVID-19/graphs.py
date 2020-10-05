@@ -1675,9 +1675,13 @@ name, regions_greece_cases, show=True, lang="EL"
     rgc = rgc.rename(columns={rgc.columns[0]:'εισαγόμενα1',
                              rgc.columns[1]:'εισαγόμενα2'})
     rgc['cases'] = rgc.sum(axis=1)
-    rgc = rgc.drop(['εισαγόμενα1','εισαγόμενα2'],axis=1)
+    # rgc = rgc.drop(['εισαγόμενα1','εισαγόμενα2'],axis=1)
     rgc = rgc.reset_index()[110:]
     rgc1 = rgc.reset_index()
+    rgc1['diff'] = rgc1.cases.diff(periods=1)
+    rgc1 = rgc1.drop(['εισαγόμενα1','εισαγόμενα2','cases'],axis=1)
+    rgc1 = rgc1.rename(columns={'diff':'cases'})
+    rgc1.at[0,'cases'] = float(2)
     rgc1 = rgc1.rename(columns={'level_0':'index_previous','index':'date'})
     rgc1["date"] = pd.to_datetime(rgc1["date"])
     rgc1["date"] = pd.to_datetime(rgc1["date"], format="%b-%d-%y").dt.strftime("%d-%b")
