@@ -152,5 +152,11 @@ Since neither EODY nor the Ministry of Health announce official data about the g
 - As mentioned above, daily cumulative deaths data corresponds to deaths that occurred by the calendar date of reference. That means the sum of deaths by prefecture/regional unit on specific dates might be different than the total number of deaths announced by EODY, or the Ministry of Health, on the same date. This happens because authorities announce the total number of deaths as a result of the number of new deaths that occurred in their 24-hour reporting window, which is 15:00 - 15:00 (EEST) and 18:00 - 18:00 (EEST) for EODY and the Ministry of Health respectively.<br/>If you wish to use the exact number of new and total deaths announced each day, run through the pdfsDataFrame.csv for information extracted from the [official reports published in PDF files by EODY](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/).
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
-### 14. wom_data.csv
+### 14. schools.csv
+Data about schools suspended in Greece because of COVID-19 cases. Information about schools closed and/or partially suspended have been retrieved from the relevant list of announcements published by the Ministry of Education. We process those data to remove duplicates if there are any and to give status value to schools listed: "Ολική αναστολή" ("Schools closed"), "Μερική αναστολή ("Partial suspension"), "Επαναλειτουργία" ("Re-operation") are the possible status classifications for the schools in the dataset. Schools are geolocated by iMEdD Lab with the use of Google Geolocation API service. The dataset is updated twice a day.
+
+#### Data Sources
+- Schools list published by the [Ministry of Education](https://www.sch.gr/anastoli/web/index.php?r=site%2Findex&fbclid=IwAR1EnmUjFxut8odh8vbQIoYXpRKJmFCOt7r599yq_SV5mEvLsgMj0_Q0FrE&page=1&per-page=100)
+
+### 15. wom_data.csv
 International data retrieved from the [Worldometer](https://www.worldometers.info/coronavirus/). 
