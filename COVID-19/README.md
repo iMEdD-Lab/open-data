@@ -156,7 +156,7 @@ Since neither EODY nor the Ministry of Health announce official data about the g
 Data about schools suspended in Greece because of COVID-19 cases. Information about schools closed and/or partially suspended have been retrieved from the relevant list of announcements published by the Ministry of Education. We process those data to remove duplicates if there are any and to give status value to schools listed: "Ολική αναστολή" ("Schools closed"), "Μερική αναστολή ("Partial suspension"), "Επαναλειτουργία" ("Re-operation") are the possible status classifications for the schools in the dataset. Schools are geolocated by iMEdD Lab with the use of Google Geolocation API service. The dataset is updated twice a day.
 
 #### Data Sources
-- Schools list published by the [Ministry of Education](https://www.sch.gr/anastoli/web/index.php?r=site%2Findex&fbclid=IwAR1EnmUjFxut8odh8vbQIoYXpRKJmFCOt7r599yq_SV5mEvLsgMj0_Q0FrE&page=1&per-page=100)
+- [Schools list published by the Ministry of Education](https://www.sch.gr/anastoli/web/index.php?r=site%2Findex&fbclid=IwAR1EnmUjFxut8odh8vbQIoYXpRKJmFCOt7r599yq_SV5mEvLsgMj0_Q0FrE&page=1&per-page=100)
 
 ### 15. wom_data.csv
 International data retrieved from the [Worldometer](https://www.worldometers.info/coronavirus/). 
