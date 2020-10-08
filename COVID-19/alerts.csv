@@ -1,5 +1,10 @@
 key,value,value_en
+<<<<<<< HEAD,08/10/2020 20:03:31,
 lastUpdatedAt,08/10/2020 18:03:32,
 alertText,407 νέα κρούσματα 25 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (7 Οκτωβρίου 2020),407 new cases with 25 of them detected at the entry points of the country (7 October 2020)
+=======,,
+lastUpdatedAt,08/10/2020 12:03:19,
+alertText,436 νέα κρούσματα 17 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (8 Οκτωβρίου 2020),436 new cases with 17 of them detected at the entry points of the country (8 October 2020)
+>>>>>>> b0535ca508480348e5326116a2bc27477867a9bd,,
 alertType,,
 alertLink,,
