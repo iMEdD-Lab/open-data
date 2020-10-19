@@ -116,8 +116,8 @@ Since neither EODY nor the Ministry of Health announce official data about the g
 ### 10. pdfsDataFrame.csv
 Content retrieved and data extracted from the reports published in PDF files by [EODY](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/). The dataset is updated automatically on a daily basis. The PDF files are read with the [Apache TIKA library](https://tika.apache.org/) and the program which extracts the data is written in Python. 
 
-### 11. regions_greece.csv
-Cumulative data on cases, deaths, critically ill patients (intubated), and recovered patients by region in Greece. The value "<b><i>No Location Provided</b></i>" in the "district_EN" column means that the region has not been known for the relevant numbers of cases, of deaths, of critically ill patients, and of people who recovered. The dataset used to be updated automatically. The dataset has been archived. Relevant figures about cases and deaths have still been maintained in regions_greece_cases.csv, greece_cases_v2.csv, regions_greece_deaths.csv and greece_deaths_v2.csv. Please find more information on these in the relevant sections for said datasets. 
+### 11. regions_greece.csv (archived)
+Cumulative data on cases, deaths, critically ill patients (intubated), and recovered patients by region in Greece. The value "<b><i>No Location Provided</b></i>" in the "district_EN" column means that the region has not been known for the relevant numbers of cases, of deaths, of critically ill patients, and of people who recovered. The dataset used to be updated automatically. The dataset has been archived; last publication date is October 19, 2020 including data up to October 18, 2020. Relevant figures about cases and deaths have still been maintained in regions_greece_cases.csv, greece_cases_v2.csv, regions_greece_deaths.csv and greece_deaths_v2.csv. Please find more information on these in the relevant sections for said datasets. 
 
 #### Data Sources
 - The [Hellenic National Public Health Organisation (EODY)](https://eody.gov.gr/) is the main source of data that have been released through:
