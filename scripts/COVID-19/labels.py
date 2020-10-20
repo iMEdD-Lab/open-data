@@ -212,21 +212,27 @@ def schools_map_greece_title(lang):
 
 def get_schools_oliki_name(lang):
     if lang == 'EL':
-        return 'Ολική αναστολή'
+        return 'Ολική<br>αναστολή'
     else:
-        return 'Schools closed'
+        return 'Schools<br>closed'
     
 def get_schools_meriki_name(lang):
     if lang=='EL':
-        return 'Μερική αναστολή'
+        return 'Μερική<br>αναστολή'
     else:
-        return 'Partial suspension'
+        return 'Partial<br>suspension'
     
 def get_schools_reoper_name(lang):
     if lang == 'EL':
-        return 'Επαναλειτουργία'
+        return 'Επαναλειτουργία<br>σχολείου'
     else:
-        return 'Re-operation'
+        return 'Schools<br>re-operation'
+    
+def get_schools_reoper_name2(lang):
+    if lang == 'EL':
+        return 'Επαναλειτουργία<br>τμημάτων/τάξεων'
+    else:
+        return 'Re-operation after<br>partial suspension'
     
 def schools_map_athens_title(lang):
     if lang == 'EL':

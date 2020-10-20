@@ -1935,11 +1935,13 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             
     oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
-    done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
+    done_val = str(schools[schools.status=='Επαναλειτουργία σχολείου'].school.value_counts().sum())
+    done_val2 = str(schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων'].school.value_counts().sum())
     
     oliki_df = schools[schools.status=='Ολική αναστολή']
     meriki_df = schools[schools.status=='Μερική αναστολή']
-    done_df = schools[schools.status=='Επαναλειτουργία']
+    done_df = schools[schools.status=='Επαναλειτουργία σχολείου']
+    done_df2 = schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων']
 
 
     oliki = go.Scattermapbox(lat=oliki_df['lat'],
@@ -1964,11 +1966,20 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
     done_df = go.Scattermapbox(lat=done_df['lat'],
             lon=done_df['lng'],
             mode='markers',
-            text=done_df['school'] + '<br><i>ήταν σε αναστολή έως και ' + done_df['closed_to'] + '</i>',
+            text=done_df['school'] + '<br><i>ήταν σε ολική αναστολή έως και ' + done_df['closed_to'] + '</i>',
             name = labels.get_schools_reoper_name(lang)  + " (" +  done_val + ")",
             hovertemplate= '%{text} <extra></extra>',
             below='', 
-            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
+            marker=dict( size=10, color ='#CC9EA6', opacity=.7)) #0E3354 #338C83
+    
+    done_df2 = go.Scattermapbox(lat=done_df2['lat'],
+            lon=done_df2['lng'],
+            mode='markers',
+            text=done_df2['school'] + '<br><i>ήταν σε μερική αναστολή έως και ' + done_df2['closed_to'] + '</i>',
+            name = labels.get_schools_reoper_name2(lang)  + " (" +  done_val2 + ")",
+            hovertemplate= '%{text} <extra></extra>',
+            below='', 
+            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83 #CC9EA6
 
     layout = go.Layout(title=dict(text= labels.schools_map_greece_title(lang), font=TEXTFONT), 
                     title_x = 0.02,
@@ -1979,7 +1990,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
                     yaxis2=YAXIS_STYLE,
                     showlegend=True,
                     legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
-                               orientation='h',yanchor='bottom'),
+                               orientation='h',yanchor='bottom',x=0.025),
                     legend_traceorder="reversed",
                     paper_bgcolor="#E6ECEC",
                     plot_bgcolor="#E6ECEC",
@@ -1994,7 +2005,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
                                )
                       )
 
-    fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
+    fig=go.Figure(data=[done_df2,done_df,meriki,oliki], layout=layout)
     
     if show:
         config = dict(
@@ -2024,18 +2035,20 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             
     oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
-    done_val = str(schools[schools.status=='Επαναλειτουργία'].school.value_counts().sum())
+    done_val = str(schools[schools.status=='Επαναλειτουργία σχολείου'].school.value_counts().sum())
+    done_val2 = str(schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων'].school.value_counts().sum())
     
     oliki_df = schools[schools.status=='Ολική αναστολή']
     meriki_df = schools[schools.status=='Μερική αναστολή']
-    done_df = schools[schools.status=='Επαναλειτουργία']
+    done_df = schools[schools.status=='Επαναλειτουργία σχολείου']
+    done_df2 = schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων']
 
 
     oliki = go.Scattermapbox(lat=oliki_df['lat'],
             lon=oliki_df['lng'],
             mode='markers',
             text=oliki_df['school'] + '<br><i>έως και ' + oliki_df['closed_to'] + '</i>',
-            name = labels.get_schools_oliki_name(lang),
+            name = labels.get_schools_oliki_name(lang) + " (" + oliki_val + ")",
             hovertemplate= '%{text} <extra></extra>',
             below='', 
             marker=dict(size=10, color ='#BA3A0B',opacity=.7),
@@ -2045,7 +2058,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             lon=meriki_df['lng'],
             mode='markers',
             text=meriki_df['school'] + '<br>' + meriki_df['label_info'] + '<br><i>έως και ' + meriki_df['closed_to'] + '</i>',
-            name = labels.get_schools_meriki_name(lang),
+            name = labels.get_schools_meriki_name(lang)  + " (" +  meriki_val + ")",
             hovertemplate= '%{text} <extra></extra>',
             below='', 
             marker=dict( size=10, color ='#338C83', opacity=.7)) 
@@ -2053,11 +2066,20 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
     done_df = go.Scattermapbox(lat=done_df['lat'],
             lon=done_df['lng'],
             mode='markers',
-            text=done_df['school'] + '<br><i>ήταν σε αναστολή έως και ' + done_df['closed_to'] + '</i>',
-            name = labels.get_schools_reoper_name(lang),
+            text=done_df['school'] + '<br><i>ήταν σε ολική αναστολή έως και ' + done_df['closed_to'] + '</i>',
+            name = labels.get_schools_reoper_name(lang)  + " (" +  done_val + ")",
             hovertemplate= '%{text} <extra></extra>',
             below='', 
-            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83
+            marker=dict( size=10, color ='#CC9EA6', opacity=.7)) #0E3354 #338C83
+    
+    done_df2 = go.Scattermapbox(lat=done_df2['lat'],
+            lon=done_df2['lng'],
+            mode='markers',
+            text=done_df2['school'] + '<br><i>ήταν σε μερική αναστολή έως και ' + done_df2['closed_to'] + '</i>',
+            name = labels.get_schools_reoper_name2(lang)  + " (" +  done_val2 + ")",
+            hovertemplate= '%{text} <extra></extra>',
+            below='', 
+            marker=dict( size=10, color ='#EADB88', opacity=1)) #0E3354 #338C83 #CC9EA6
 
     layout = go.Layout(title=dict(text= labels.schools_map_athens_title(lang), font=TEXTFONT), 
                     title_x = 0.02, 
@@ -2068,7 +2090,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
                     yaxis2=YAXIS_STYLE,
                     showlegend=True,
                     legend=dict(font=dict(family="Roboto", size=10, color="#114B5F"),
-                               orientation='h',yanchor='bottom'),
+                               orientation='h',yanchor='bottom',x=0.025),
                     legend_traceorder="reversed",
                     paper_bgcolor="#E6ECEC",
                     plot_bgcolor="#E6ECEC",
@@ -2083,7 +2105,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
                                )
                       )
 
-    fig=go.Figure(data=[done_df,meriki,oliki], layout=layout)
+    fig=go.Figure(data=[done_df2,done_df,meriki,oliki], layout=layout)
     
     if show:
         config = dict(
