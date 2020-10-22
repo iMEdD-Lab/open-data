@@ -1,10 +1,10 @@
 key,value,value_en
+<<<<<<< HEAD,22/10/2020 12:04:02,
 <<<<<<< HEAD,22/10/2020 10:04:00,
 lastUpdatedAt,20/10/2020 18:04:12,
-alertText,865 νέα κρούσματα 44 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (21 Οκτωβρίου 2020),865 new cases with 44 of them detected at the entry points of the country (21 October 2020)
 =======,,
-lastUpdatedAt,20/10/2020 18:04:04,
+lastUpdatedAt,22/10/2020 08:03:56,
+>>>>>>> cb222df7665afb51ef9d8b9518f135a7584a8c83,,
 alertText,865 νέα κρούσματα 44 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (21 Οκτωβρίου 2020),865 new cases with 44 of them detected at the entry points of the country (21 October 2020)
->>>>>>> 8138e676611471ee81968a30a2a18b987ff34f44,,
 alertType,,
 alertLink,,
