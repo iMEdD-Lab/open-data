@@ -56,7 +56,10 @@ The values in the "Status" column correspond to different metrics. Find below wh
 - <b>hospitalized</b>: number of patients hospitalized on the date of reference 
 - <b>intensive_care</b>: number of patients hospitalized in intensive care units on the date of reference 
 - <b>intubated</b>: number of intubated patients on the date of reference
-- <b>total_tests</b>: cumulative testing data by the date of reference 
+- <b>total_tests</b>: cumulative laboratory testing data by the date of reference 
+- <b>total_rapid_tests</b>: cumulative Rapid Ag testing data by the date of reference 
+- <b>total_tests</b>: cumulative laboratory testing data by the date of reference 
+- <b>esitmated_daily_tests_pcr_rapid</b>: estimated number of daily tests in total, including laboratory testing samples and Rapid Ag tests. We estimate the number of daily tests by calculating the difference between the sum of total_tests (laboratory) and total_rapid_tests (Rapid Ag) each day and the said sum the previous day. On specific dates, authorities didn't announced the total number of tests by then. When that happens, we divide the calculated difference between latest total tests announced and the previous total number of tests known by the number of days in between. This way, we fill missing values with the daily mean of total tests within specific time periods.
 - <b>total cases</b>: total number of cases announced by the date of reference 
 
 #### Data Sources
