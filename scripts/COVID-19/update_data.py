@@ -127,8 +127,8 @@ if __name__ == "__main__":
     wom_data_df["TotalDeaths"] = wom_data_df["TotalDeaths"].str.replace(",", "")
     # save the new csv
     wom_data_df.to_csv(root_path + "/COVID-19/wom_data.csv", index=False)
-    print(wom_data_df)
-    sys.exit(0)
+    # print(wom_data_df)
+    # sys.exit(0)
     greeceTimeline_df = pd.read_csv(root_path + "/COVID-19/greeceTimeline.csv")
 
     baseHopkinsURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
