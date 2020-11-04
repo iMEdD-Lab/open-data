@@ -120,7 +120,8 @@ if __name__ == "__main__":
         )
         == False
     ].reset_index(drop=True)
-
+    print(wom_data_df)
+    sys.exit(0)
     # append last row
     wom_data_df = wom_data_df.append(last_row_df, ignore_index=True)
     wom_data_df["TotalCases"] = wom_data_df["TotalCases"].str.replace(",", "")
