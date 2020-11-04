@@ -1,10 +1,10 @@
 key,value,value_en
+<<<<<<< HEAD,04/11/2020 02:04:18,
 <<<<<<< HEAD,04/11/2020 00:04:21,
 lastUpdatedAt,03/11/2020 18:04:33,
-alertText,2166 νέα κρούσματα 40 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (3 Νοεμβρίου 2020),2166 new cases with 40 of them detected at the entry points of the country (3 November 2020)
 =======,,
-lastUpdatedAt,03/11/2020 16:04:33,
+lastUpdatedAt,03/11/2020 23:57:25,
+>>>>>>> 8c4daf91f5f6d25c67a13acf3e567f64760c131f,,
 alertText,2166 νέα κρούσματα 40 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (3 Νοεμβρίου 2020),2166 new cases with 40 of them detected at the entry points of the country (3 November 2020)
->>>>>>> 80a23a16c0a4dd5de9b2e335cd05b7ba85de51f4,,
 alertType,,
 alertLink,,
