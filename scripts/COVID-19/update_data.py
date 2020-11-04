@@ -120,15 +120,15 @@ if __name__ == "__main__":
         )
         == False
     ].reset_index(drop=True)
-    print(wom_data_df)
-    sys.exit(0)
+
     # append last row
     wom_data_df = wom_data_df.append(last_row_df, ignore_index=True)
     wom_data_df["TotalCases"] = wom_data_df["TotalCases"].str.replace(",", "")
     wom_data_df["TotalDeaths"] = wom_data_df["TotalDeaths"].str.replace(",", "")
     # save the new csv
     wom_data_df.to_csv(root_path + "/COVID-19/wom_data.csv", index=False)
-
+    print(wom_data_df)
+    sys.exit(0)
     greeceTimeline_df = pd.read_csv(root_path + "/COVID-19/greeceTimeline.csv")
 
     baseHopkinsURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
