@@ -91,7 +91,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # save the last row (totals, we need it in the front-end)
-    last_row_df = pd.DataFrame([t_rows[-1]], columns=t_headers)
+    last_row_df = pd.DataFrame([t_rows[-2]], columns=t_headers)
     # load country names
     # (root_path + '/COVID-19/countries_names.csv')
     countries_df = pd.read_csv(
