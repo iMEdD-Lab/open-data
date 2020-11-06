@@ -1933,7 +1933,7 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
         if item['school'] in REPEATED:
             schools = schools.drop_duplicates(subset=['school'],keep = 'first')
             
-    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum()-2)
+    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
 #     done_val = str(schools[schools.status=='Επαναλειτουργία σχολείου'].school.value_counts().sum())
 #     done_val2 = str(schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων'].school.value_counts().sum())
@@ -1943,20 +1943,20 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
 #     done_df = schools[schools.status=='Επαναλειτουργία σχολείου']
 #     done_df2 = schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων']
 
-    lockdown_df = schools[schools.status.str.contains('lockdown',case=False)]
-    lockdown_val = str(schools[schools.status.str.contains('lockdown')].school.value_counts().sum())
+#     lockdown_df = schools[schools.status.str.contains('lockdown',case=False)]
+#     lockdown_val = str(schools[schools.status.str.contains('lockdown')].school.value_counts().sum())
     
     
-    lockdown = go.Scattermapbox(lat=lockdown_df['lat'],
-                lon=lockdown_df['lng'],
-                mode='markers',
-                text=lockdown_df['school'] + '<br>' + lockdown_df['status'],
-                name = "Κλειστά, λόγω<br>τοπικού lockdown" + " (" + lockdown_val + ")" if lang=='EL'\
-                                else "Closed, because of<br>local lockdown" + " (" + lockdown_val + ")",
-                hovertemplate= '%{text} <extra></extra>',
-                below='', 
-                marker=dict(size=8, color ='#484E4E',opacity=.4),
-                )
+#     lockdown = go.Scattermapbox(lat=lockdown_df['lat'],
+#                 lon=lockdown_df['lng'],
+#                 mode='markers',
+#                 text=lockdown_df['school'] + '<br>' + lockdown_df['status'],
+#                 name = "Κλειστά, λόγω<br>τοπικού lockdown" + " (" + lockdown_val + ")" if lang=='EL'\
+#                                 else "Closed, because of<br>local lockdown" + " (" + lockdown_val + ")",
+#                 hovertemplate= '%{text} <extra></extra>',
+#                 below='', 
+#                 marker=dict(size=8, color ='#484E4E',opacity=.4),
+#                 )
 
 
     oliki = go.Scattermapbox(lat=oliki_df['lat'],
@@ -2020,7 +2020,21 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
                                )
                       )
 
-    fig=go.Figure(data=[meriki,lockdown,oliki], layout=layout)
+    fig=go.Figure(data=[meriki,oliki], layout=layout)
+    
+    fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.05,
+        text="<i>Πηγή δεδομένων: <a href='https://bit.ly/2JG3OqP'>Yπ. Παιδείας</a>" if lang=="EL" else "<i>Data Source: <a href='https://bit.ly/2JG3OqP'>Min. of Education</a>",
+        font=dict(family='Roboto',size=8,color='#114B5F'),
+        showarrow=False,
+        xanchor="right", yanchor="bottom"
+                  )
+    
+    fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.10,
+        text="<i>Δεν περιλαμβάνονται σχολεία σε αναστολή στο πλαίσιο lockdown.</i>" if lang=="EL" else "<i>Schools suspended as part of a lockdown are not included.</i>",
+        font=dict(family='Roboto',size=8,color='#114B5F'),
+        showarrow=False,
+        xanchor="right", yanchor="bottom"
+                  )
     
     if show:
         config = dict(
@@ -2048,7 +2062,7 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
         if item['school'] in REPEATED:
             schools = schools.drop_duplicates(subset=['school'],keep = 'first')
             
-    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum()-2)
+    oliki_val = str(schools[schools.status=='Ολική αναστολή'].school.value_counts().sum())
     meriki_val = str(schools[schools.status=='Μερική αναστολή'].school.value_counts().sum())
 #     done_val = str(schools[schools.status=='Επαναλειτουργία σχολείου'].school.value_counts().sum())
 #     done_val2 = str(schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων'].school.value_counts().sum())
@@ -2058,20 +2072,20 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
 #     done_df = schools[schools.status=='Επαναλειτουργία σχολείου']
 #     done_df2 = schools[schools.status=='Επαναλειτουργία τμημάτων/τάξεων']
 
-    lockdown_df = schools[schools.status.str.contains('lockdown',case=False)]
-    lockdown_val = str(schools[schools.status.str.contains('lockdown')].school.value_counts().sum())
+#     lockdown_df = schools[schools.status.str.contains('lockdown',case=False)]
+#     lockdown_val = str(schools[schools.status.str.contains('lockdown')].school.value_counts().sum())
     
     
-    lockdown = go.Scattermapbox(lat=lockdown_df['lat'],
-                lon=lockdown_df['lng'],
-                mode='markers',
-                text=lockdown_df['school'] + '<br>' + lockdown_df['status'],
-                name = "Κλειστά, λόγω<br>τοπικού lockdown" if lang=='EL'\
-                                else "Closed, because of<br>local lockdown",
-                hovertemplate= '%{text} <extra></extra>',
-                below='', 
-                marker=dict(size=8, color ='#484E4E',opacity=.4),
-                )
+#     lockdown = go.Scattermapbox(lat=lockdown_df['lat'],
+#                 lon=lockdown_df['lng'],
+#                 mode='markers',
+#                 text=lockdown_df['school'] + '<br>' + lockdown_df['status'],
+#                 name = "Κλειστά, λόγω<br>τοπικού lockdown" if lang=='EL'\
+#                                 else "Closed, because of<br>local lockdown",
+#                 hovertemplate= '%{text} <extra></extra>',
+#                 below='', 
+#                 marker=dict(size=8, color ='#484E4E',opacity=.4),
+#                 )
 
     oliki = go.Scattermapbox(lat=oliki_df['lat'],
             lon=oliki_df['lng'],
@@ -2134,7 +2148,21 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
                                )
                       )
 
-    fig=go.Figure(data=[meriki,lockdown,oliki], layout=layout)
+    fig=go.Figure(data=[meriki,oliki], layout=layout)
+    
+    fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.05,
+        text="<i>Πηγή δεδομένων: <a href='https://bit.ly/2JG3OqP'>Yπ. Παιδείας</a>" if lang=="EL" else "<i>Data Source: <a href='https://bit.ly/2JG3OqP'>Min. of Education</a>",
+        font=dict(family='Roboto',size=8,color='#114B5F'),
+        showarrow=False,
+        xanchor="right", yanchor="bottom"
+                  )
+    
+    fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.10,
+        text="<i>Δεν περιλαμβάνονται σχολεία σε αναστολή στο πλαίσιο lockdown.</i>" if lang=="EL" else "<i>Schools suspended as part of a lockdown are not included.</i>",
+        font=dict(family='Roboto',size=8,color='#114B5F'),
+        showarrow=False,
+        xanchor="right", yanchor="bottom"
+                  )
     
     if show:
         config = dict(
