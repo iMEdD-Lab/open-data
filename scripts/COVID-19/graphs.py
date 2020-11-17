@@ -1998,10 +1998,11 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
             marker=dict( size=10, color ='#EADB88', opacity=.8),
             visible='legendonly') #0E3354 #338C83 #CC9EA6
 
-    layout = go.Layout(title=dict(text= labels.schools_map_greece_title(lang), font=TEXTFONT), 
+    layout = go.Layout(title=dict(text= '<b>Ειδικά σχολεία</b> σε <b>αναστολή</b> λειτουργίας στην Ελλάδα' if lang=='EL'\
+                                  else '<b>Special schools suspended</b> in Greece', font=TEXTFONT), 
                     title_x = 0.02,
                     height=450,
-                    width=450,
+#                     width=450,
                     xaxis=XAXIS_STYLE,
                     xaxis2=XAXIS_STYLE,
                     yaxis=YAXIS_STYLE,
@@ -2033,7 +2034,8 @@ def schools_map_greece(name, schools_data, mapbox_token, show=True, lang="EL"):
                   )
     
     fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.10,
-        text="<i>Δεν περιλαμβάνονται σχολεία σε αναστολή στο πλαίσιο lockdown.</i>" if lang=="EL" else "<i>Schools suspended as part of a lockdown are not included.</i>",
+       text="<i>Όλες οι υπόλοιπες εκπαιδευτικές δομές είναι κλειστές, στο πλαίσιο lockdown.</i>" if lang=="EL"\
+                       else "<i>All other education facilities are closed as part of the current lockdown.</i>",
         font=dict(family='Roboto',size=8,color='#114B5F'),
         showarrow=False,
         xanchor="right", yanchor="bottom"
@@ -2129,10 +2131,11 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
             marker=dict(size=10, color ='#EADB88', opacity=.8),
             visible='legendonly') #0E3354 #338C83 #CC9EA6
 
-    layout = go.Layout(title=dict(text= labels.schools_map_athens_title(lang), font=TEXTFONT), 
+    layout = go.Layout(title=dict(text= '<b>Ειδικά σχολεία</b> σε <b>αναστολή</b> λειτουργίας στην Αθήνα' if lang=='EL'\
+                                  else '<b>Special schools suspended</b> in Athens', font=TEXTFONT), 
                     title_x = 0.02, 
                     height=450,
-                    width=450,
+#                     width=450,
                     xaxis=XAXIS_STYLE,
                     xaxis2=XAXIS_STYLE,
                     yaxis=YAXIS_STYLE,
@@ -2164,7 +2167,8 @@ def schools_map_athens(name, schools_data, mapbox_token, show=True, lang="EL"):
                   )
     
     fig.add_annotation(xref="paper",yref="paper", x=1, y= -0.10,
-        text="<i>Δεν περιλαμβάνονται σχολεία σε αναστολή στο πλαίσιο lockdown.</i>" if lang=="EL" else "<i>Schools suspended as part of a lockdown are not included.</i>",
+        text="<i>Όλες οι υπόλοιπες εκπαιδευτικές δομές είναι κλειστές, στο πλαίσιο lockdown.</i>" if lang=="EL"\
+                       else "<i>All other education facilities are closed as part of the current lockdown.</i>",
         font=dict(family='Roboto',size=8,color='#114B5F'),
         showarrow=False,
         xanchor="right", yanchor="bottom"
