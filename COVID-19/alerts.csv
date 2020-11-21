@@ -1,4 +1,5 @@
 key,value,value_en
+<<<<<<< HEAD,21/11/2020 22:03:25,
 <<<<<<< HEAD,21/11/2020 20:03:19,
 <<<<<<< HEAD,20/11/2020 18:03:28,
 lastUpdatedAt,18/11/2020 18:03:27,
@@ -6,5 +7,9 @@ lastUpdatedAt,18/11/2020 18:03:27,
 lastUpdatedAt,20/11/2020 18:03:29,
 >>>>>>> e59c527689536b9b12dd1eae23bdbaa63dcfda6b,,
 alertText,2581 νέα κρούσματα 38 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (20 Νοεμβρίου 2020),2581 new cases with 38 of them detected at the entry points of the country (20 November 2020)
+=======,,
+lastUpdatedAt,21/11/2020 18:03:29,
+alertText,2311 νέα κρούσματα 18 εκ των οποίων εντοπίστηκαν σε πύλες εισόδου (21 Νοεμβρίου 2020),2311 new cases with 18 of them detected at the entry points of the country (21 November 2020)
+>>>>>>> 7b6aaac7d5e42ed6339eb5719131f6f7424d3be9,,
 alertType,,
 alertLink,,
