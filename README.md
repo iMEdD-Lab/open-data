@@ -49,9 +49,15 @@ The application is developed with [JavaScript](https://www.javascript.com/), by 
 [Plotly Python Open Source Graphic Library](https://plotly.com/python/) was also used to create charts in the “STATISTICS” section of the former version 1.0 of the application. 
 
 <b>Framwork of use</b>
-Both iMEdD Lab’s web application, “COVID-19: The spread of the disease in Greece and worldwide”, and all open datasets on the relevant repository of iMEdD Lab on GitHub, are publicly available under a Creative Commons license of use. 
-You can share and/or embed contents of iMEdD Lab’s web application in your website, in accordance with the terms hereof. Please kindly cite the creator and comply with the terms and restrictions stated here.
+
+Both iMEdD Lab’s web application, “[COVID-19: The spread of the disease in Greece and worldwide](https://lab.imedd.org/covid19/)”, and all open datasets on the relevant repository of iMEdD Lab on GitHub, are publicly available under a [Creative Commons license of use](https://github.com/iMEdD-Lab/open-data/tree/master/COVID-19). 
+
+You can share and/or embed contents of iMEdD Lab’s [web application](https://lab.imedd.org/covid19/) in your website, in accordance with the terms hereof. Please kindly cite the creator and comply with the terms and restrictions stated here.
+
 The iMEdD Lab app does not contain data regarding the age, gender, nationality of patients nor any other type of demographic or personal data.
-The web application has been created solely for informational purposes and its use for any other purpose is expressly prohibited. Any commercial or medical use is strictly prohibited. This website does not provide any medical guidance. No information of the website replaces the official sources and announcements of the competent state authorities. For official announcements and useful information, you can visit the website of the EODY. iMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
-For any additional information or clarification, please contact lab@imedd.org or use the iMEdD contact form.
+
+The [web application](https://lab.imedd.org/covid19/) has been created solely for informational purposes and its use for any other purpose is expressly prohibited. Any commercial or medical use is strictly prohibited. This website does not provide any medical guidance. No information of the website replaces the official sources and announcements of the competent state authorities. For official announcements and useful information, you can visit the website of the EODY. iMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
+
+For any additional information or clarification, please contact lab@imedd.org or use the iMEdD [contact form](https://www.imedd.org/el/contact/).
+
 
