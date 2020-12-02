@@ -1,74 +1,47 @@
 # [lab.imedd.org/covid19](lab.imedd.org/covid19)
 ## [iMEdD Lab](https://www.imedd.org/imedd-lab/)'s Application and the Data
 
-[lab.imedd.org/covid19](lab.imedd.org/covid19) is a web application that was created and is managed by [iMEdD Lab](https://www.imedd.org/imedd-lab/). It was launched online on 16 March 2020 and is updated daily since then. Its purpose is to inform the Greek journalistic community and anyone else interested in the spread of the SARS-CoV-2 virus in Greece and around the world, using a simple, easy-to-use tool.
+The “COVID-19: The spread of the disease in Greece and worldwide” was created and is managed by iMEdD Lab. Its purpose is to facilitate the work of the journalistic community and to inform anyone interested in the spread of the pandemic in Greece and around the world. 
 
-The application shows the geographical distribution of confirmed recorded cases in our country and globally, while it also comprehensively presents the available statistics. A couple of different analyses are also presented in the “[STATISTICS](https://lab.imedd.org/covid19/stats/)” page via interactive charts and maps.
+It was first launched online on 16 March 2020 and, since then, it is constantly updated with the most recently known information. From its first launch to last November, the application had been regularly updated with various new features and additional analyses. Fully redesigned as it is today, the application was presented on December 2, 2020, when iMEdD Lab launched the version 2.0. 
+The application shows the geographical distribution of confirmed recorded cases and deaths in our country and globally, while it also comprehensively presents analyses on the evolution of epidemiologic data in Greece and across the globe, by country. 
 
-The data on confirmed recorded cases in Greece and the data on the geographical distribution of cases in the country are based on official data, announced daily by the [Hellenic National Public Health Organisation (EODY)](https://eody.gov.gr/) and the Ministry of Health, along with cross-checked information published in the Greek Press. The iMEdD Lab team collects this data and stores it in datasets, which are available on the [open-data relevant repository](https://github.com/iMEdD-Lab/open-data/tree/master/COVID-19), in iMEdD Lab’s account on GitHub.
+<b> The data sources </b>
 
-The source of the global current data is the [Worldometer](https://www.worldometers.info/coronavirus/), the content of which is subject to [terms of use](https://www.worldometers.info/disclaimer/). That data is shown on the main world map, in the table of countries, by number of cases, number of recoveries or number of deaths, and on additional world maps found in the “STATISTICS” page. In the iMEdD Lab application, this information and the corresponding visualisations are updated regularly throughout the day.
+All epidemiologic data for Greece, except for the geographical distribution of deaths, are based on official information announced by the competent bodies. Since February 26, 2020, iMEdD Lab has been collecting official data from multiple channels of distribution and it maintains them in open datasets, which are available in the relevant repository, in iMEdD Lab’s account on GitHub.
 
-The global historical data shown in the chart “Evolution of Cases through Time”, in the timeline of the world map and in the rest of visualizations available at the “STATISTICS” page comes from the repository of [Johns Hopkins University on GitHub](https://github.com/CSSEGISandData/COVID-19). In this repository, the University makes the data collected by its research team available for educational and research purposes. This database is updated once a day. More information about the [corresponding online application](https://coronavirus.jhu.edu/map.html) of Johns Hopkins University, which was launched on 22 January 2020, its development and the data it uses can be found [here](https://coronavirus.jhu.edu/map-faq).
+Specifically, all our analyses about cases, intubated and recovered patients, the total number of deaths and samples tested in Greece derive from datasets structured by iMEdD Lab based on information released through: 
 
-The chart “7-day Moving Average of Cases” is based on secondary calculations, using available data, and represents the seven-day rolling average, with the aim of “normalising” the daily number of new cases, as recorded and announced by the Authorities. In specific, the rolling average of cases is calculated and represented for each day, taking into account the data of the last seven days before it.
+- daily epidemiological surveillance reports published by EODY in PDF format
+- other daily announcements and informal updates emailed to the Press by EODY 
+- briefings to accredited health journalists by the Ministry of Health
+- informal updates emailed to the Press by the Ministry of Health
+- updates released by the General Secretariat of Civil Protection in .pdf files (indicatively) 
+- the covid19.gov.gr platform
 
-The world map shows the total number of recorded cases and deaths per 1,000,000 population for each country. The map of Greece shows the total number of recorded cases and deaths per 100,000 population for each Prefecture: this calculation is done secondarily by iMEdD Lab, taking into account the absolute number of recorded cases and deaths, which are known per Prefecture, and the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
+The source of the global current data is the Worldometer, the content of which is subject to terms of use. That data is shown on the main world map, when the –preselected– “Last day” time period filter is active. In the iMEdD Lab application, this information and the corresponding visualisations are updated every two hours.
+The global historical data comes from the repository of Johns Hopkins University on GitHub. In this repository, the University makes the data collected by its research team available for educational and research purposes. This database is updated once a day, as well as the relevant visualizations on iMEdD Lab’s application. That data is shown on the world map, whenever every other time filter except for the “Last day” one is active, as well as in charts presented in the “Insights on the World” section. More information about the corresponding online application of Johns Hopkins University, which was launched on 22 January 2020, its development and the data it uses can be found here.
 
+Data analysis and visualizations
+The world map shows the total number of recorded cases and deaths per 100,000 population for each country. The map of Greece shows the total number of recorded cases per 100,000 population for each area (Attica Region, by Regional Unit for the rest of the mainland and by Prefecture for the island country): this calculation is done secondarily by iMEdD Lab, taking into account the absolute number of recorded cases and deaths, which are known per Prefecture, and the data on the resident population based on the 2011 census, as provided by ELSTAT.
 This “normalisation of numbers” (in this case, the recording of the number of recorded cases per 1,000,000 and per 100,000 population, around the world and in the Prefectures of Greece respectively) has been selected for two reasons: on the one hand, it allows the visualisation of data on a choropleth map, such as that used by iMEdD Lab. On the other hand, it allows a more correct understanding of the issue of the spread of the virus per country or per Prefecture, allowing a comparison of the extent of the problem based on population size.
+However, in reading any such map of cases, attention is brought to the fact that, for example, there are differences in terms of the laboratory tests various countries perform: Some countries opt for mass testing of the population and therefore announce more confirmed cases. Other countries conduct targeted testing on smaller populations, so they may record fewer cases than is the case. Thus, there can be significant differences in the mapping of the actual spread of the virus in each country, even between states with equal populations. For this reason, the normalisation of recorded cases based on the laboratory tests that each country has conducted would be even more appropriate. So far, the relevant publicly available official data found are not recorded in one homogeneous and standardized way for every country. For instance, a country may report the total number of samples tested, while another country might report the total number of people tested. Thus,  different policies of various countries regarding both testing and the way tests are reported might drive to underestimations or overestimations. You could visit Our world in data, if you wish to read more about testing data.
+A 7-day moving average is additionally presented in every chart showing the evolution of epidemiological data over time (i.e. daily new cases or cumulative cases up to each day of reference): the 7-day moving average is based on secondary calculations, using available official data, and is used to smooth values recorded and announced by the authorities. In specific, the rolling average of each variable (cases, deaths, etc) is calculated and represented for each day, taking into account the data of the last seven days before it.
+In the “Insights on Greece” section, the chart entitled “Evolution of new cases by area in Greece” represents daily new cases both per 100,000 residents and in absolute numbers, in each area. Areas are ranked based on the number of new cases per 100,000 residents, meaning that districts on top currently face a more severe outbreak. International data are similarly visualized in the chart entitled “Evolution of new cases and deaths by country” in the “Insights on the World” section.
+Finally, the active cases figure that is presented in the side menu on the map section, when the –preselected– “Last day” time filter is active, is calculated by subtracting both the number of recovered patients and the number of deaths from the total number of cases, according to the most recent known data each time. 
 
-However, in reading any such map of cases, attention is brought to the fact that, for example, there are differences in terms of the laboratory tests various countries perform: Some countries opt for mass testing of the population and therefore announce more confirmed cases. Other countries conduct targeted testing on smaller populations, so they may record fewer cases than is the case. Thus, there can be significant differences in the mapping of the actual spread of the virus in each country, even between states with equal populations. For this reason, the normalisation of recorded cases based on the laboratory tests that each country has conducted would be even more appropriate. However, so far, the relevant official data is not publicly available for all countries.
+Tools we use
+Scripts developed with the use of Python programming language run for the retrieval, the extraction and the processing of data. As for the retrieval of content enclosed in the daily epidemiological surveillance report issued by EODY in .pdf files, the Apache TIKA library is used. 
+One of the tools that have been used to collect global data from Worldometer is Workbench, an application that makes it easier for journalists to collect and analyse data without requiring programming language skills, has been used for the collection and the processing of global data deriving from Worldometer. Workbench was developed in Greek in the framework of the first cycle of the iMEdD Incubator.
+The map background has been sponsored by the Mapbox Community team, which encloses data deriving from the open and publicly available Open Street Map.  
+The application is developed with JavaScript, by Civic Information Office (CVCIO) and it is an open code project. You may find more information about scripts developed, tools and libraries used on the relevant GitHub repository. 
+ 
+Plotly Python Open Source Graphic Library was also used to create charts in the “STATISTICS” section of the former version 1.0 of the application. 
 
-In the “STATISTICS” page, the chart “Cases, Tests and Deaths per Country” and the map “Cases/Tests Ratio per country” touch the matter of the correlation between the number of recorded cases and the number of reported tests performed by each country based on data published by the [Worldometer](https://www.worldometers.info/coronavirus/). In any case, different policies of various countries regarding both testing and the way laboratory tests are reported might drive to underestimations or overestimations. You could visit [Our world in data](https://ourworldindata.org/coronavirus-testing), if you wish to read more about testing data.
-
-In the “STATISTICS” page again, the charts “Evolution of deaths from the 10th death onwards” and “Evolution of cases after first 100” are updated once a day, because they are based on data published on the [Github repository](https://github.com/CSSEGISandData/COVID-19) of Johns Hopkins University, which is updated daily. Thus, you probably see the number of cases and the number of deaths recorded yesterday.
-
-The charts “Deaths per 100K residents in countries with population similar to that of Greece” and “Cases per 100K residents in countries with population similar to that of Greece” include countries with a population of 9-12 million residents ([Worldometer / United Nations Population Division](https://www.worldometers.info/world-population/population-by-country/)).
-
-You can share or/and embed this iMEdD Lab online application in your website, in accordance with the terms hereof. Please kindly cite the creator and comply with the terms and restrictions stated here.
-
-The code for embedding the [map](https://lab.imedd.org/covid19/) is:
-
-<iframe
-src="https://lab.imedd.org/covid19/?lang=en"
-style="border:0px #ffffff none;"
-name="imedd-covid"
-scrolling="no"
-frameborder="1"
-marginheight="0px"
-marginwidth="0px"
-height="640px"
-width="640px"
-allowfullscreen>
-</iframe>
-
-
-The code for embedding the "[STATISTICS](https://lab.imedd.org/covid19/stats/)" page is:
-
-<iframe
-src="https://lab.imedd.org/covid19/stats/?lang=en"
-style="border:0px #ffffff none;"
-name="imedd-covid-stats"
-frameborder="1"
-marginheight="0px"
-marginwidth="0px"
-height="640px"
-width="640px"
-allowfullscreen>
-</iframe>
-
+Framwork of use
+Both iMEdD Lab’s web application, “COVID-19: The spread of the disease in Greece and worldwide”, and all open datasets on the relevant repository of iMEdD Lab on GitHub, are publicly available under a Creative Commons license of use. 
+You can share and/or embed contents of iMEdD Lab’s web application in your website, in accordance with the terms hereof. Please kindly cite the creator and comply with the terms and restrictions stated here.
 The iMEdD Lab app does not contain data regarding the age, gender, nationality of patients nor any other type of demographic or personal data.
+The web application has been created solely for informational purposes and its use for any other purpose is expressly prohibited. Any commercial or medical use is strictly prohibited. This website does not provide any medical guidance. No information of the website replaces the official sources and announcements of the competent state authorities. For official announcements and useful information, you can visit the website of the EODY. iMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
+For any additional information or clarification, please contact lab@imedd.org or use the iMEdD contact form.
 
-In the list of countries, the entry “Diamond Princess” refers to the cases on board the cruise ship Diamond Princess, which is anchored off the coast of Japan. More information can be found here. The countries listed are not always shown accurately on the map. For example, because it is a overseas region of France, Martinique, located in the Caribbean, appears on the map under France. In other cases, because the name of the country in the Worldometer is not exactly the same as the name of the country on the map, it may not appear on the map as a country with active cases. We try to correct any such mistakes every time they come to our notice.
-
-One of the tools that have been used to collect global data from Worldometer is [Workbench](https://workbenchdata.com/gr/), an application that makes it easier for journalists to collect and analyse data without requiring programming language skills. Workbench was developed in Greek in the framework of the [first cycle of the iMEdD Incubator](https://www.imedd.org/el/inhouse/workbench/).
-
-The map showing the spread of COVID-19 in Greece and around the world was sponsored by the [Mapbox Community team](https://www.mapbox.com/community/).
-
-This json file, which has been made available by [python-visualtization/folium](https://github.com/python-visualization/folium) on GitHub, under MIT License of use (Copyright © 2013, Rob Story), is used for the purposes of mapping the “Cases/Tests Ratio per Country” and the “Recovered Ratio per Country”.
-
-This website has been created solely for informational purposes and its use for any other purpose is expressly prohibited. Any commercial or medical use is strictly prohibited. This website does not provide any medical guidance. No information of the website replaces the official sources and announcements of the competent state authorities. For official announcements and useful information, you can visit the website of the [EODY](https://eody.gov.gr/).
-
-iMEdD bears no responsibility for the accuracy of the content of this website or for any violation of its terms.
-
-For any additional information or clarification, please contact lab@imedd.org or use the iMEdD [contact form](https://www.imedd.org/el/contact/).
