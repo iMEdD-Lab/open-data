@@ -61,3 +61,19 @@ The [web application](https://lab.imedd.org/covid19/) has been created solely fo
 For any additional information or clarification, please contact lab@imedd.org or use the iMEdD [contact form](https://www.imedd.org/el/contact/).
 
 
+
+
+
+<b>Terms of Use</b>
+
+1. The material published on this page is subject to the NonCommercial Creative Commons licence (CC BY-NC). The material belonging to the public domain or subject to terms of use and restrictions arising from third parties and sources is excluded.
+2. Regarding the global geographical distribution of COVID-19, we use data collected from many different sources (WHO, CDC, ECDC, NHC, DXY and others) by John Hopkins University (JHU). You can read more about how data is collected and analysed here and see the data here. IMEdD has no relationship with JHU as regards this data and its use.
+3. The material is subject to the terms of use of JHU (https://coronavirus.jhu.edu/map-faq.html, https://coronavirus.jhu.edu/map.html and https://it.johnshopkins.edu/policies/privacystatement) and the general terms of use of this website.
+4. No legal term or technological measures, as defined in Article 11 of the Treaty of the World Intellectual Property Organisation, have been or may be applied to the material used.
+5. See this link regarding the material that is not available in public: https://creativecommons.org/licenses/by-nc/4.0/legalcode.
+6. See disclaimer of warranty of JHU and https://creativecommons.org/licenses/by-nc/4.0/legalcode.
+7. The material used on this page may not be modified unless the terms, restrictions and terms of use of the Creative Commons licence (CC BY-NC) and third-party sources are met.
+8. The use of the website content for any commercial or medical purpose is strictly prohibited.
+9. The content of the website is for information purposes only and its use for any other purpose is expressly prohibited.
+10. No information of the website replaces the official sources and announcements of the competent state authorities.
+For any clarification on the above, please contact the iMEdD Lab team at lab@imedd.org.
