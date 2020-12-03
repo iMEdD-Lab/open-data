@@ -138,7 +138,7 @@ if __name__ == "__main__":
         greeceTimeline_df.at[1, this_date] = np.nan
         greeceTimeline_df.at[3, this_date] = np.nan
         greeceTimeline_df.at[4, this_date] = np.nan
-        greeceTimeline_df.at[5, this_date] = np.nan
+#         greeceTimeline_df.at[5, this_date] = np.nan
         greeceTimeline_df.at[7, this_date] = np.nan
         greeceTimeline_df.at[9, this_date] = np.nan
         greeceTimeline_df.at[10, this_date] = np.nan
