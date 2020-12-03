@@ -8,6 +8,7 @@ from datetime import datetime
 import requests
 
 import pandas as pd
+import numpy  as np
 from bs4 import BeautifulSoup
 from pytz import timezone
 
@@ -130,7 +131,19 @@ if __name__ == "__main__":
     # print(wom_data_df)
     # sys.exit(0)
     greeceTimeline_df = pd.read_csv(root_path + "/COVID-19/greeceTimeline.csv")
-
+    if pd.to_datetime(datetime.today()) != pd.to_datetime(greeceTimeline_df.columns[-1]):
+        this_date = pd.to_datetime(datetime.today()).strftime("%-m/%-d/%-y")
+        greeceTimeline_df[this_date] = greeceTimeline_df[greeceTimeline_df.columns[-1]]
+        greeceTimeline_df.at[0, this_date] = np.nan
+        greeceTimeline_df.at[1, this_date] = np.nan
+        greeceTimeline_df.at[3, this_date] = np.nan
+        greeceTimeline_df.at[4, this_date] = np.nan
+        greeceTimeline_df.at[5, this_date] = np.nan
+        greeceTimeline_df.at[7, this_date] = np.nan
+        greeceTimeline_df.at[9, this_date] = np.nan
+        greeceTimeline_df.at[10, this_date] = np.nan
+        greeceTimeline_df.to_csv(root_path + "/COVID-19/greeceTimeline.csv", index=False)
+    
     baseHopkinsURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
     confirmed_H_df = pd.read_csv(
         baseHopkinsURL + "time_series_covid19_confirmed_global.csv"
