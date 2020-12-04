@@ -11,7 +11,11 @@ jobs:
     name: update data
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: checkou
+        uses: actions/checkout@@master
+      - name: set output
+        id: vars
+        run: echo ::set-output name=tag::$(git rev-parse --short HEAD)
       - name: remove job
         uses: steebchen/kubectl@master
         env:
@@ -25,4 +29,4 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.15"
         with:
-          args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action
+          args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action-${{ steps.vars.outputs.tag }}
