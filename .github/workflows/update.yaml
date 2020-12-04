@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@@master
+        uses: actions/checkout@master
       - name: set output
         id: vars
         run: echo ::set-output name=tag::$(git rev-parse --short HEAD)
