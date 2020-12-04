@@ -1,0 +1,28 @@
+name: upadate
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    branches:
+      - "master"
+jobs:
+  update:
+    name: update data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: remove job
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: "1.19"
+        with:
+          args: delete job --context ${{ secrets.KUBE_CONTEXT }} automation-action
+      - name: create job
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: "1.19"
+        with:
+          args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action
