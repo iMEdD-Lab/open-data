@@ -1,4 +1,4 @@
-name: upadate
+name: update
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ jobs:
     name: update data
     runs-on: ubuntu-latest
     steps:
-      - name: checkou
+      - name: checkout
         uses: actions/checkout@@master
       - name: set output
         id: vars
