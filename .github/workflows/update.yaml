@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: remove job
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBECTL_VERSION: "1.15"
+        with:
+          args: delete job --context ${{ secrets.KUBE_CONTEXT }} $(kubectl get jobs --context ${{ secrets.KUBE_CONTEXT }} --field-selector status.successful=1 | sed 'automation-action' | awk '$3 ~ 0' | awk '{print $1}')
       - name: create job
         uses: steebchen/kubectl@master
         env:
@@ -19,10 +26,3 @@ jobs:
           KUBECTL_VERSION: "1.15"
         with:
           args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action
-      - name: remove job
-        uses: steebchen/kubectl@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-          KUBECTL_VERSION: "1.15"
-        with:
-          args: delete job --context ${{ secrets.KUBE_CONTEXT }} automation-action
