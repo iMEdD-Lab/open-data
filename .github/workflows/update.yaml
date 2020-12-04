@@ -18,11 +18,11 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.19"
         with:
-          args: delete job --context ${{ secrets.KUBE_CONTEXT }} automation-action
+          args: '"delete job automation-action"'
       - name: create job
         uses: steebchen/kubectl@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.19"
         with:
-          args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action
+          args: '"create job --from=cronjob/automation automation-action"'
