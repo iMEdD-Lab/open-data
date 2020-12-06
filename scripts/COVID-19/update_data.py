@@ -29,7 +29,7 @@ if __name__ == "__main__":
         greeceTimeline_df.at[7, today] = np.nan # estimated_new_rtpcr_tests skip
         # cumulative_rapid_tests_raw copy
         greeceTimeline_df.at[9, today] = np.nan # esitmated_new_rapid_tests skip
-        greeceTimeline_df.at[10, today] = np.nan # estimated_new_total_tests skip
+        # estimated_new_total_tests copy
         # total cases copy
         greeceTimeline_df.to_csv(root_path + "/COVID-19/greeceTimeline.csv", index=False)
     sys.exit(0)
