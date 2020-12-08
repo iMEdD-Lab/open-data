@@ -12,7 +12,7 @@ Interactive charts and maps that are available on the [statistical analysis page
 
 ## Datasets
 
-### 1. alerts.csv
+### 1. alerts.csv (archived)
 Alert messages go here. 
 
 ### 2. countriesMapping.csv & countries_names.csv
@@ -116,7 +116,7 @@ Since neither EODY nor the Ministry of Health announce official data about the g
 - As mentioned above, daily cumulative deaths data corresponds to deaths that occurred by the calendar date of reference. That means the sum of deaths by prefecture/regional unit on specific dates might be different than the total number of deaths announced by EODY, or the Ministry of Health, on the same date. This happens because authorities announce the total number of deaths as a result of the number of new deaths that occurred in their 24-hour reporting window, which is 15:00 - 15:00 (EEST) and 18:00 - 18:00 (EEST) for EODY and the Ministry of Health respectively.<br/>If you wish to use the exact number of new and total deaths officially announced each day, run through the pdfsDataFrame.csv for information extracted from the [official reports published in PDF files by EODY](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/).
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
-### 10. pdfsDataFrame.csv
+### 10. pdfsDataFrame.csv (archived)
 Content retrieved and data extracted from the reports published in PDF files by [EODY](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/). The dataset is updated automatically on a daily basis. The PDF files are read with the [Apache TIKA library](https://tika.apache.org/) and the program which extracts the data is written in Python. 
 
 ### 11. regions_greece.csv (archived)
@@ -133,7 +133,7 @@ Cumulative data on cases, deaths, critically ill patients (intubated), and recov
 - <b>Data updates</b>: Usually, the dataset is updated at 18:00 (EEST), once EODY announcement is out. Then, the number of new cases announced is added to correspond to "No Location Provided". Αs soon as covid19.gov.gr updates its dashboard, the dataset is updated again and new cases are added to their respective region. 
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
-### 12. regions_greece_cases.csv
+### 12. regions_greece_cases.csv (archived)
 Cumulative data about cases by region in Greece and by date of announcement. The value "<b><i>No Location Provided</i></b>" in the "district_EN" column means that the region has not been announced by the authorities for the relevant number of cases on the date of reference. The data is updated automatically. 
 
 #### Data Sources
@@ -145,7 +145,7 @@ Cumulative data about cases by region in Greece and by date of announcement. The
 #### Notes 
 - The "pop11" column holds the data on the resident population based on the 2011 census, as provided by the [Hellenic Statistical Authority](https://www.statistics.gr/el/statistics/-/publication/SAM03/-).
 
-### 13. regions_greece_deaths.csv
+### 13. regions_greece_deaths.csv (archived)
 Cumulative data about deaths by region in Greece and by date of the incident. The value "<b><i>No Location Provided</b></i>" in the "district_EN" column means that the region has not been known for the relevant number of cases on the date of reference. 
 
 #### Data Sources
@@ -161,5 +161,5 @@ Data about schools suspended in Greece because of COVID-19 cases. Information ab
 #### Data Sources
 - [Schools list published by the Ministry of Education](https://www.sch.gr/anastoli/web/index.php?r=site%2Findex&fbclid=IwAR1EnmUjFxut8odh8vbQIoYXpRKJmFCOt7r599yq_SV5mEvLsgMj0_Q0FrE&page=1&per-page=100)
 
-### 15. wom_data.csv
+### 15. wom_data.csv (archived)
 International data retrieved from the [Worldometer](https://www.worldometers.info/coronavirus/). 
