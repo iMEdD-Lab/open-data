@@ -49,13 +49,14 @@ Data about COVID-19 in Greece by date, from February 26, 2020, when the first ca
 
 The values in the "Status" column correspond to different metrics. Find below what those values mean. 
 - <b>cases</b>: new confirmed cases announced on the date of reference; read in Notes below about data corrections that are included here.
-- <b>cruise_ship_ElVen</b>: new confirmed cases on board announced on the date of reference; refers to the "Eleftherios Venizelos" ferryboat. Said cases on board are also included in the number of cases on the date of reference. 
-- <b>Ritsona</b>: new confirmed cases at the Ritsona refugee camp announced on the date of reference. Said cases are also included in the number of cases on the date of reference.
 - <b>deaths</b>: new deaths happened on the date of reference; read in Notes below why some values might differ from the number of new deaths announced by the authorities on the relevant date. 
-- <b>recovered</b>: cumulative data about patients recovered by the date of reference 
-- <b>hospitalized</b>: number of patients hospitalized on the date of reference 
+- <b>hospitalized</b>: total number of patients hospitalized on the date of reference. 
+- <b>hospital_admissions</b>: new daily admissions. Data by https://covid19.gov.gr/covid19-live-analytics/
+- <b>hospital_discharges</b>: new daily hospital discharges. Data by https://covid19.gov.gr/covid19-live-analytics/
 - <b>intensive_care</b>: number of patients hospitalized in intensive care units on the date of reference 
 - <b>intubated</b>: number of intubated patients on the date of reference
+- <b>icu_occupancy</b>: percentage of icus occupied
+- <b>beds_occupancy</b>: percentage of hospital beds occupied
 - <b>total_tests</b>: cumulative laboratory testing data by the date of reference 
 - <b>total_rapid_tests</b>: cumulative Rapid Ag testing data by the date of reference 
 - <b>total_tests</b>: cumulative laboratory testing data by the date of reference 
@@ -66,6 +67,7 @@ The values in the "Status" column correspond to different metrics. Find below wh
 EODY and the Ministry of Health are the sources of data that have been released through:
 - Announcements and transcripts of the press briefings published by [EODY](https://eody.gov.gr/category/anakoinoseis/) and the [Ministry of Health](https://www.moh.gov.gr/articles/ministry/grafeio-typoy/press-releases)
 - [Reports](https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/) published in PDF files by EODY
+- Official covid data dashboard https://covid19.gov.gr/covid19-live-analytics/
 
 #### Notes
 - <b>Missing values</b>: NaN values mean that figures have not been announced by the authorities for the date of reference.<br/> 
