@@ -54,7 +54,10 @@ The values in the "Status" column correspond to different metrics. Find below wh
 - <b>hospital_admissions</b>: new daily admissions. Data by https://covid19.gov.gr/covid19-live-analytics/
 - <b>hospital_discharges</b>: new daily hospital discharges. Data by https://covid19.gov.gr/covid19-live-analytics/
 - <b>intensive_care</b>: number of patients hospitalized in intensive care units on the date of reference 
+- <b>icu_discharges</b>: total number of icu discharges per day.
+- <b>new_icu_discharges</b>: difference of daily total number of discharges.
 - <b>intubated</b>: number of intubated patients on the date of reference
+- <b>new_intubated</b>: daily difference of intubated
 - <b>icu_occupancy</b>: percentage of icus occupied
 - <b>beds_occupancy</b>: percentage of hospital beds occupied
 - <b>total_tests</b>: cumulative laboratory testing data by the date of reference 
@@ -165,3 +168,7 @@ Data about schools suspended in Greece because of COVID-19 cases. Information ab
 
 ### 15. wom_data.csv (archived)
 International data retrieved from the [Worldometer](https://www.worldometers.info/coronavirus/). 
+
+#### 16. rapid_tests.csv
+Data of rapid tests samples taken from EODY Mobile Health Groups throughout Greece. The dataset contains information such as UID of the area that the tests were performed each day, the name of the regional unit, the area and the address that EODY had set up the tent where they performed the  tests, total of samples taken, the positive samples and how many of them where males or females, their median age, the positivity rate (%) and finally lat - long of the address. 
+This dataset is produced automatically, by parsing the e-mails EODY has been sending to accredited science health reporters via e-mail. 
