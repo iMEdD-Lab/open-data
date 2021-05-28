@@ -20,6 +20,6 @@ jobs:
         uses: steebchen/kubectl@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-          KUBECTL_VERSION: "1.15"
+          KUBECTL_VERSION: "1.20"
         with:
           args: create job --context ${{ secrets.KUBE_CONTEXT }} --from=cronjob/automation automation-action-${{ steps.vars.outputs.tag }}
