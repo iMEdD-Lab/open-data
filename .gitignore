@@ -12,3 +12,5 @@ notebooks/
 tmp/
 .vscode/
 *.pyc
+
+.env
