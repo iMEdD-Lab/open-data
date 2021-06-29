@@ -169,6 +169,6 @@ Data about schools suspended in Greece because of COVID-19 cases. Information ab
 ### 15. wom_data.csv (archived)
 International data retrieved from the [Worldometer](https://www.worldometers.info/coronavirus/). 
 
-#### 16. rapid_tests.csv
+### 16. rapid_tests.csv
 Data of rapid tests samples taken from EODY Mobile Health Groups throughout Greece. The dataset contains information such as UID of the area that the tests were performed each day, the name of the regional unit, the area and the address that EODY had set up the tent where they performed the  tests, total of samples taken, the positive samples and how many of them where males or females, their median age, the positivity rate (%) and finally lat - long of the address. 
 This dataset is produced automatically, by parsing the e-mails EODY has been sending to accredited science health reporters via e-mail. 
