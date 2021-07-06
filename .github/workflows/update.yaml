@@ -17,7 +17,7 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(git rev-parse --short HEAD)
       - name: create job
-        uses: steebchen/kubectl@master
+        uses: steebchen/kubectl@v1.1.0
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.20"
