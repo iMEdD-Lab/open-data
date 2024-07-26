@@ -1,9 +1,9 @@
-# abstention_project
+# Open data on non-voting in Greece and EU
 
 This is a repository for a project on non-voters in Greece and in Europe. [iMEdD Lab](https://lab.imedd.org/) contributed with its work to the relevant cross-border project “[The Non-Voter Time Bomb]”(https://lab.imedd.org/en/i-vomva-tis-apochis-apo-tis-ekloges-diachronika-ana-tin-evropi/), led by [Divergente](https://divergente.pt/en/) with the contribution of twelve other journalistic organizations —members of the [EDJNet](https://www.europeandatajournalism.eu/). After this cross-border project, iMEdD Lab updated the datasets provided here with elections turnout data for Greece after the EU elections in June 2024.<br>
 
 Research, data collection/processing and project management for iMEdD Lab: Kelly Kiki<br>
-Additional contribution: Chrysoula Marinou
+Additional research and contribution: Chrysoula Marinou
 
 Please find here: 
 - <b>parliamentary_elections_data_historical_GR.csv</b>: the dataset includes historical abstention data on all types of elections in Greece, from 1974 to 2023
